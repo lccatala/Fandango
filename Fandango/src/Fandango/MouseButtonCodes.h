@@ -1,0 +1,14 @@
+#pragma once
+
+#define FNDG_MOUSE_BUTTON_1         0
+#define FNDG_MOUSE_BUTTON_2         1
+#define FNDG_MOUSE_BUTTON_3         2
+#define FNDG_MOUSE_BUTTON_4         3
+#define FNDG_MOUSE_BUTTON_5         4
+#define FNDG_MOUSE_BUTTON_6         5
+#define FNDG_MOUSE_BUTTON_7         6
+#define FNDG_MOUSE_BUTTON_8         7
+#define FNDG_MOUSE_BUTTON_LAST      FNDG_MOUSE_BUTTON_8
+#define FNDG_MOUSE_BUTTON_LEFT      FNDG_MOUSE_BUTTON_1
+#define FNDG_MOUSE_BUTTON_RIGHT     FNDG_MOUSE_BUTTON_2
+#define FNDG_MOUSE_BUTTON_MIDDLE    FNDG_MOUSE_BUTTON_3

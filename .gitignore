@@ -1,0 +1,10 @@
+# Directories
+.vs/
+bin/
+bin-int/
+GlassBack.xcworkspace
+GlassBack.xcodeproj
+
+# Files
+*.user/
+GlassBack.sln
