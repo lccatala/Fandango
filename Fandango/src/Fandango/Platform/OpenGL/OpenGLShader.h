@@ -1,8 +1,6 @@
 #pragma once
 
-#include <glad/glad.h>
 #include "Fandango/Renderer/Shader.h"
-
 
 namespace Fandango
 {
@@ -12,8 +10,8 @@ namespace Fandango
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
 		virtual ~OpenGLShader();
 
-		virtual void Bind() const;
-		virtual void UnBind() const;
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
 	private:
 		uint32_t m_RendererID;
 	};

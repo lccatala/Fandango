@@ -76,9 +76,6 @@
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLContext.h">
       <Filter>Fandango\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h">
-      <Filter>Fandango\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Fandango\Platform\Windows\WindowsInput.h">
       <Filter>Fandango\Platform\Windows</Filter>
     </ClInclude>
@@ -101,6 +98,15 @@
       <Filter>Fandango</Filter>
     </ClInclude>
     <ClInclude Include="src\fndgpch.h" />
+    <ClInclude Include="src\Fandango\Renderer\VertexArray.h">
+      <Filter>Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fandango\Application.cpp">
@@ -146,5 +152,11 @@
       <Filter>Fandango\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\fndgpch.cpp" />
+    <ClCompile Include="src\Fandango\Renderer\VertexArray.cpp">
+      <Filter>Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

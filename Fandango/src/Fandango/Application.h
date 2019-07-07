@@ -1,12 +1,16 @@
 #pragma once
 
+#include "Core.h"
+
 #include "Window.h"
 #include "Fandango/LayerStack.h"
-#include "Events/Event.h"
+
+#include "Fandango/Events/Event.h"
 #include "Fandango/Events/ApplicationEvent.h"
 #include "Fandango/DebugUI/DebugUILayer.h"
-#include "Fandango/Renderer/Buffer.h"
 
+#include "Fandango/Renderer/Buffer.h"
+#include "Fandango/Renderer/VertexArray.h"
 #include "Fandango/Renderer/Shader.h"
 
 namespace Fandango {
@@ -33,10 +37,10 @@ namespace Fandango {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<Shader> m_TriangleShader;
+		std::shared_ptr<VertexArray> m_TriangleVA;
+		std::shared_ptr<Shader> m_SquareShader;
+		std::shared_ptr<VertexArray> m_SquareVA;
 
 		static Application* s_Instance;
 	};
