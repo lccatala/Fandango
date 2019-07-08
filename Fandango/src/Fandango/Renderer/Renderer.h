@@ -1,21 +1,18 @@
 #pragma once
 
+#include "RenderCommand.h"
+
 namespace Fandango
 {
-	enum class RendererAPI
-	{
-		None = 0, OpenGL
-	};
-
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetAPI() { return s_RendererAPI; }
-		inline static void SetAPI(const RendererAPI& api) { s_RendererAPI = api; }
+		static void BeginScene(); // TODO take in scene parameters
+		static void EndScene();
 
-	private:
-		static RendererAPI s_RendererAPI;
+		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
 
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	};
 
 }

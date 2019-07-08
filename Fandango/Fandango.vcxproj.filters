@@ -107,6 +107,16 @@
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h">
       <Filter>Fandango\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\RendererAPI.h">
+      <Filter>Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderCommand.h" />
+    <ClInclude Include="src\Fandango\Renderer\RenderCommand.h">
+      <Filter>Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fandango\Application.cpp">
@@ -156,6 +166,15 @@
       <Filter>Fandango\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\RendererAPI.cpp">
+      <Filter>Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\RenderCommand.cpp">
+      <Filter>Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>Fandango\Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
