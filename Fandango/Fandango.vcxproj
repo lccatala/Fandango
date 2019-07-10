@@ -160,11 +160,11 @@
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Fandango\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Fandango\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Fandango\Renderer\Buffer.h" />
+    <ClInclude Include="src\Fandango\Renderer\Camera.h" />
     <ClInclude Include="src\Fandango\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Fandango\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Fandango\Renderer\Renderer.h" />
@@ -184,11 +184,11 @@
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Fandango\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Fandango\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Fandango\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Fandango\Renderer\Camera.cpp" />
     <ClCompile Include="src\Fandango\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Fandango\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Fandango\Renderer\RendererAPI.cpp" />

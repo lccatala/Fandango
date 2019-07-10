@@ -104,9 +104,6 @@
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>Fandango\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h">
-      <Filter>Fandango\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Fandango\Renderer\RendererAPI.h">
       <Filter>Fandango\Renderer</Filter>
     </ClInclude>
@@ -116,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\Camera.h">
+      <Filter>Fandango\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +141,6 @@
       <Filter>Fandango\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLContext.cpp">
-      <Filter>Fandango\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>Fandango\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Fandango\Platform\Windows\WindowsInput.cpp">
@@ -176,6 +173,9 @@
     </ClCompile>
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\Camera.cpp">
+      <Filter>Fandango\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

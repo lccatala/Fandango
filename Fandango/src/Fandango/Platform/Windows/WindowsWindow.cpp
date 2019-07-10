@@ -37,8 +37,6 @@ namespace Fandango
 		m_Data.Width = properties.m_Width;
 		m_Data.Height = properties.m_Height;
 
-		FNDG_ENGINE_INFO("Creating window {0}, {1}, {2}", properties.m_Title, properties.m_Width, properties.m_Height);
-
 		if (!s_GLFWInitialized)
 		{
 			// TODO glfwTerminate() on system shutdown

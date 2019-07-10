@@ -12,6 +12,8 @@
 #include "Fandango/Renderer/Buffer.h"
 #include "Fandango/Renderer/VertexArray.h"
 #include "Fandango/Renderer/Shader.h"
+#include "Fandango/Renderer/Camera.h"
+
 
 namespace Fandango {
 
@@ -41,6 +43,8 @@ namespace Fandango {
 		std::shared_ptr<VertexArray> m_TriangleVA;
 		std::shared_ptr<Shader> m_SquareShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 		static Application* s_Instance;
 	};

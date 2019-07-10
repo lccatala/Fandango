@@ -1,18 +1,19 @@
 #pragma once
 
-#include "fndgpch.h"
-
+#include <string>
+#include <glm/glm.hpp>
 namespace Fandango
 {
 	class Shader
 	{
 	public:
-		virtual ~Shader() {}
+		Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		virtual ~Shader();
 
-		virtual void Bind() const = 0;
-		virtual void UnBind() const = 0;
+		virtual void Bind() const;
+		virtual void UnBind() const;
 
-		static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+		virtual void UploadUniform(const std::string& name, const glm::mat4& matrix);
 	private:
 		uint32_t m_RendererID;
 	};
