@@ -39,12 +39,7 @@ namespace Fandango {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_TriangleShader;
-		std::shared_ptr<VertexArray> m_TriangleVA;
-		std::shared_ptr<Shader> m_SquareShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		
 
 		static Application* s_Instance;
 	};
