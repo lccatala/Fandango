@@ -140,7 +140,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="RenderCommand.h" />
     <ClInclude Include="src\Fandango.h" />
     <ClInclude Include="src\Fandango\Application.h" />
     <ClInclude Include="src\Fandango\Core.h" />
