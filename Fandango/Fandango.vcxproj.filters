@@ -116,6 +116,7 @@
       <Filter>Fandango</Filter>
     </ClInclude>
     <ClInclude Include="src\fndgpch.h" />
+    <ClInclude Include="src\Fandango\Core\TimeStep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fandango\Application.cpp">

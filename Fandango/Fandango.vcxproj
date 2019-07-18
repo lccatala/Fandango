@@ -143,6 +143,7 @@
     <ClInclude Include="src\Fandango.h" />
     <ClInclude Include="src\Fandango\Application.h" />
     <ClInclude Include="src\Fandango\Core.h" />
+    <ClInclude Include="src\Fandango\Core\TimeStep.h" />
     <ClInclude Include="src\Fandango\DebugUI\DebugUILayer.h" />
     <ClInclude Include="src\Fandango\EntryPoint.h" />
     <ClInclude Include="src\Fandango\Events\ApplicationEvent.h" />

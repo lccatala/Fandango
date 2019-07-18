@@ -93,6 +93,6 @@ namespace Fandango
 	void DebugUILayer::OnImGuiRender()
 	{
 		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		//ImGui::ShowDemoWindow(&show);
 	}
 }

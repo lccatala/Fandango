@@ -1,19 +1,21 @@
 #pragma once
 
-#include "Core.h"
+#include "Fandango/Core.h"
 
-#include "Window.h"
-#include "Fandango/LayerStack.h"
+#include "Fandango/Core/TimeStep.h"
+#include "Fandango/DebugUI/DebugUILayer.h"
 
 #include "Fandango/Events/Event.h"
 #include "Fandango/Events/ApplicationEvent.h"
-#include "Fandango/DebugUI/DebugUILayer.h"
+
+#include "Fandango/LayerStack.h"
 
 #include "Fandango/Renderer/Buffer.h"
+#include "Fandango/Renderer/Camera.h"
 #include "Fandango/Renderer/VertexArray.h"
 #include "Fandango/Renderer/Shader.h"
-#include "Fandango/Renderer/Camera.h"
 
+#include "Fandango/Window.h"
 
 namespace Fandango {
 
@@ -39,7 +41,7 @@ namespace Fandango {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		
+		float m_LastFrameTime = 0.0f;
 
 		static Application* s_Instance;
 	};

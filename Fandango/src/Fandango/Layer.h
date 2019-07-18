@@ -2,6 +2,7 @@
 
 #include "Fandango/Core.h"
 #include "Fandango/Events/Event.h"
+#include "Fandango/Core/TimeStep.h"
 
 namespace Fandango
 {
@@ -13,7 +14,7 @@ namespace Fandango
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(TimeStep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& e) {}
 

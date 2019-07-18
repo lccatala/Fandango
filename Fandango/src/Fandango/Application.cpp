@@ -5,6 +5,9 @@
 #include "Input.h"
 #include "Fandango/Renderer/Renderer.h"
 
+#include <GLFW/glfw3.h>
+
+
 namespace Fandango {
 
 #define BIND_EVENT_FUNCTION(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -44,8 +47,14 @@ namespace Fandango {
 	{
 		while (m_Running)
 		{
+			// Move this lines into a "Platform" class
+			float time = (float)glfwGetTime();
+
+			TimeStep ts = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(ts);
 
 			m_DebugUILayer->Begin();
 			for (Layer* layer : m_LayerStack)
