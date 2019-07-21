@@ -1,10 +1,12 @@
 #include <Fandango.h>
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class ExampleLayer : public Fandango::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
 	{
 		m_TriangleVA.reset(Fandango::VertexArray::Create());
 
@@ -33,10 +35,10 @@ public:
 		m_SquareVA.reset(Fandango::VertexArray::Create());
 
 		float squareVertices[3 * 4] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,  0.75f, 0.0f,
-			-0.75f,  0.75f, 0.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		std::shared_ptr<Fandango::VertexBuffer> squareVB;
@@ -58,6 +60,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjectionMatrix;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -66,7 +69,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -93,11 +96,12 @@ public:
 
 			out vec3 v_Position;
 			uniform mat4 u_ViewProjectionMatrix;
+			uniform mat4 u_Transform;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1);
+				gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1);
 			}
 		)";
 
@@ -141,11 +145,16 @@ public:
 
 		Fandango::Renderer::BeginScene(m_Camera);
 
-		m_SquareShader->Bind();
-		Fandango::Renderer::Submit(m_SquareVA, m_SquareShader);
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		m_TriangleShader->Bind();
 		Fandango::Renderer::Submit(m_TriangleVA, m_TriangleShader);
+		for (int i = 0; i < 20; i++)
+			for (int j = 0; j < 20; j++)
+			{
+				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Fandango::Renderer::Submit(m_SquareVA, m_SquareShader, transform);
+			}
 
 		Fandango::Renderer::EndScene();
 	}

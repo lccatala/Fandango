@@ -16,10 +16,11 @@ namespace Fandango
 
 	}
 
-	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader)
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader>& shader, const glm::mat4& transform)
 	{
 		shader->Bind();
 		shader->UploadUniform("u_ViewProjectionMatrix", m_SceneData->ViewProjectionMatrix);
+		shader->UploadUniform("u_Transform", transform);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
