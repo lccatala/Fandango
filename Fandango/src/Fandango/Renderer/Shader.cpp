@@ -132,4 +132,10 @@ namespace Fandango
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
+
+	void Shader::UploadUniform(const std::string &name, const glm::vec4& vec)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform4f(location, vec.x, vec.y, vec.z, vec.w);
+	}
 }

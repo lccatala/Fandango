@@ -14,6 +14,7 @@ namespace Fandango
 		virtual void UnBind() const;
 
 		virtual void UploadUniform(const std::string& name, const glm::mat4& matrix);
+		virtual void UploadUniform(const std::string& name, const glm::vec4& vec);
 	private:
 		uint32_t m_RendererID;
 	};

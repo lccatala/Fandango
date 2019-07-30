@@ -47,7 +47,7 @@ namespace Fandango {
 	{
 		while (m_Running)
 		{
-			// Move this lines into a "Platform" class
+			// Move this line into a "Platform" class
 			float time = (float)glfwGetTime();
 
 			TimeStep ts = time - m_LastFrameTime;

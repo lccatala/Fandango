@@ -105,19 +105,20 @@ public:
 			}
 		)";
 
-		std::string squareFragmentSrc = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
 			in vec3 v_Position;
+			uniform vec4 u_Color;
 
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = u_Color;
 			}
 		)";
 
-		m_SquareShader.reset(new Fandango::Shader(squareVertexSrc, squareFragmentSrc));
+		m_FlatColorShader.reset(new Fandango::Shader(squareVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Fandango::TimeStep ts) override
@@ -147,15 +148,23 @@ public:
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		Fandango::Renderer::Submit(m_TriangleVA, m_TriangleShader);
+		glm::vec4 blueColor = glm::vec4(0.2f, 0.3f, 0.8f, 1.0f);
+		glm::vec4 redColor = glm::vec4(0.8f, 0.3f, 0.2f, 1.0f);
+
 		for (int i = 0; i < 20; i++)
+		{
 			for (int j = 0; j < 20; j++)
 			{
 				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Fandango::Renderer::Submit(m_SquareVA, m_SquareShader, transform);
-			}
+				if (i % 2 == 0)
+					m_FlatColorShader->UploadUniform("u_Color", redColor);
+				else
+					m_FlatColorShader->UploadUniform("u_Color", blueColor);
 
+				Fandango::Renderer::Submit(m_SquareVA, m_FlatColorShader, transform);
+			}
+		}
 		Fandango::Renderer::EndScene();
 	}
 
@@ -172,7 +181,7 @@ private:
 	std::shared_ptr<Fandango::Shader> m_TriangleShader;
 	std::shared_ptr<Fandango::VertexArray> m_TriangleVA;
 
-	std::shared_ptr<Fandango::Shader> m_SquareShader;
+	std::shared_ptr<Fandango::Shader> m_FlatColorShader;
 	std::shared_ptr<Fandango::VertexArray> m_SquareVA;
 
 	Fandango::OrthographicCamera m_Camera;
