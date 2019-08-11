@@ -117,6 +117,7 @@
     <ClInclude Include="src\Fandango\Core\Window.h">
       <Filter>Fandango</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fandango\DebugUI\DebugUILayer.cpp">
@@ -177,5 +178,6 @@
     <ClCompile Include="src\Fandango\Core\Log.cpp">
       <Filter>Fandango</Filter>
     </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

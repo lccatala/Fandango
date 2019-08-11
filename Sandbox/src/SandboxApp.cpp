@@ -1,6 +1,11 @@
 #include <Fandango.h>
 
+#include "Fandango/Platform/OpenGL/OpenGLShader.h"
+
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include <imgui/imgui.h>
 
 class ExampleLayer : public Fandango::Layer
 {
@@ -87,7 +92,7 @@ public:
 			}
 		)";
 
-		m_TriangleShader.reset(new Fandango::Shader(vertexSrc, fragmentSrc));
+		m_TriangleShader.reset(Fandango::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string squareVertexSrc = R"(
 			#version 330 core
@@ -110,15 +115,15 @@ public:
 			
 			layout(location = 0) out vec4 color;
 			in vec3 v_Position;
-			uniform vec4 u_Color;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = u_Color;
+				color = vec4(u_Color, 1.0);
 			}
 		)";
 
-		m_FlatColorShader.reset(new Fandango::Shader(squareVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader.reset(Fandango::Shader::Create(squareVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Fandango::TimeStep ts) override
@@ -148,10 +153,9 @@ public:
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		glm::vec4 blueColor = glm::vec4(0.2f, 0.3f, 0.8f, 1.0f);
-		glm::vec4 redColor = glm::vec4(0.8f, 0.3f, 0.2f, 1.0f);
+		std::dynamic_pointer_cast<Fandango::OpenGLShader>(m_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Fandango::OpenGLShader>(m_FlatColorShader)->UploadUniform("u_Color", m_SquareColor);
 
-		m_FlatColorShader->UploadUniform("u_Color", redColor);
 		for (int i = 0; i < 20; i++)
 		{
 			for (int j = 0; j < 20; j++)
@@ -167,7 +171,9 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		FNDG_TRACE("ImGUI render!");
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Fandango::Event& event) override
@@ -186,6 +192,8 @@ private:
 	float m_CameraSpeed = 5.0f;
 	float m_CameraRotationSpeed = 180.0f;
 	float m_CameraRotation = 0.0f;
+
+	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 
 class Sandbox : public Fandango::Application

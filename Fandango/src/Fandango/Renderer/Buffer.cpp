@@ -13,10 +13,10 @@ namespace Fandango
 		switch (Renderer::GetAPI()) 
 		{
 		case RendererAPI::API::None:
-				FNDG_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported");
-				return nullptr;
-			case RendererAPI::API::OpenGL:
-				return new OpenGLVertexBuffer(vertices, size);
+			FNDG_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported");
+			return nullptr;
+		case RendererAPI::API::OpenGL:
+			return new OpenGLVertexBuffer(vertices, size);
 		}
 
 		FNDG_ENGINE_ASSERT(false, "Unknown renderer API");
