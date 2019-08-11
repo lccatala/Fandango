@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+
 #include <glm/glm.hpp>
 namespace Fandango
 {
@@ -16,6 +17,9 @@ namespace Fandango
 		virtual void UploadUniform(const std::string& name, const glm::mat4& matrix);
 		virtual void UploadUniform(const std::string& name, const glm::vec4& vec);
 	private:
+		int GetUniformLocation(const std::string& name) const;
+
 		uint32_t m_RendererID;
+		mutable std::unordered_map<std::string, int> m_UniformLocationCache;
 	};
 }

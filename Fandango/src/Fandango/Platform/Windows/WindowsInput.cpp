@@ -1,7 +1,7 @@
 #include "fndgpch.h"
 
 #include "WindowsInput.h"
-#include "Fandango/Application.h"
+#include "Fandango/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 

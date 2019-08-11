@@ -25,17 +25,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Fandango.h" />
-    <ClInclude Include="src\Fandango\Application.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\Core.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
     <ClInclude Include="src\Fandango\DebugUI\DebugUILayer.h">
       <Filter>Fandango\DebugUI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\EntryPoint.h">
-      <Filter>Fandango</Filter>
     </ClInclude>
     <ClInclude Include="src\Fandango\Events\ApplicationEvent.h">
       <Filter>Fandango\Events</Filter>
@@ -51,24 +42,6 @@
     </ClInclude>
     <ClInclude Include="src\Fandango\Events\MouseEvent.h">
       <Filter>Fandango\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\Input.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\KeyCodes.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\Layer.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\LayerStack.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\Log.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Fandango\MouseButtonCodes.h">
-      <Filter>Fandango</Filter>
     </ClInclude>
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>Fandango\Platform\OpenGL</Filter>
@@ -112,30 +85,45 @@
     <ClInclude Include="src\Fandango\Renderer\VertexArray.h">
       <Filter>Fandango\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Fandango\Window.h">
-      <Filter>Fandango</Filter>
-    </ClInclude>
     <ClInclude Include="src\fndgpch.h" />
     <ClInclude Include="src\Fandango\Core\TimeStep.h" />
+    <ClInclude Include="src\Fandango\Core\Application.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Core.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\EntryPoint.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Input.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\KeyCodes.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Layer.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\LayerStack.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Log.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\MouseButtonCodes.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Window.h">
+      <Filter>Fandango</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Fandango\Application.cpp">
-      <Filter>Fandango</Filter>
-    </ClCompile>
     <ClCompile Include="src\Fandango\DebugUI\DebugUILayer.cpp">
       <Filter>Fandango\DebugUI</Filter>
     </ClCompile>
     <ClCompile Include="src\Fandango\DebugUI\ImGuiBuild.cpp">
       <Filter>Fandango\DebugUI</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Fandango\Layer.cpp">
-      <Filter>Fandango</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Fandango\LayerStack.cpp">
-      <Filter>Fandango</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Fandango\Log.cpp">
-      <Filter>Fandango</Filter>
     </ClCompile>
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>Fandango\Platform\OpenGL</Filter>
@@ -177,5 +165,17 @@
       <Filter>Fandango\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\fndgpch.cpp" />
+    <ClCompile Include="src\Fandango\Core\Application.cpp">
+      <Filter>Fandango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Core\Layer.cpp">
+      <Filter>Fandango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Core\LayerStack.cpp">
+      <Filter>Fandango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Core\Log.cpp">
+      <Filter>Fandango</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

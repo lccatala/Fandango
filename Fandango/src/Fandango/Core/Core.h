@@ -11,7 +11,7 @@
 	#define FNDG_API
 #endif
 #else
-	#error FNDG only supports Windows
+	#error Fandango only supports Windows
 #endif
 
 #ifdef FNDG_ENABLE_ASSERTS

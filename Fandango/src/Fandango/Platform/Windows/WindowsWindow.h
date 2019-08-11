@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Fandango/Window.h"
+#include "Fandango/Core/Window.h"
 #include "Fandango/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

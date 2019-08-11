@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Fandango/Input.h"
+#include "Fandango/Core/Input.h"
 
 namespace Fandango
 {

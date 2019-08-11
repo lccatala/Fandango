@@ -1,7 +1,7 @@
 #include "fndgpch.h"
 #include "Application.h"
 
-#include "Fandango/Log.h"
+#include "Fandango/Core/Log.h"
 #include "Input.h"
 #include "Fandango/Renderer/Renderer.h"
 

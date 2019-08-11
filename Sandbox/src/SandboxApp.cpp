@@ -151,16 +151,13 @@ public:
 		glm::vec4 blueColor = glm::vec4(0.2f, 0.3f, 0.8f, 1.0f);
 		glm::vec4 redColor = glm::vec4(0.8f, 0.3f, 0.2f, 1.0f);
 
+		m_FlatColorShader->UploadUniform("u_Color", redColor);
 		for (int i = 0; i < 20; i++)
 		{
 			for (int j = 0; j < 20; j++)
 			{
 				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				if (i % 2 == 0)
-					m_FlatColorShader->UploadUniform("u_Color", redColor);
-				else
-					m_FlatColorShader->UploadUniform("u_Color", blueColor);
 
 				Fandango::Renderer::Submit(m_SquareVA, m_FlatColorShader, transform);
 			}
@@ -170,7 +167,7 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		
+		FNDG_TRACE("ImGUI render!");
 	}
 
 	void OnEvent(Fandango::Event& event) override

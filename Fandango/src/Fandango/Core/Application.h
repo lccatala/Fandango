@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Fandango/Core.h"
+#include "Fandango/Core/Core.h"
 
 #include "Fandango/Core/TimeStep.h"
 #include "Fandango/DebugUI/DebugUILayer.h"
@@ -8,14 +8,14 @@
 #include "Fandango/Events/Event.h"
 #include "Fandango/Events/ApplicationEvent.h"
 
-#include "Fandango/LayerStack.h"
+#include "Fandango/Core/LayerStack.h"
 
 #include "Fandango/Renderer/Buffer.h"
 #include "Fandango/Renderer/Camera.h"
 #include "Fandango/Renderer/VertexArray.h"
 #include "Fandango/Renderer/Shader.h"
 
-#include "Fandango/Window.h"
+#include "Fandango/Core/Window.h"
 
 namespace Fandango {
 

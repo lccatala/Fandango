@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Fandango/Log.h"
+#include "Fandango/Core/Log.h"
 
 #ifdef FNDG_PLATFORM_WINDOWS
 	#include <Windows.h>

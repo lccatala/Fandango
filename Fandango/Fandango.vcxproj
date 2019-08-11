@@ -141,22 +141,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Fandango.h" />
-    <ClInclude Include="src\Fandango\Application.h" />
-    <ClInclude Include="src\Fandango\Core.h" />
+    <ClInclude Include="src\Fandango\Core\Application.h" />
+    <ClInclude Include="src\Fandango\Core\Core.h" />
     <ClInclude Include="src\Fandango\Core\TimeStep.h" />
     <ClInclude Include="src\Fandango\DebugUI\DebugUILayer.h" />
-    <ClInclude Include="src\Fandango\EntryPoint.h" />
+    <ClInclude Include="src\Fandango\Core\EntryPoint.h" />
     <ClInclude Include="src\Fandango\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Fandango\Events\Event.h" />
     <ClInclude Include="src\Fandango\Events\JoystickEvents.h" />
     <ClInclude Include="src\Fandango\Events\KeyEvent.h" />
     <ClInclude Include="src\Fandango\Events\MouseEvent.h" />
-    <ClInclude Include="src\Fandango\Input.h" />
-    <ClInclude Include="src\Fandango\KeyCodes.h" />
-    <ClInclude Include="src\Fandango\Layer.h" />
-    <ClInclude Include="src\Fandango\LayerStack.h" />
-    <ClInclude Include="src\Fandango\Log.h" />
-    <ClInclude Include="src\Fandango\MouseButtonCodes.h" />
+    <ClInclude Include="src\Fandango\Core\Input.h" />
+    <ClInclude Include="src\Fandango\Core\KeyCodes.h" />
+    <ClInclude Include="src\Fandango\Core\Layer.h" />
+    <ClInclude Include="src\Fandango\Core\LayerStack.h" />
+    <ClInclude Include="src\Fandango\Core\Log.h" />
+    <ClInclude Include="src\Fandango\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -171,16 +171,16 @@
     <ClInclude Include="src\Fandango\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Fandango\Renderer\Shader.h" />
     <ClInclude Include="src\Fandango\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Fandango\Window.h" />
+    <ClInclude Include="src\Fandango\Core\Window.h" />
     <ClInclude Include="src\fndgpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Fandango\Application.cpp" />
+    <ClCompile Include="src\Fandango\Core\Application.cpp" />
     <ClCompile Include="src\Fandango\DebugUI\DebugUILayer.cpp" />
     <ClCompile Include="src\Fandango\DebugUI\ImGuiBuild.cpp" />
-    <ClCompile Include="src\Fandango\Layer.cpp" />
-    <ClCompile Include="src\Fandango\LayerStack.cpp" />
-    <ClCompile Include="src\Fandango\Log.cpp" />
+    <ClCompile Include="src\Fandango\Core\Layer.cpp" />
+    <ClCompile Include="src\Fandango\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Fandango\Core\Log.cpp" />
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.cpp" />

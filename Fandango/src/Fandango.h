@@ -1,12 +1,12 @@
 #pragma once
 
 // For use by Fandango applications
-#include "Fandango/Application.h"
-#include "Fandango/Layer.h"
-#include "Fandango/Log.h"
+#include "Fandango/Core/Application.h"
+#include "Fandango/Core/Layer.h"
+#include "Fandango/Core/Log.h"
 #include "Fandango/DebugUI/DebugUILayer.h"
-#include "Fandango/KeyCodes.h"
-#include "Fandango/Input.h"
+#include "Fandango/Core/KeyCodes.h"
+#include "Fandango/Core/Input.h"
 #include "Fandango/Core/TimeStep.h"
 
 #include "Fandango/Renderer/Buffer.h"
@@ -17,4 +17,4 @@
 
 
 // Entry Point
-#include "Fandango/EntryPoint.h"
+#include "Fandango/Core/EntryPoint.h"
