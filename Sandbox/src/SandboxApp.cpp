@@ -39,17 +39,18 @@ public:
 
 		m_SquareVA.reset(Fandango::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		std::shared_ptr<Fandango::VertexBuffer> squareVB;
 		squareVB.reset(Fandango::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{Fandango::ShaderDataType::Float3, "a_Position"}
+			{Fandango::ShaderDataType::Float3, "a_Position"},
+			{Fandango::ShaderDataType::Float2, "a_TexCoord"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -124,6 +125,46 @@ public:
 		)";
 
 		m_FlatColorShader.reset(Fandango::Shader::Create(squareVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjectionMatrix;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1);
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+			
+			uniform sampler2D u_Texture;
+			
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Fandango::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Fandango::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Fandango::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Fandango::OpenGLShader>(m_TextureShader)->UploadUniform("u_Texture", 0);
 	}
 
 	void OnUpdate(Fandango::TimeStep ts) override
@@ -166,6 +207,10 @@ public:
 				Fandango::Renderer::Submit(m_SquareVA, m_FlatColorShader, transform);
 			}
 		}
+
+		m_Texture->Bind();
+		Fandango::Renderer::Submit(m_SquareVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
 		Fandango::Renderer::EndScene();
 	}
 
@@ -181,11 +226,13 @@ public:
 	}
 
 private:
-	std::shared_ptr<Fandango::Shader> m_TriangleShader;
-	std::shared_ptr<Fandango::VertexArray> m_TriangleVA;
+	Fandango::Ref<Fandango::Shader> m_TriangleShader;
+	Fandango::Ref<Fandango::VertexArray> m_TriangleVA;
 
-	std::shared_ptr<Fandango::Shader> m_FlatColorShader;
-	std::shared_ptr<Fandango::VertexArray> m_SquareVA;
+	Fandango::Ref<Fandango::Shader> m_FlatColorShader, m_TextureShader;
+	Fandango::Ref<Fandango::VertexArray> m_SquareVA;
+
+	Fandango::Ref<Fandango::Texture2D> m_Texture;
 
 	Fandango::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

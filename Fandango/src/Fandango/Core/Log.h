@@ -15,7 +15,7 @@ namespace Fandango {
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
-} 
+}
 
 // Engine log macros
 #define FNDG_ENGINE_TRACE(...)    ::Fandango::Log::GetEngineLogger()->trace(__VA_ARGS__)

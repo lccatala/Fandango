@@ -17,6 +17,7 @@ IncludeDir["GLFW"]  = "Fandango/vendor/GLFW/include"
 IncludeDir["Glad"]  = "Fandango/vendor/Glad/include"
 IncludeDir["ImGui"] = "Fandango/vendor/imgui"
 IncludeDir["glm"] = "Fandango/vendor/glm"
+IncludeDir["stb_image"] = "Fandango/vendor/stb_image"
 
 group "Dependencies"
 include "Fandango/vendor/GLFW"
@@ -36,10 +37,12 @@ project "Fandango"
   pchheader "fndgpch.h"
   pchsource "Fandango/src/fndgpch.cpp"
 
-  files
-  {
+	files
+	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/glm/glm.**.hpp",
 		"%{prj.name}/vendor/glm/glm.**.inl"
 	}
@@ -56,7 +59,8 @@ project "Fandango"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
   }
 
   links

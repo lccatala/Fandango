@@ -13,6 +13,7 @@
 #include "Fandango/Renderer/Camera.h"
 #include "Fandango/Renderer/Renderer.h"
 #include "Fandango/Renderer/Shader.h"
+#include "Fandango/Renderer/Texture.h"
 #include "Fandango/Renderer/VertexArray.h"
 
 

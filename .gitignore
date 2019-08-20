@@ -2,9 +2,9 @@
 .vs/
 bin/
 bin-int/
-GlassBack.xcworkspace
-GlassBack.xcodeproj
+Fandango.xcworkspace
+Fandango.xcodeproj
 
 # Files
 *.user/
-GlassBack.sln
+Fandango.sln
