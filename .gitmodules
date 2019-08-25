@@ -7,6 +7,7 @@
 [submodule "Fandango/vendor/imgui"]
 	path = Fandango/vendor/imgui
 	url = https://github.com/lccatala/imgui
+  branch = docking
 [submodule "Fandango/vendor/glm"]
 	path = Fandango/vendor/glm
 	url = https://github.com/g-truc/glm
