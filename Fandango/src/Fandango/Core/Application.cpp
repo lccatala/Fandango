@@ -22,6 +22,8 @@ namespace Fandango {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FUNCTION(OnEvent));
 
+		Renderer::Init();
+
 		m_DebugUILayer = new DebugUILayer();
 		PushOverlay(m_DebugUILayer);
 	}
