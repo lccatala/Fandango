@@ -1,13 +1,18 @@
 workspace "Fandango"
-  architecture "x64"
-  startproject "Sandbox"
+	architecture "x64"
+	startproject "Sandbox"
 
-  configurations
-  {
+configurations
+{
 	"Debug",
 	"Release",
 	"Dist"
-  }
+}
+
+flags
+{
+	"MultiProcessorCompile"
+}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
