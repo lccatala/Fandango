@@ -3,12 +3,16 @@
 
 #include <glm/glm.hpp>
 
+// TODO: remove!!
+typedef unsigned int GLenum;
+
 namespace Fandango
 {
 	class OpenGLShader : public Shader
 	{
 	public:
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& filepath);
 		virtual ~OpenGLShader();
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
@@ -21,6 +25,9 @@ namespace Fandango
 		virtual void UploadUniform(const std::string& name, const glm::vec3& vec);
 	private:
 		int GetUniformLocation(const std::string& name) const;
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& src);
+		void Compile(const std::unordered_map<GLenum, std::string> sources);
+		std::string ReadFile(const std::string& filepath);
 
 		uint32_t m_RendererID;
 		mutable std::unordered_map<std::string, int> m_UniformLocationCache;

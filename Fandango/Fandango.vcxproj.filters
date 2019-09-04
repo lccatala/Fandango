@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango">
+      <UniqueIdentifier>{9AA1DE78-8604-6E1D-2F8A-A6D31BCC39A0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\Core">
+      <UniqueIdentifier>{32D6DEAC-9EEC-DC42-E763-686453B9ADCA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\DebugUI">
+      <UniqueIdentifier>{CE262292-BAB5-AB5B-63D4-BF564F42BC01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\Events">
+      <UniqueIdentifier>{3E3C0F65-AA9D-EC72-330B-33259F6B2332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\Platform">
+      <UniqueIdentifier>{2E4BED01-9AB7-A8FC-63AB-405ACFD6CA64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\Platform\OpenGL">
+      <UniqueIdentifier>{A2D4DB94-8E8F-CB40-3747-448B23E115D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\Platform\Windows">
+      <UniqueIdentifier>{68437288-D45B-59B2-9D08-E94B09E0ED4B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Fandango\Renderer">
+      <UniqueIdentifier>{8052CADC-ECBE-85D7-B5B2-1D3521DEA73F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Fandango.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Application.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Core.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\EntryPoint.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Input.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\KeyCodes.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Layer.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\LayerStack.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Log.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\MouseButtonCodes.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\TimeStep.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Core\Window.h">
+      <Filter>src\Fandango\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\DebugUI\DebugUILayer.h">
+      <Filter>src\Fandango\DebugUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Events\ApplicationEvent.h">
+      <Filter>src\Fandango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Events\Event.h">
+      <Filter>src\Fandango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Events\JoystickEvents.h">
+      <Filter>src\Fandango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Events\KeyEvent.h">
+      <Filter>src\Fandango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Events\MouseEvent.h">
+      <Filter>src\Fandango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLTexture2D.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\Windows\WindowsInput.h">
+      <Filter>src\Fandango\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Platform\Windows\WindowsWindow.h">
+      <Filter>src\Fandango\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\Buffer.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\Camera.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\GraphicsContext.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\RenderCommand.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\Renderer.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\RendererAPI.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\Shader.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\Texture.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fandango\Renderer\VertexArray.h">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fndgpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Fandango\Core\Application.cpp">
+      <Filter>src\Fandango\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Core\Layer.cpp">
+      <Filter>src\Fandango\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Core\LayerStack.cpp">
+      <Filter>src\Fandango\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Core\Log.cpp">
+      <Filter>src\Fandango\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\DebugUI\DebugUILayer.cpp">
+      <Filter>src\Fandango\DebugUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\DebugUI\ImGuiBuild.cpp">
+      <Filter>src\Fandango\DebugUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLTexture2D.cpp">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Fandango\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\Windows\WindowsInput.cpp">
+      <Filter>src\Fandango\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Platform\Windows\WindowsWindow.cpp">
+      <Filter>src\Fandango\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\Buffer.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\Camera.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\RenderCommand.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\Renderer.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\RendererAPI.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\Shader.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\Texture.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fandango\Renderer\VertexArray.cpp">
+      <Filter>src\Fandango\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fndgpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

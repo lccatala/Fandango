@@ -39,7 +39,7 @@ build uninstall: phony CMakeFiles\uninstall
 # Utility command for install/local
 
 build CMakeFiles\install\local.util: CUSTOM_COMMAND all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -49,7 +49,7 @@ build install\local: phony CMakeFiles\install\local.util
 # Utility command for install
 
 build CMakeFiles\install.util: CUSTOM_COMMAND all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -59,7 +59,7 @@ build install: phony CMakeFiles\install.util
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 build edit_cache: phony CMakeFiles\edit_cache.util
@@ -68,7 +68,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\glfw -BC:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\GLFW -BC:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -83,10 +83,10 @@ build list_install_components: phony
 # Custom command for CMakeFiles\uninstall
 
 build CMakeFiles\uninstall: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P C:/dev/Fandango/Fandango/vendor/glfw/out/build/x64-Debug/cmake_uninstall.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P C:/dev/Fandango/Fandango/vendor/GLFW/out/build/x64-Debug/cmake_uninstall.cmake"
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/dev/Fandango/Fandango/vendor/glfw/CMakeLists.txt
+# C:/dev/Fandango/Fandango/vendor/GLFW/CMakeLists.txt
 # =============================================================================
 
 
@@ -94,7 +94,7 @@ build CMakeFiles\uninstall: CUSTOM_COMMAND
 # Utility command for rebuild_cache
 
 build src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\glfw -BC:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\GLFW -BC:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -249,7 +249,7 @@ build src\glfw3.lib: C_STATIC_LIBRARY_LINKER__glfw src\CMakeFiles\glfw.dir\conte
 # Utility command for install/local
 
 build src\CMakeFiles\install\local.util: CUSTOM_COMMAND src\all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -259,7 +259,7 @@ build src\install\local: phony src\CMakeFiles\install\local.util
 # Utility command for install
 
 build src\CMakeFiles\install.util: CUSTOM_COMMAND src\all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -269,7 +269,7 @@ build src\install: phony src\CMakeFiles\install.util
 # Utility command for edit_cache
 
 build src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 build src\edit_cache: phony src\CMakeFiles\edit_cache.util
@@ -280,7 +280,7 @@ build src\edit_cache: phony src\CMakeFiles\edit_cache.util
 build src\list_install_components: phony
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/dev/Fandango/Fandango/vendor/glfw/CMakeLists.txt
+# C:/dev/Fandango/Fandango/vendor/GLFW/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -299,11 +299,11 @@ build examples\CMakeFiles\boing.dir\boing.c.obj: C_COMPILER__boing ..\..\..\exam
   OBJECT_FILE_DIR = examples\CMakeFiles\boing.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\boing.dir\
   TARGET_PDB = examples\boing.pdb
-build examples\CMakeFiles\boing.dir\glfw.rc.res: RC_COMPILER__boing C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_boing
+build examples\CMakeFiles\boing.dir\glfw.rc.res: RC_COMPILER__boing C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_boing
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\boing.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\boing.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\boing.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\boing.dir\
@@ -351,11 +351,11 @@ build examples\CMakeFiles\simple.dir\simple.c.obj: C_COMPILER__simple ..\..\..\e
   OBJECT_FILE_DIR = examples\CMakeFiles\simple.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\simple.dir\
   TARGET_PDB = examples\simple.pdb
-build examples\CMakeFiles\simple.dir\glfw.rc.res: RC_COMPILER__simple C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_simple
+build examples\CMakeFiles\simple.dir\glfw.rc.res: RC_COMPILER__simple C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_simple
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\simple.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\simple.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\simple.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\simple.dir\
@@ -403,11 +403,11 @@ build examples\CMakeFiles\gears.dir\gears.c.obj: C_COMPILER__gears ..\..\..\exam
   OBJECT_FILE_DIR = examples\CMakeFiles\gears.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\gears.dir\
   TARGET_PDB = examples\gears.pdb
-build examples\CMakeFiles\gears.dir\glfw.rc.res: RC_COMPILER__gears C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_gears
+build examples\CMakeFiles\gears.dir\glfw.rc.res: RC_COMPILER__gears C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_gears
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\gears.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\gears.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\gears.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\gears.dir\
@@ -455,11 +455,11 @@ build examples\CMakeFiles\wave.dir\wave.c.obj: C_COMPILER__wave ..\..\..\example
   OBJECT_FILE_DIR = examples\CMakeFiles\wave.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\wave.dir\
   TARGET_PDB = examples\wave.pdb
-build examples\CMakeFiles\wave.dir\glfw.rc.res: RC_COMPILER__wave C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_wave
+build examples\CMakeFiles\wave.dir\glfw.rc.res: RC_COMPILER__wave C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_wave
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\wave.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\wave.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\wave.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\wave.dir\
@@ -507,11 +507,11 @@ build examples\CMakeFiles\particles.dir\particles.c.obj: C_COMPILER__particles .
   OBJECT_FILE_DIR = examples\CMakeFiles\particles.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\particles.dir\
   TARGET_PDB = examples\particles.pdb
-build examples\CMakeFiles\particles.dir\glfw.rc.res: RC_COMPILER__particles C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_particles
+build examples\CMakeFiles\particles.dir\glfw.rc.res: RC_COMPILER__particles C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_particles
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\particles.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\particles.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\particles.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\particles.dir\
@@ -575,11 +575,11 @@ build examples\CMakeFiles\heightmap.dir\heightmap.c.obj: C_COMPILER__heightmap .
   OBJECT_FILE_DIR = examples\CMakeFiles\heightmap.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\heightmap.dir\
   TARGET_PDB = examples\heightmap.pdb
-build examples\CMakeFiles\heightmap.dir\glfw.rc.res: RC_COMPILER__heightmap C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_heightmap
+build examples\CMakeFiles\heightmap.dir\glfw.rc.res: RC_COMPILER__heightmap C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_heightmap
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\heightmap.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\heightmap.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\heightmap.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\heightmap.dir\
@@ -632,11 +632,11 @@ build examples\CMakeFiles\splitview.dir\splitview.c.obj: C_COMPILER__splitview .
   OBJECT_FILE_DIR = examples\CMakeFiles\splitview.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\splitview.dir\
   TARGET_PDB = examples\splitview.pdb
-build examples\CMakeFiles\splitview.dir\glfw.rc.res: RC_COMPILER__splitview C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_splitview
+build examples\CMakeFiles\splitview.dir\glfw.rc.res: RC_COMPILER__splitview C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_splitview
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\splitview.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\splitview.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\splitview.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\splitview.dir\
@@ -684,11 +684,11 @@ build examples\CMakeFiles\offscreen.dir\offscreen.c.obj: C_COMPILER__offscreen .
   OBJECT_FILE_DIR = examples\CMakeFiles\offscreen.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\offscreen.dir\
   TARGET_PDB = examples\offscreen.pdb
-build examples\CMakeFiles\offscreen.dir\glfw.rc.res: RC_COMPILER__offscreen C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_offscreen
+build examples\CMakeFiles\offscreen.dir\glfw.rc.res: RC_COMPILER__offscreen C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_offscreen
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\offscreen.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\offscreen.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\offscreen.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\offscreen.dir\
@@ -736,11 +736,11 @@ build examples\CMakeFiles\sharing.dir\sharing.c.obj: C_COMPILER__sharing ..\..\.
   OBJECT_FILE_DIR = examples\CMakeFiles\sharing.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\sharing.dir\
   TARGET_PDB = examples\sharing.pdb
-build examples\CMakeFiles\sharing.dir\glfw.rc.res: RC_COMPILER__sharing C$:\dev\Fandango\Fandango\vendor\glfw\examples\glfw.rc || cmake_object_order_depends_target_sharing
+build examples\CMakeFiles\sharing.dir\glfw.rc.res: RC_COMPILER__sharing C$:\dev\Fandango\Fandango\vendor\GLFW\examples\glfw.rc || cmake_object_order_depends_target_sharing
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = examples\CMakeFiles\sharing.dir\glfw.rc.res.d
   FLAGS = /DWIN32 /D_DEBUG
-  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\glfw\deps -IC:\dev\Fandango\Fandango\vendor\glfw\include
+  INCLUDES = -IC:\dev\Fandango\Fandango\vendor\GLFW\deps -IC:\dev\Fandango\Fandango\vendor\GLFW\include
   OBJECT_DIR = examples\CMakeFiles\sharing.dir
   OBJECT_FILE_DIR = examples\CMakeFiles\sharing.dir
   TARGET_COMPILE_PDB = examples\CMakeFiles\sharing.dir\
@@ -777,7 +777,7 @@ build examples\sharing.exe: C_EXECUTABLE_LINKER__sharing examples\CMakeFiles\sha
 # Utility command for edit_cache
 
 build examples\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 build examples\edit_cache: phony examples\CMakeFiles\edit_cache.util
@@ -786,7 +786,7 @@ build examples\edit_cache: phony examples\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build examples\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\glfw -BC:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\GLFW -BC:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -796,7 +796,7 @@ build examples\rebuild_cache: phony examples\CMakeFiles\rebuild_cache.util
 # Utility command for install
 
 build examples\CMakeFiles\install.util: CUSTOM_COMMAND examples\all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -806,14 +806,14 @@ build examples\install: phony examples\CMakeFiles\install.util
 # Utility command for install/local
 
 build examples\CMakeFiles\install\local.util: CUSTOM_COMMAND examples\all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\examples && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
 build examples\install\local: phony examples\CMakeFiles\install\local.util
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/dev/Fandango/Fandango/vendor/glfw/CMakeLists.txt
+# C:/dev/Fandango/Fandango/vendor/GLFW/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -974,7 +974,7 @@ build tests\msaa.exe: C_EXECUTABLE_LINKER__msaa tests\CMakeFiles\msaa.dir\msaa.c
 # Utility command for rebuild_cache
 
 build tests\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\glfw -BC:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\dev\Fandango\Fandango\vendor\GLFW -BC:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1591,7 +1591,7 @@ build tests\tearing.exe: C_EXECUTABLE_LINKER__tearing tests\CMakeFiles\tearing.d
 # Utility command for edit_cache
 
 build tests\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 build tests\edit_cache: phony tests\CMakeFiles\edit_cache.util
@@ -1742,7 +1742,7 @@ build tests\list_install_components: phony
 # Utility command for install
 
 build tests\CMakeFiles\install.util: CUSTOM_COMMAND tests\all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -1752,7 +1752,7 @@ build tests\install: phony tests\CMakeFiles\install.util
 # Utility command for install/local
 
 build tests\CMakeFiles\install\local.util: CUSTOM_COMMAND tests\all
-  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\glfw\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = cmd.exe /C "cd /D C:\dev\Fandango\Fandango\vendor\GLFW\out\build\x64-Debug\tests && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -1825,19 +1825,19 @@ build windows.exe: phony tests\windows.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/dev/Fandango/Fandango/vendor/glfw/out/build/x64-Debug/examples
+# Folder: C:/dev/Fandango/Fandango/vendor/GLFW/out/build/x64-Debug/examples
 
 build  examples\all: phony boing simple gears wave particles heightmap splitview offscreen sharing
 # =============================================================================
 
 #############################################
-# Folder: C:/dev/Fandango/Fandango/vendor/glfw/out/build/x64-Debug/src
+# Folder: C:/dev/Fandango/Fandango/vendor/GLFW/out/build/x64-Debug/src
 
 build  src\all: phony glfw
 # =============================================================================
 
 #############################################
-# Folder: C:/dev/Fandango/Fandango/vendor/glfw/out/build/x64-Debug/tests
+# Folder: C:/dev/Fandango/Fandango/vendor/GLFW/out/build/x64-Debug/tests
 
 build  tests\all: phony clipboard events msaa glfwinfo iconify empty monitors reopen cursor gamma icon inputlag joysticks threads opacity tearing timeout title windows
 # =============================================================================
@@ -1862,13 +1862,13 @@ default all
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\CMake\modules\FindVulkan.cmake ..\..\..\cmake_uninstall.cmake.in ..\..\..\examples\CMakeLists.txt ..\..\..\src\CMakeLists.txt ..\..\..\src\glfw3.pc.in ..\..\..\src\glfw3Config.cmake.in ..\..\..\src\glfw_config.h.in ..\..\..\tests\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindThreads.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.14.19050301-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.14.19050301-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.14.19050301-MSVC_2\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\CMake\modules\FindVulkan.cmake ..\..\..\cmake_uninstall.cmake.in ..\..\..\examples\CMakeLists.txt ..\..\..\src\CMakeLists.txt ..\..\..\src\glfw3.pc.in ..\..\..\src\glfw3Config.cmake.in ..\..\..\src\glfw_config.h.in ..\..\..\tests\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCCompilerABI.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompileFeatures.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystem.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeTestCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckIncludeFile.c.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Bruce-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Compaq-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\GNU-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\HP-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MIPSpro-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C-FeatureTests.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\SDCC-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\SunPro-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\XL-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\zOS-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindThreads.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.14.19060802-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.14.19060802-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.14.19060802-MSVC_2\CMakeSystem.cmake CMakeFiles\feature_tests.c
   pool = console
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ..\..\..\CMakeLists.txt ..\..\..\CMake\modules\FindVulkan.cmake ..\..\..\cmake_uninstall.cmake.in ..\..\..\examples\CMakeLists.txt ..\..\..\src\CMakeLists.txt ..\..\..\src\glfw3.pc.in ..\..\..\src\glfw3Config.cmake.in ..\..\..\src\glfw_config.h.in ..\..\..\tests\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindThreads.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.14.19050301-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.14.19050301-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.14.19050301-MSVC_2\CMakeSystem.cmake: phony
+build ..\..\..\CMakeLists.txt ..\..\..\CMake\modules\FindVulkan.cmake ..\..\..\cmake_uninstall.cmake.in ..\..\..\examples\CMakeLists.txt ..\..\..\src\CMakeLists.txt ..\..\..\src\glfw3.pc.in ..\..\..\src\glfw3Config.cmake.in ..\..\..\src\glfw_config.h.in ..\..\..\tests\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCCompilerABI.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompileFeatures.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystem.cmake.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeTestCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckIncludeFile.c.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Bruce-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Compaq-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\GNU-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\HP-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MIPSpro-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C-FeatureTests.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\SDCC-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\SunPro-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\XL-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Compiler\zOS-C-DetermineCompiler.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\FindThreads.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.14.19060802-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.14.19060802-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.14.19060802-MSVC_2\CMakeSystem.cmake CMakeFiles\feature_tests.c: phony
 
 #############################################
 # Clean all the built files.

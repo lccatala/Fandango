@@ -159,7 +159,7 @@ public:
 			}
 		)";
 
-		m_TextureShader.reset(Fandango::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+		m_TextureShader.reset(Fandango::Shader::Create("assets/shaders/Texture.glsl"));
 
 		m_Texture = Fandango::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture= Fandango::Texture2D::Create("assets/textures/ChernoLogo.png");
