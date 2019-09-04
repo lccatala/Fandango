@@ -58,8 +58,8 @@ namespace Fandango
 		const auto& layout = vertexBuffer->GetLayout();
 		for (auto& element : layout)
 		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index,
+			glEnableVertexAttribArray(index + m_VertexBufferIndexOffset);
+			glVertexAttribPointer(index + +m_VertexBufferIndexOffset,
 				element.GetComponentCount(),
 				ShaderDataTypeToOpenGLBaseType(element.Type),
 				element.Normalized ? GL_TRUE : GL_FALSE,
@@ -68,6 +68,7 @@ namespace Fandango
 			index++;
 		}
 		m_VertexBuffers.push_back(vertexBuffer);
+		m_VertexBufferIndexOffset += layout.GetElements().size();
 	}
 
 	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer> &indexBuffer)
