@@ -8,3 +8,4 @@ Fandango.xcodeproj
 # Files
 *.user/
 Fandango.sln
+*.vcxproj*
