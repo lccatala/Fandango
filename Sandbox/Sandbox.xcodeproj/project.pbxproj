@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B53514E5569FCC262FBD56999B8A2341CE444C4DBDFDB02 /* SandboxApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9FA4EB5332CAB94A02C20D1EDFFC25155D6749D4090A /* SandboxApp.cpp */; };
+		6E85FC161BD9172F8CDB44770FCFAA1E755D8B67846B56F /* libFandango.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E9E526A149EED7B84B6CEE789D1A0942B01760F20A8517 /* libFandango.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3EAE568AC570F4606C7C747CEDABAD124FABA849D5473AA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C1B019444654691BADBEB4EBDAE243E7E2F4A949FECD1 /* ../Fandango/Fandango.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58C88E22007E2FED6EE1F4DC1790CB1F7322255307ACC62D;
+			remoteInfo = libFandango.a;
+		};
+		412097C117AB66F96EEEB5B33FE61FAB521DE9802781AD39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C1B019444654691BADBEB4EBDAE243E7E2F4A949FECD1 /* ../Fandango/Fandango.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FAEF6138E3193E3377B9D8B2E3CC3B2513019C1B57AE0C73;
+			remoteInfo = libFandango.a;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1C1B019444654691BADBEB4EBDAE243E7E2F4A949FECD1 /* libFandango.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Fandango.xcodeproj"; path = ../Fandango/Fandango.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3A59FDDAF8CF3E9821DDC1179D21DC4A5E802E7AAF5A24D8 /* Sandbox */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Sandbox; path = Sandbox; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF7C9FA4EB5332CAB94A02C20D1EDFFC25155D6749D4090A /* SandboxApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SandboxApp.cpp; path = src/SandboxApp.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF90C550F9B9A8084385968349CD3CBA4889B789CC4B6E48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E85FC161BD9172F8CDB44770FCFAA1E755D8B67846B56F /* libFandango.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3833D411038375A0A63251185A10E0125F8152AA3289F3E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25E9E526A149EED7B84B6CEE789D1A0942B01760F20A8517 /* libFandango.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BA25BEC6849586F1BA17E95FB54B1613BFEBA1D4389A6AF /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C9FA4EB5332CAB94A02C20D1EDFFC25155D6749D4090A /* SandboxApp.cpp */,
+				DE2FD571A6C936B48E134D4D9B3FADE6BA17F9BDEA134CF4 /* Products */,
+				DE2FDC7F9D968EAA8E13545B920D05DCBA1800CBE0E0A4EA /* Projects */,
+			);
+			name = Sandbox;
+			sourceTree = "<group>";
+		};
+		DE2FD571A6C936B48E134D4D9B3FADE6BA17F9BDEA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A59FDDAF8CF3E9821DDC1179D21DC4A5E802E7AAF5A24D8 /* Sandbox */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE2FDC7F9D968EAA8E13545B920D05DCBA1800CBE0E0A4EA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				1C1B019444654691BADBEB4EBDAE243E7E2F4A949FECD1 /* Fandango.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C53DD1E2DDA37EA3F005ACEF9A52F0CC9018816484C1BE /* Sandbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF90C54FE7F4F06743859682380885194889B788BA86B6A7 /* Build configuration list for PBXNativeTarget "Sandbox" */;
+			buildPhases = (
+				FF90C55469A128A843859686B9B4BD5A4889B78D3C32EEE8 /* Resources */,
+				FF90C554D34E41FF438596872361D6B14889B78DA5E0083F /* Sources */,
+				FF90C550F9B9A8084385968349CD3CBA4889B789CC4B6E48 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3846CE47F13BB2A9A6454B4F47C91D1B5F944CE1204230E9 /* PBXTargetDependency */,
+			);
+			name = Sandbox;
+			productInstallPath = "$(HOME)/bin";
+			productName = Sandbox;
+			productReference = 3A59FDDAF8CF3E9821DDC1179D21DC4A5E802E7AAF5A24D8 /* Sandbox */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "Sandbox" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 6BA25BEC6849586F1BA17E95FB54B1613BFEBA1D4389A6AF /* Sandbox */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3833D411038375A0A63251185A10E0125F8152AA3289F3E0 /* Products */;
+					ProjectRef = 1C1B019444654691BADBEB4EBDAE243E7E2F4A949FECD1 /* Fandango.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1C53DD1E2DDA37EA3F005ACEF9A52F0CC9018816484C1BE /* Sandbox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		25E9E526A149EED7B84B6CEE789D1A0942B01760F20A8517 /* libFandango.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFandango.a;
+			remoteRef = 3EAE568AC570F4606C7C747CEDABAD124FABA849D5473AA0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF90C55469A128A843859686B9B4BD5A4889B78D3C32EEE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF90C554D34E41FF438596872361D6B14889B78DA5E0083F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B53514E5569FCC262FBD56999B8A2341CE444C4DBDFDB02 /* SandboxApp.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3846CE47F13BB2A9A6454B4F47C91D1B5F944CE1204230E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libFandango.a;
+			targetProxy = 412097C117AB66F96EEEB5B33FE61FAB521DE9802781AD39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		26D73137E3FEB5DE3B45183E874A3F1091D594EFA21B0C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++1z";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					FNDG_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "../bin-int/Debug-macosx-x86_64/Sandbox";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/Debug-macosx-x86_64/Sandbox";
+				USER_HEADER_SEARCH_PATHS = (
+					../Fandango/vendor/spdlog/include,
+					../Fandango/src,
+					../Fandango/vendor,
+					../Fandango/vendor/glm,
+				);
+			};
+			name = Debug;
+		};
+		39B49866D2EB7F9821385BA3773E1D4A5DDAC906897665D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++1z";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					FNDG_RELEASE,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "../bin-int/Release-macosx-x86_64/Sandbox";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/Release-macosx-x86_64/Sandbox";
+				USER_HEADER_SEARCH_PATHS = (
+					../Fandango/vendor/spdlog/include,
+					../Fandango/src,
+					../Fandango/vendor,
+					../Fandango/vendor/glm,
+				);
+			};
+			name = Release;
+		};
+		5043AC4004F5F75A2989EA3CFE5BF8CCB5D02991F1F7559A /* Dist */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "../bin/Dist-macosx-x86_64/Sandbox";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Sandbox;
+			};
+			name = Dist;
+		};
+		BB4E484FFB7591E778D21D8E43E67619A1291F788854827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "../bin/Release-macosx-x86_64/Sandbox";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Sandbox;
+			};
+			name = Release;
+		};
+		CFB6CBD5C5DDD7ADD1C4C971EC04075FE6D2F365530AFDED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "../bin/Debug-macosx-x86_64/Sandbox";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Sandbox;
+			};
+			name = Debug;
+		};
+		F1A96E1A52C1E94BB4386596A548143D59C0A76D778C778B /* Dist */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++1z";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					FNDG_DIST,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "../bin-int/Dist-macosx-x86_64/Sandbox";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/Dist-macosx-x86_64/Sandbox";
+				USER_HEADER_SEARCH_PATHS = (
+					../Fandango/vendor/spdlog/include,
+					../Fandango/src,
+					../Fandango/vendor,
+					../Fandango/vendor/glm,
+				);
+			};
+			name = Dist;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "Sandbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26D73137E3FEB5DE3B45183E874A3F1091D594EFA21B0C1E /* Debug */,
+				39B49866D2EB7F9821385BA3773E1D4A5DDAC906897665D8 /* Release */,
+				F1A96E1A52C1E94BB4386596A548143D59C0A76D778C778B /* Dist */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FF90C54FE7F4F06743859682380885194889B788BA86B6A7 /* Build configuration list for PBXNativeTarget "Sandbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFB6CBD5C5DDD7ADD1C4C971EC04075FE6D2F365530AFDED /* Debug */,
+				BB4E484FFB7591E778D21D8E43E67619A1291F788854827 /* Release */,
+				5043AC4004F5F75A2989EA3CFE5BF8CCB5D02991F1F7559A /* Dist */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

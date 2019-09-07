@@ -7,5 +7,6 @@ Fandango.xcodeproj
 
 # Files
 *.user/
+.DS_Store
 Fandango.sln
 *.vcxproj*

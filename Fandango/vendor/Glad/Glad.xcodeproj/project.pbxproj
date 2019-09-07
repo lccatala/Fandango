@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C81D8AD75021EC9FA8055B4CB8F893BB3CF5746A4089D09 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = EF46E23EB60713D1C6C86735B977E603B5BBB9A63AE48A11 /* glad.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1DE574423E398A47F566F93941AA5C79E45A4BA9C3170087 /* libGlad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGlad.a; path = libGlad.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4316D1996C88ACDEB1154EA0C31617506A6450329B8F2B1E /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glad.h; path = include/glad/glad.h; sourceTree = "<group>"; };
+		8D3D25299E78136FC9F62CAD6C9B6721C0EC8770F3A9B9AF /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = khrplatform.h; path = include/KHR/khrplatform.h; sourceTree = "<group>"; };
+		EF46E23EB60713D1C6C86735B977E603B5BBB9A63AE48A11 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = glad.c; path = src/glad.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C017C4B2FCB7437506F6351D316FD69A6FFE002EDE7CA77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AEDC4323C43D298B548143EAD8A80CA908F77903B7CC8D8 /* Glad */ = {
+			isa = PBXGroup;
+			children = (
+				7806C7175E8C72505F8A8A5402DF10029C2CF7B715175890 /* include */,
+				8E1F9F995775D418C4C07E444366DFCA4A20803959E7A58 /* src */,
+				DE2FD571A6C936B48E134D4D9B3FADE6BA17F9BDEA134CF4 /* Products */,
+			);
+			name = Glad;
+			sourceTree = "<group>";
+		};
+		4F778FADF17967A536FB52EA95CC0557739DC04DA8044DE5 /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				8D3D25299E78136FC9F62CAD6C9B6721C0EC8770F3A9B9AF /* khrplatform.h */,
+			);
+			name = KHR;
+			sourceTree = "<group>";
+		};
+		550F4B0EA091580B2C90D005A4022A3D1B842276256ECE4B /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				4316D1996C88ACDEB1154EA0C31617506A6450329B8F2B1E /* glad.h */,
+			);
+			name = glad;
+			sourceTree = "<group>";
+		};
+		7806C7175E8C72505F8A8A5402DF10029C2CF7B715175890 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4F778FADF17967A536FB52EA95CC0557739DC04DA8044DE5 /* KHR */,
+				550F4B0EA091580B2C90D005A4022A3D1B842276256ECE4B /* glad */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		8E1F9F995775D418C4C07E444366DFCA4A20803959E7A58 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EF46E23EB60713D1C6C86735B977E603B5BBB9A63AE48A11 /* glad.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		DE2FD571A6C936B48E134D4D9B3FADE6BA17F9BDEA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DE574423E398A47F566F93941AA5C79E45A4BA9C3170087 /* libGlad.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8C8B68321B45B54D6487930349EC093F3577ACC8A32D638D /* Glad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C017C4A1E06BC96506F6350C15245C8A6FFE001DC2312D6 /* Build configuration list for PBXNativeTarget "Glad" */;
+			buildPhases = (
+				3C017C4E9FB2F4D7506F635542FE7E09A6FFE0065DCF4B17 /* Resources */,
+				3C017C4F09600E2E506F6355ACAB9760A6FFE006C77C646E /* Sources */,
+				3C017C4B2FCB7437506F6351D316FD69A6FFE002EDE7CA77 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Glad;
+			productName = Glad;
+			productReference = 1DE574423E398A47F566F93941AA5C79E45A4BA9C3170087 /* libGlad.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "Glad" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 4AEDC4323C43D298B548143EAD8A80CA908F77903B7CC8D8 /* Glad */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C8B68321B45B54D6487930349EC093F3577ACC8A32D638D /* libGlad.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C017C4E9FB2F4D7506F635542FE7E09A6FFE0065DCF4B17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C017C4F09600E2E506F6355ACAB9760A6FFE006C77C646E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C81D8AD75021EC9FA8055B4CB8F893BB3CF5746A4089D09 /* glad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		12C64E31EB74625CD04A237033E5468E618A97D97884189C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "bin/Debug-macosx-x86_64/Glad";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Glad;
+			};
+			name = Debug;
+		};
+		47D24BE0D984562E15F03E09143D081145240AF0AFCA96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "bin/Release-macosx-x86_64/Glad";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Glad;
+			};
+			name = Release;
+		};
+		4CDDFFE76847C746721151422E73CA6258C0BF0E16FB2B4 /* Dist */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "bin-int/Dist-macosx-x86_64/Glad";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "bin/Dist-macosx-x86_64/Glad";
+				USER_HEADER_SEARCH_PATHS = (
+					include,
+				);
+			};
+			name = Dist;
+		};
+		68CC8366C81FAE212B5B7AE31AA5D913D0E3BCB9ECEA3C61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "bin-int/Release-macosx-x86_64/Glad";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "bin/Release-macosx-x86_64/Glad";
+				USER_HEADER_SEARCH_PATHS = (
+					include,
+				);
+			};
+			name = Release;
+		};
+		80D78969997E6829C4A53A8A846A8E1B7B78A2EACC505669 /* Dist */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "bin/Dist-macosx-x86_64/Glad";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Glad;
+			};
+			name = Dist;
+		};
+		9E89DFA08013AE274B43B76BB8CE7499D70D89E04865AC67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "bin-int/Debug-macosx-x86_64/Glad";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "bin/Debug-macosx-x86_64/Glad";
+				USER_HEADER_SEARCH_PATHS = (
+					include,
+				);
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "Glad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E89DFA08013AE274B43B76BB8CE7499D70D89E04865AC67 /* Debug */,
+				68CC8366C81FAE212B5B7AE31AA5D913D0E3BCB9ECEA3C61 /* Release */,
+				4CDDFFE76847C746721151422E73CA6258C0BF0E16FB2B4 /* Dist */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3C017C4A1E06BC96506F6350C15245C8A6FFE001DC2312D6 /* Build configuration list for PBXNativeTarget "libGlad.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12C64E31EB74625CD04A237033E5468E618A97D97884189C /* Debug */,
+				47D24BE0D984562E15F03E09143D081145240AF0AFCA96 /* Release */,
+				80D78969997E6829C4A53A8A846A8E1B7B78A2EACC505669 /* Dist */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

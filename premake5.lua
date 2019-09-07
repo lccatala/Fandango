@@ -25,10 +25,12 @@ IncludeDir["glm"] = "Fandango/vendor/glm"
 IncludeDir["stb_image"] = "Fandango/vendor/stb_image"
 
 group "Dependencies"
-include "Fandango/vendor/GLFW"
-include "Fandango/vendor/Glad"
-include "Fandango/vendor/imgui"
+	include "Fandango/vendor/GLFW"
+	include "Fandango/vendor/Glad"
+	include "Fandango/vendor/imgui"
+
 group ""
+
 project "Fandango"
   location "Fandango"
   kind "StaticLib"
@@ -86,6 +88,16 @@ project "Fandango"
 	  "GLFW_INCLUDE_NONE"
 	}
 
+  filter "system:macos"
+		systemversion "latest"
+
+	defines
+	{
+	  "FNDG_PLATFORM_MAC",
+	  "FNDG_BUILD_DLL",
+	  "GLFW_INCLUDE_NONE"
+	}
+
 	filter "configurations:Debug"
 		defines "FNDG_DEBUG"
 		runtime "Debug"
@@ -136,6 +148,14 @@ project "Sandbox"
 		defines
 		{
 			"FNDG_PLATFORM_WINDOWS"
+		}
+
+  filter "system:macos"
+		systemversion "latest"
+
+		defines
+		{
+			"FNDG_PLATFORM_MAC"
 		}
 
   filter "configurations:Debug"
