@@ -25,7 +25,7 @@ namespace Fandango
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
 		std::string result;
-		std::ifstream file(filepath, std::ios::in, std::ios::binary);
+		std::ifstream file(filepath, std::ios::in | std::ios::binary);
 		if (file)
 		{
 			file.seekg(0, std::ios::end); // Pointing at the end of the file
@@ -139,7 +139,10 @@ namespace Fandango
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string> sources)
 	{
 		GLuint program = glCreateProgram();
-		std::vector<GLenum> glShaderIDs(sources.size());
+		FNDG_ENGINE_ASSERT(sources.size() <= 2, "Too many shaders, max ammount is 2");
+		std::array<GLenum, 2> glShaderIDs;
+
+		int shaderIndex = 0;
 
 		for (auto& kv : sources)
 		{
@@ -169,8 +172,10 @@ namespace Fandango
 				break;
 			}
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[shaderIndex++] = shader;
 		}
+
+		m_RendererID = program;
 
 		// Link our program
 		glLinkProgram(program);
@@ -201,6 +206,5 @@ namespace Fandango
 		for (auto id : glShaderIDs)
 			glDetachShader(program, id);
 
-		m_RendererID = program;
 	}
 }
