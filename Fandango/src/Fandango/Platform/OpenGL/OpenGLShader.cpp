@@ -7,7 +7,8 @@
 
 namespace Fandango
 {
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
+		: m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
@@ -20,6 +21,7 @@ namespace Fandango
 		std::string contents = ReadFile(filepath);
 		auto shaderSources = PreProcess(contents);
 		Compile(shaderSources);
+		m_Name = ExtractName(filepath);
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
@@ -205,6 +207,15 @@ namespace Fandango
 
 		for (auto id : glShaderIDs)
 			glDetachShader(program, id);
+	}
 
+	std::string OpenGLShader::ExtractName(const std::string& filepath)
+	{
+		auto lastSlash = filepath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.rfind(".");
+
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		return filepath.substr(lastSlash, count);
 	}
 }

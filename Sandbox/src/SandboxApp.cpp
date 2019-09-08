@@ -93,7 +93,7 @@ public:
 			}
 		)";
 
-		m_TriangleShader.reset(Fandango::Shader::Create(vertexSrc, fragmentSrc));
+		m_TriangleShader = Fandango::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string squareVertexSrc = R"(
 			#version 330 core
@@ -124,7 +124,7 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Fandango::Shader::Create(squareVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Fandango::Shader::Create("FlatColorShader", squareVertexSrc, flatColorShaderFragmentSrc);
 
 		std::string textureShaderVertexSrc = R"(
 			#version 330 core
@@ -159,13 +159,13 @@ public:
 			}
 		)";
 
-		m_TextureShader.reset(Fandango::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Fandango::Texture2D::Create("assets/textures/Checkerboard.png");
-		m_LogoTexture= Fandango::Texture2D::Create("assets/textures/ChernoLogo.png");
+		m_LogoTexture = Fandango::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Fandango::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Fandango::OpenGLShader>(m_TextureShader)->UploadUniform("u_Texture", 0);
+		std::dynamic_pointer_cast<Fandango::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Fandango::OpenGLShader>(textureShader)->UploadUniform("u_Texture", 0);
 	}
 
 	void OnUpdate(Fandango::TimeStep ts) override
@@ -209,10 +209,12 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Fandango::Renderer::Submit(m_SquareVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Fandango::Renderer::Submit(m_SquareVA, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_LogoTexture->Bind();
-		Fandango::Renderer::Submit(m_SquareVA, m_TextureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Fandango::Renderer::Submit(m_SquareVA, textureShader, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		Fandango::Renderer::EndScene();
 	}
@@ -229,10 +231,12 @@ public:
 	}
 
 private:
+
+	Fandango::ShaderLibrary m_ShaderLibrary;
 	Fandango::Ref<Fandango::Shader> m_TriangleShader;
 	Fandango::Ref<Fandango::VertexArray> m_TriangleVA;
 
-	Fandango::Ref<Fandango::Shader> m_FlatColorShader, m_TextureShader;
+	Fandango::Ref<Fandango::Shader> m_FlatColorShader;
 	Fandango::Ref<Fandango::VertexArray> m_SquareVA;
 
 	Fandango::Ref<Fandango::Texture2D> m_Texture, m_LogoTexture;
