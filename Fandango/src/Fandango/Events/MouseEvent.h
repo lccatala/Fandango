@@ -26,7 +26,7 @@ namespace Fandango
 		float m_MouseX, m_MouseY;
 	};
 
-	class FNDG_API MouseWheelScrolledEvent: public Event
+	class FNDG_API MouseWheelScrolledEvent : public Event
 	{
 	public:
 		MouseWheelScrolledEvent(float xOffset, float yOffset)

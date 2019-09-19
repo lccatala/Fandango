@@ -11,6 +11,7 @@
 
 #include "Fandango/Renderer/Buffer.h"
 #include "Fandango/Renderer/Camera.h"
+#include "Fandango/Core/CameraController.h"
 #include "Fandango/Renderer/Renderer.h"
 #include "Fandango/Renderer/Shader.h"
 #include "Fandango/Renderer/Texture.h"

@@ -8,6 +8,7 @@ namespace Fandango
 	{
 	public:
 		OrthographicCamera(float left, float right, float bottom, float top);
+		void SetProjectionMatrix(float left, float right, float bottom, float top);
 
 		void SetPosition(glm::vec3 position) { m_Position = position; RecalculateViewMatrix(); }
 		void SetRotation(float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); }
