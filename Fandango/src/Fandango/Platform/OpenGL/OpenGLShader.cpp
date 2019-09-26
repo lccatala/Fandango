@@ -206,7 +206,10 @@ namespace Fandango
 		}
 
 		for (auto id : glShaderIDs)
+		{
 			glDetachShader(program, id);
+			glDeleteShader(id);
+		}
 	}
 
 	std::string OpenGLShader::ExtractName(const std::string& filepath)
