@@ -121,18 +121,26 @@ namespace Fandango
 
 		const char* typeToken = "#type";
 		size_t typeTokenLength = strlen(typeToken);
-		size_t pos = src.find(typeToken, 0);
+		size_t pos = src.find(typeToken, 0); // Start of shader type declaration line
 		while (pos != std::string::npos)
 		{
-			size_t eol = src.find_first_of("\r\n", pos);
+			size_t eol = src.find_first_of("\r\n", pos); // End of shader type declaration line
 			FNDG_ENGINE_ASSERT(eol != std::string::npos, "Syntax error");
-			size_t begin = pos + typeTokenLength + 1;
+			size_t begin = pos + typeTokenLength + 1; // Start of shader type name
 			std::string type = src.substr(begin, eol - begin);
 			FNDG_ENGINE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specification");
 
 			size_t nextLinePos = src.find_first_not_of("\r\n", eol);
+			FNDG_ENGINE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
 			pos = src.find(typeToken, nextLinePos);
-			sources[ShaderTypeFromString(type)] = src.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? src.size() - 1 : nextLinePos));
+
+			if (pos == std::string::npos)
+				sources[ShaderTypeFromString(type)] = src.substr(nextLinePos);
+			else
+				sources[ShaderTypeFromString(type)] = src.substr(nextLinePos, pos - nextLinePos);
+
+
+			//sources[ShaderTypeFromString(type)] = src.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? src.size() - 1 : nextLinePos));
 		}
 
 		return sources;
