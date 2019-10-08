@@ -33,10 +33,10 @@ namespace Fandango
 		std::string Name;
 		ShaderDataType Type;
 		uint32_t Size;
-		uint32_t Offset;
+		size_t Offset;
 		bool Normalized;
 
-		BufferElement() {}
+		BufferElement() = default;
 
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
 			: Name(name), Type(type), Size(GetShaderDataTypeSize(type)), Offset(0), Normalized(normalized) {}
@@ -85,7 +85,7 @@ namespace Fandango
 		void CalculateOffsetsAndStride()
 		{
 			m_Stride = 0;
-			uint32_t prevOffset = 0;
+			size_t prevOffset = 0;
 			for (auto &element : m_Elements)
 			{
 				element.Offset = prevOffset;

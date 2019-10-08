@@ -9,7 +9,7 @@
 
 namespace Fandango
 {
-	static bool s_GLFWInitialized = false;
+	static uint8_t s_GLFWWindowCount = 0;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
@@ -37,17 +37,16 @@ namespace Fandango
 		m_Data.Width = properties.m_Width;
 		m_Data.Height = properties.m_Height;
 
-		if (!s_GLFWInitialized)
+		if (s_GLFWWindowCount == 0)
 		{
-			// TODO glfwTerminate() on system shutdown
 			int success = glfwInit();
 			
 			FNDG_ENGINE_ASSERT(success, "Could not initialize GLFW");
 			glfwSetErrorCallback(GLFWErrorCallback);
-			s_GLFWInitialized = true;
 		}
 
 		m_Window = glfwCreateWindow((int)properties.m_Width, (int)properties.m_Height, m_Data.Title.c_str(), nullptr, nullptr);
+		s_GLFWWindowCount++;
 
 		m_Context = new OpenGLContext(m_Window);
 		m_Context->Init();
@@ -157,6 +156,11 @@ namespace Fandango
 	void WindowsWindow::shutDown()
 	{
 		glfwDestroyWindow(m_Window);
+
+		if (--s_GLFWWindowCount == 0)
+		{
+			glfwTerminate();
+		}
 	}
 
 	void WindowsWindow::OnUpdate()

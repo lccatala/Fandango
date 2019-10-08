@@ -23,7 +23,7 @@ namespace Fandango
 		KeyPressedEvent(unsigned int keycode, unsigned int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
-		inline int GetRepeatCode() const { return m_RepeatCount; }
+		inline int GetRepeatCount() const { return m_RepeatCount; }
 
 		std::string ToString() const override
 		{
