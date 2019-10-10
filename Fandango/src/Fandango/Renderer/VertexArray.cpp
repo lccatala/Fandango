@@ -7,7 +7,7 @@
 
 namespace Fandango
 {
-	VertexArray* VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -15,7 +15,7 @@ namespace Fandango
 			FNDG_ENGINE_ASSERT(false, "RendererAPI::None is currently not supported");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexArray();
+			return std::make_shared<OpenGLVertexArray>();
 		}
 
 		FNDG_ENGINE_ASSERT(false, "Unknown renderer API");

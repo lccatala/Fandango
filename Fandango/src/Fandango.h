@@ -16,7 +16,3 @@
 #include "Fandango/Renderer/Shader.h"
 #include "Fandango/Renderer/Texture.h"
 #include "Fandango/Renderer/VertexArray.h"
-
-
-// Entry Point
-#include "Fandango/Core/EntryPoint.h"
