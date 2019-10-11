@@ -34,7 +34,7 @@
 	#define FNDG_PLATFORM_ANDROID
 	#error "Android is not supported"
 #elif defined(__linux__)
-	#define FNDG_PLATFORM_LINUX´
+	#define FNDG_PLATFORM_LINUX
 	#error "Linux is not supported"
 #else
 	#error "Unknown platform"
