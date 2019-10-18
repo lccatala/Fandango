@@ -1,6 +1,7 @@
 #include "fndgpch.h"
 #include "Renderer.h"
 #include "Shader.h"
+#include "Renderer2D.h"
 
 #include "Fandango/Platform/OpenGL/OpenGLShader.h"
 
@@ -11,6 +12,7 @@ namespace Fandango
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::BeginScene(OrthographicCamera &camera)
