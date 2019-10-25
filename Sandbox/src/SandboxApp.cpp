@@ -24,7 +24,7 @@ public:
 		};
 
 		std::shared_ptr<Fandango::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Fandango::VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer = Fandango::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		Fandango::BufferLayout layout = {
 			{Fandango::ShaderDataType::Float3, "a_Position"},
@@ -36,7 +36,7 @@ public:
 
 		uint32_t triangleIndices[3] = { 0, 1, 2 };
 		std::shared_ptr<Fandango::IndexBuffer> triangleIB;
-		triangleIB.reset(Fandango::IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(uint32_t)));
+		triangleIB = Fandango::IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(uint32_t));
 		m_TriangleVA->SetIndexBuffer(triangleIB);
 
 		m_SquareVA = Fandango::VertexArray::Create();
@@ -49,7 +49,7 @@ public:
 		};
 
 		std::shared_ptr<Fandango::VertexBuffer> squareVB;
-		squareVB.reset(Fandango::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB = Fandango::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{Fandango::ShaderDataType::Float3, "a_Position"},
 			{Fandango::ShaderDataType::Float2, "a_TexCoord"}
@@ -58,7 +58,7 @@ public:
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 		std::shared_ptr<Fandango::IndexBuffer> squareIB;
-		squareIB.reset(Fandango::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		squareIB = Fandango::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSrc = R"(

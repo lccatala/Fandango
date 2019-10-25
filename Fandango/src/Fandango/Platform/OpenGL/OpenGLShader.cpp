@@ -58,6 +58,21 @@ namespace Fandango
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::SetUniform(const std::string& name, const glm::mat4& value)
+	{
+		UploadUniform(name, value);
+	}
+
+	void OpenGLShader::SetUniform(const std::string& name, const glm::vec3& value)
+	{
+		UploadUniform(name, value);
+	}
+
+	void OpenGLShader::SetUniform(const std::string& name, const glm::vec4& value)
+	{
+		UploadUniform(name, value);
+	}
+
 	GLint OpenGLShader::GetUniformLocation(const std::string& name) const
 	{
 		if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
