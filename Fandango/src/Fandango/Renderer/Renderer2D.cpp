@@ -60,17 +60,19 @@ namespace Fandango
 
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
+	void Renderer2D::DrawQuad(const glm::vec2& position, float rotation, const glm::vec2& size, const glm::vec4& color)
 	{
-		DrawQuad({ position.x, position.y, 1.0f }, size, color);
+		DrawQuad({ position.x, position.y, 1.0f }, rotation, size, color);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
+	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const glm::vec4& color)
 	{
 		s_Data->FlatColorShader->Bind();
 		s_Data->FlatColorShader->SetUniform("u_Color", color);
 
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * /*glm::rotate(glm::mat4(1.0f), {rotation, 0.0f, 0.0f}) **/ glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) 
+			* glm::rotate(glm::mat4(1.0f), rotation, {0.0f, 0.0f, 1.0f}) 
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		s_Data->FlatColorShader->SetUniform("u_Transform", transform);
 
 		s_Data->QuadVA->Bind();
