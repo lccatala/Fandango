@@ -21,5 +21,7 @@ private:
 	Fandango::Ref<Fandango::VertexArray> m_SquareVA;
 	Fandango::Ref<Fandango::Shader> m_FlatColorShader;
 
+	Fandango::Ref<Fandango::Texture2D> m_Texture;
+
 	glm::vec4 m_SquareColor = { 0.2, 0.3f, 0.8f, 1.0f };
 };

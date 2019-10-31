@@ -19,6 +19,7 @@ namespace Fandango
 		virtual void SetUniform(const std::string& name, const glm::mat4& value) = 0;
 		virtual void SetUniform(const std::string& name, const glm::vec3& value) = 0;
 		virtual void SetUniform(const std::string& name, const glm::vec4& value) = 0;
+		virtual void SetInt(const std::string& name, int value) = 0;
 
 		static Ref<Shader> Create(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		static Ref<Shader> Create(const std::string& filepath);
