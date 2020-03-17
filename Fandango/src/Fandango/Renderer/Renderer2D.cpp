@@ -12,8 +12,8 @@ namespace Fandango
 	struct Renderer2DData
 	{
 		Ref<VertexArray> QuadVA;
-		Ref<Shader> FlatColorShader;
 		Ref<Shader> TextureShader;
+		Ref<Texture2D> WhiteTexture;
 	};
 
 	static Renderer2DData* s_Data;
@@ -43,7 +43,10 @@ namespace Fandango
 		Ref<IndexBuffer> squareIB = IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		s_Data->QuadVA->SetIndexBuffer(squareIB);
 
-		s_Data->FlatColorShader = Shader::Create("assets/shaders/FlatColor.glsl");
+		s_Data->WhiteTexture = Texture2D::Create(1, 1);
+		uint32_t whiteTexData = 0xffffffff;
+		s_Data->WhiteTexture->SetData(&whiteTexData, sizeof(uint32_t));
+
 		s_Data->TextureShader = Shader::Create("assets/shaders/Texture.glsl");
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetInt("u_Texture", 0);
@@ -51,8 +54,6 @@ namespace Fandango
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
-		s_Data->FlatColorShader->Bind();
-		s_Data->FlatColorShader->SetUniform("u_ViewProjectionMatrix", camera.GetViewProjectionMatrix());
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetUniform("u_ViewProjectionMatrix", camera.GetViewProjectionMatrix());
 	}
@@ -67,20 +68,36 @@ namespace Fandango
 
 	}
 
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const glm::vec4& color)
+	{
+		s_Data->TextureShader->SetUniform("u_Color", color);
+		s_Data->WhiteTexture->Bind();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) 
+			* glm::rotate(glm::mat4(1.0f), rotation, {0.0f, 0.0f, 1.0f}) 
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+
+		s_Data->TextureShader->SetUniform("u_Transform", transform);
+		s_Data->QuadVA->Bind();
+		RenderCommand::DrawIndexed(s_Data->QuadVA);
+	}
+
 	void Renderer2D::DrawQuad(const glm::vec2& position, float rotation, const glm::vec2& size, const glm::vec4& color)
 	{
 		DrawQuad({ position.x, position.y, 0.0f }, rotation, size, color);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const glm::vec4& color)
+	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
-		s_Data->FlatColorShader->Bind();
-		s_Data->FlatColorShader->SetUniform("u_Color", color);
+		s_Data->TextureShader->SetUniform("u_Color", glm::vec4(1.0f));
+		texture->Bind();
 
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) 
-			* glm::rotate(glm::mat4(1.0f), rotation, {0.0f, 0.0f, 1.0f}) 
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f })
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		s_Data->FlatColorShader->SetUniform("u_Transform", transform);
+		s_Data->TextureShader->SetUniform("u_Transform", transform);
 
 		s_Data->QuadVA->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVA);
@@ -91,16 +108,4 @@ namespace Fandango
 		DrawQuad({ position.x, position.y, 0.0f }, rotation, size, texture);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const Ref<Texture2D>& texture)
-	{
-		s_Data->TextureShader->Bind();
-
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-			* glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f })
-			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		s_Data->TextureShader->SetUniform("u_Transform", transform);
-
-		texture->Bind();
-		RenderCommand::DrawIndexed(s_Data->QuadVA);
-	}
 }
