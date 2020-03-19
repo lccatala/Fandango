@@ -22,22 +22,34 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 {
-	m_CameraController.OnUpdate(ts);
+	{
+		FNDG_PROFILE_SCOPE("CameraController::OnUpdate");
+		m_CameraController.OnUpdate(ts);
+	}
 
-	Fandango::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-	Fandango::RenderCommand::Clear();
+	{
+		FNDG_PROFILE_SCOPE("Renderer prep");
+		Fandango::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		Fandango::RenderCommand::Clear();
+	}
 
-	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	{
+		FNDG_PROFILE_SCOPE("Renderer draw");
 
-	Fandango::Renderer2D::DrawQuad({ 0.5f, -0.5f }, 0.0f, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-	Fandango::Renderer2D::DrawQuad({ -1.0f, 0.0f }, 0.75f, { 0.8f, 0.8f }, { 0.3f, 0.8f, 0.2f, 1.0f });
-	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, { 10.0f, 10.0f }, m_Texture);
+		Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Fandango::Renderer::EndScene();
+		Fandango::Renderer2D::DrawQuad({ 0.5f, -0.5f }, 0.0f, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+		Fandango::Renderer2D::DrawQuad({ -1.0f, 0.0f }, 0.75f, { 0.8f, 0.8f }, { 0.3f, 0.8f, 0.2f, 1.0f });
+		Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, { 10.0f, 10.0f }, m_Texture);
+
+		Fandango::Renderer::EndScene();
+	}
 }
 
 void Sandbox2D::OnImGuiRender()
 {
+	FNDG_PROFILE_FUNCTION();
+
 	ImGui::Begin("Settings");
 	ImGui::ColorEdit4("Square color", glm::value_ptr(m_SquareColor));
 	ImGui::End();

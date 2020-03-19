@@ -83,7 +83,6 @@ project "Fandango"
 
 	defines
 	{
-	  "FNDG_PLATFORM_WINDOWS",
 	  "FNDG_BUILD_DLL",
 	  "GLFW_INCLUDE_NONE"
 	}
