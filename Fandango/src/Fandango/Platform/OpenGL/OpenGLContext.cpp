@@ -14,6 +14,7 @@ namespace Fandango
 
 	void OpenGLContext::Init()
 	{
+		FNDG_PROFILE_FUNCTION();
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		FNDG_ENGINE_ASSERT(status, "Failed to initialized Glad");
@@ -30,6 +31,7 @@ namespace Fandango
 
 	void OpenGLContext::SwapBuffers()
 	{
+		FNDG_PROFILE_FUNCTION();
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }

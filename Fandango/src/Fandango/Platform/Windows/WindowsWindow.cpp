@@ -23,16 +23,17 @@ namespace Fandango
 
 	WindowsWindow::WindowsWindow(const WindowProperties& properties)
 	{
-		init(properties);
+		Init(properties);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
-		shutDown();
+		ShutDown();
 	}
 
-	void WindowsWindow::init(const WindowProperties& properties)
+	void WindowsWindow::Init(const WindowProperties& properties)
 	{
+		FNDG_PROFILE_FUNCTION();
 		m_Data.Title = properties.m_Title;
 		m_Data.Width = properties.m_Width;
 		m_Data.Height = properties.m_Height;
@@ -141,6 +142,7 @@ namespace Fandango
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		FNDG_PROFILE_FUNCTION();
 		if (enabled)
 			glfwSwapInterval(1);
 		else
@@ -153,8 +155,9 @@ namespace Fandango
 		return m_Data.Vsync;
 	}
 
-	void WindowsWindow::shutDown()
+	void WindowsWindow::ShutDown()
 	{
+		FNDG_PROFILE_FUNCTION();
 		glfwDestroyWindow(m_Window);
 
 		if (--s_GLFWWindowCount == 0)
@@ -165,6 +168,7 @@ namespace Fandango
 
 	void WindowsWindow::OnUpdate()
 	{
+		FNDG_PROFILE_FUNCTION();
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}

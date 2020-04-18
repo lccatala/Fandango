@@ -25,8 +25,8 @@ namespace Fandango
 		
 		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
-		virtual void init(const WindowProperties& properties);
-		virtual void shutDown();
+		virtual void Init(const WindowProperties& properties);
+		virtual void ShutDown();
 
 		GLFWwindow* m_Window;
 		GraphicsContext *m_Context;

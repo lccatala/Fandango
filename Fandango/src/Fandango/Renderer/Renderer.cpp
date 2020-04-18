@@ -11,6 +11,7 @@ namespace Fandango
 
 	void Renderer::Init()
 	{
+		FNDG_PROFILE_FUNCTION();
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

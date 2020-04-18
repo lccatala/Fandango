@@ -27,6 +27,8 @@ namespace Fandango
 	// Set up ImgGui
 	void DebugUILayer::OnAttach()
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		// Set up Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -59,6 +61,8 @@ namespace Fandango
 
 	void DebugUILayer::OnDetach()
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -66,6 +70,8 @@ namespace Fandango
 
 	void DebugUILayer::Begin()
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -73,6 +79,8 @@ namespace Fandango
 
 	void DebugUILayer::End()
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		ImGuiIO &io = ImGui::GetIO();
 		Application &app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());

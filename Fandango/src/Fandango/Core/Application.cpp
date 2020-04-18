@@ -16,6 +16,7 @@ namespace Fandango {
 
 	Application::Application()
 	{
+		FNDG_PROFILE_FUNCTION();
 		FNDG_ENGINE_ASSERT(s_Instance, "Application already exists");
 		s_Instance = this;
 
@@ -35,20 +36,27 @@ namespace Fandango {
 
 	void Application::PushLayer(Layer* layer)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(overlay);
 		overlay->OnAttach();
 	}
 
 	void Application::Run()
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			FNDG_PROFILE_SCOPE("RunLoop");
 			// Move this line into a "Platform" class
 			float time = (float)glfwGetTime();
 
@@ -57,14 +65,21 @@ namespace Fandango {
 
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(ts);
-			}
+				{
+					FNDG_PROFILE_SCOPE("LayerStack OnUpdate");
 
-			m_DebugUILayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_DebugUILayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(ts);
+					m_DebugUILayer->Begin();
+				}
+
+				{
+					FNDG_PROFILE_SCOPE("LayerStack OnImGuiRender");
+						for (Layer* layer : m_LayerStack)
+							layer->OnImGuiRender();
+						m_DebugUILayer->End();
+				}
+			}
 
 			m_Window->OnUpdate();
 		}
@@ -72,6 +87,7 @@ namespace Fandango {
 
 	void Application::OnEvent(Event& e) 
 	{
+		FNDG_PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNCTION(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNCTION(OnWindowResize));
@@ -92,6 +108,8 @@ namespace Fandango {
 	
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;

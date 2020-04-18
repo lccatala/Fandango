@@ -20,6 +20,7 @@ namespace Fandango
 
 	void Renderer2D::Init()
 	{
+		FNDG_PROFILE_FUNCTION();
 		s_Data = new Renderer2DData();
 
 		s_Data->QuadVA = VertexArray::Create();
@@ -54,6 +55,8 @@ namespace Fandango
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetUniform("u_ViewProjectionMatrix", camera.GetViewProjectionMatrix());
 	}
@@ -65,12 +68,15 @@ namespace Fandango
 
 	void Renderer2D::EndScene()
 	{
+		FNDG_PROFILE_FUNCTION();
 
 	}
 
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const glm::vec4& color)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->SetUniform("u_Color", color);
 		s_Data->WhiteTexture->Bind();
 
@@ -91,6 +97,8 @@ namespace Fandango
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->SetUniform("u_Color", glm::vec4(1.0f));
 		texture->Bind();
 

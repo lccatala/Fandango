@@ -10,6 +10,8 @@ namespace Fandango
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
 		: m_Name(name)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
 		sources[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -18,6 +20,8 @@ namespace Fandango
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		std::string contents = ReadFile(filepath);
 		auto shaderSources = PreProcess(contents);
 		Compile(shaderSources);
@@ -26,6 +30,8 @@ namespace Fandango
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		std::string result;
 		std::ifstream file(filepath, std::ios::in | std::ios::binary);
 		if (file)
@@ -45,36 +51,50 @@ namespace Fandango
 
 	OpenGLShader::~OpenGLShader()
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Bind() const
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::UnBind() const
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetUniform(const std::string& name, const glm::mat4& value)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		UploadUniform(name, value);
 	}
 
 	void OpenGLShader::SetUniform(const std::string& name, const glm::vec3& value)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		UploadUniform(name, value);
 	}
 
 	void OpenGLShader::SetUniform(const std::string& name, const glm::vec4& value)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		UploadUniform(name, value);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		UploadUniform(name, value);
 	}
 
@@ -87,7 +107,6 @@ namespace Fandango
 		m_UniformLocationCache[name] = location;
 		return location;
 	}
-
 
 	void OpenGLShader::UploadUniform(const std::string& name, int value)
 	{

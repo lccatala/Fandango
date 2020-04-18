@@ -16,6 +16,8 @@ namespace Fandango
 
 	void OrthographicCameraController::OnUpdate(TimeStep ts)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(FNDG_KEY_A))
 		{
 			m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
@@ -53,6 +55,8 @@ namespace Fandango
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseWheelScrolledEvent>(FNDG_BIND_EVENT_FUNCTION(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(FNDG_BIND_EVENT_FUNCTION(OrthographicCameraController::OnWindowResized));
@@ -60,6 +64,8 @@ namespace Fandango
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseWheelScrolledEvent& e)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjectionMatrix(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -68,6 +74,8 @@ namespace Fandango
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		FNDG_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjectionMatrix(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return true;

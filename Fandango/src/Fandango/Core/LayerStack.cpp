@@ -27,24 +27,30 @@ namespace Fandango
 		m_Layers.emplace_back(overlay);
 	}
 
-	void LayerStack::PopLayer(Layer* layer)
+	bool LayerStack::PopLayer(Layer* layer)
 	{
+		bool found = false;
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
 		if (it != m_Layers.end() + m_LayerInsertIndex)
 		{
 			layer->OnDetach();
 			m_Layers.erase(it);
 			m_LayerInsertIndex--;
+			found = true;
 		}
+		return found;
 	}
 
-	void LayerStack::PopOverlay(Layer* overlay)
+	bool LayerStack::PopOverlay(Layer* overlay)
 	{
+		bool found = false;
 		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
 		if (it != m_Layers.end())
 		{
 			overlay->OnDetach();
 			m_Layers.erase(it);
+			found = true;
 		}
+		return found;
 	}
 }
