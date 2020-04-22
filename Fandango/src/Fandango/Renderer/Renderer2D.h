@@ -24,5 +24,20 @@ namespace Fandango
 			float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture);
 		static void DrawQuad(const glm::vec3& position, float rotation, 
 			float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture);
+
+		struct RendererStats
+		{
+			uint32_t DrawCalls = 0;
+			uint32_t QuadCount = 0;
+
+			uint32_t GetTotalVertexCount() { return QuadCount * 4; }
+			uint32_t GetTotalIndexCount() { return QuadCount * 6; }
+		};
+
+		static void ResetStats();
+		static RendererStats GetStats();
+
+	private:
+		static void StartNewBatch();
 	};
 }

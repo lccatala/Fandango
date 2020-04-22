@@ -27,20 +27,29 @@ void Sandbox2D::OnDetach()
 void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 {
 	FNDG_PROFILE_FUNCTION();
-
-	static float rotation = 0.0f;
-	rotation += ts * 50.0f;
 	
 	m_CameraController.OnUpdate(ts);
+
+	Fandango::Renderer2D::ResetStats();
 	
 	Fandango::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Fandango::RenderCommand::Clear();
 
 	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Fandango::Renderer2D::DrawQuad({ 0.5f, 0.5f }, rotation, { 0.5f, 0.75f }, m_SquareColor);
-	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f }, 0.0f, 10.0f, { 10.0f, 10.0f }, m_Texture);
+	//Fandango::Renderer2D::DrawQuad({ 0.5f, 0.5f }, 0.0f, { 0.5f, 0.75f }, m_SquareColor);
+	//Fandango::Renderer2D::DrawQuad({ 1.5f, 0.5f }, 0.0f, { 0.5f, 0.75f }, {1.0f, 0.0f, 0.0f, 1.0f});
+	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 10.0f, { 11.0f, 11.0f }, m_Texture);
 
+
+	for (float y = -5.0f; y < 5.0f; y += 0.5f)
+	{
+		for (float x = -5.0f; x < 5.0f; x += 0.5f)
+		{
+			glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.5f };
+			Fandango::Renderer2D::DrawQuad({ x, y }, 0.0f, { 0.45f, 0.45f }, color);
+		}
+	}
 	Fandango::Renderer2D::EndScene();
 }
 
@@ -48,8 +57,16 @@ void Sandbox2D::OnImGuiRender()
 {
 	FNDG_PROFILE_FUNCTION();
 
+	auto stats = Fandango::Renderer2D::GetStats();
+
 	ImGui::Begin("Settings");
+
 	ImGui::ColorEdit4("Square color", glm::value_ptr(m_SquareColor));
+	ImGui::Text("Renderer2D Stats");
+	ImGui::Text("Draw calls: %d", stats.DrawCalls);
+	ImGui::Text("Quad count: %d", stats.QuadCount);
+	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 	ImGui::End();
 }
 
