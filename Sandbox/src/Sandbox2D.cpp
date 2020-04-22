@@ -27,6 +27,9 @@ void Sandbox2D::OnDetach()
 void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 {
 	FNDG_PROFILE_FUNCTION();
+
+	static float rotation = 0.0f;
+	rotation += ts * 50.0f;
 	
 	m_CameraController.OnUpdate(ts);
 	
@@ -35,11 +38,10 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 
 	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Fandango::Renderer2D::DrawQuad({ 0.5f, -0.5f }, 0.0f, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-	Fandango::Renderer2D::DrawQuad({ -1.0f, 0.0f }, 0.75f, { 0.8f, 0.8f }, { 0.3f, 0.8f, 0.2f, 1.0f });
-	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, { 10.0f, 10.0f }, m_Texture);
+	Fandango::Renderer2D::DrawQuad({ 0.5f, 0.5f }, rotation, { 0.5f, 0.75f }, m_SquareColor);
+	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f }, 0.0f, 10.0f, { 10.0f, 10.0f }, m_Texture);
 
-	Fandango::Renderer::EndScene();
+	Fandango::Renderer2D::EndScene();
 }
 
 void Sandbox2D::OnImGuiRender()

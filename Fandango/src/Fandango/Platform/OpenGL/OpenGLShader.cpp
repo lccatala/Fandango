@@ -98,6 +98,11 @@ namespace Fandango
 		UploadUniform(name, value);
 	}
 
+	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		UploadUniform(name, values, count);
+	}
+
 	GLint OpenGLShader::GetUniformLocation(const std::string& name) const
 	{
 		if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
@@ -114,6 +119,12 @@ namespace Fandango
 		glUniform1i(location, value);
 	}
 	
+	void OpenGLShader::UploadUniform(const std::string& name, int* values, uint32_t count)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniform1iv(location, count, values);
+	}
+
 	void OpenGLShader::UploadUniform(const std::string& name, float value)
 	{
 		GLint location = GetUniformLocation(name);
