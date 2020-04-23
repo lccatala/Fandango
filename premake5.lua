@@ -32,17 +32,17 @@ group "Dependencies"
 group ""
 
 project "Fandango"
-  location "Fandango"
-  kind "StaticLib"
+	location "Fandango"
+	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
-  staticruntime "on"
+	staticruntime "on"
 
-  targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-  objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-  pchheader "fndgpch.h"
-  pchsource "Fandango/src/fndgpch.cpp"
+	pchheader "fndgpch.h"
+	pchsource "Fandango/src/fndgpch.cpp"
 
 	files
 	{
@@ -59,8 +59,8 @@ project "Fandango"
 		"_CRT_SECURE_NO_WARNINGS"
 	}
 
-  includedirs
-  {
+	includedirs
+	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
@@ -68,23 +68,23 @@ project "Fandango"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}"
-  }
+	}
 
-  links
-  {
+	links
+	{
 		"GLFW",
 		"Glad",
 		"ImGui",
 		"opengl32.lib"
-  }
+	}
 
-  filter "system:windows"
+	filter "system:windows"
 		systemversion "latest"
 
 	defines
 	{
-	  "FNDG_BUILD_DLL",
-	  "GLFW_INCLUDE_NONE"
+		"FNDG_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
 	}
 
   filter "system:macos"
@@ -92,9 +92,9 @@ project "Fandango"
 
 	defines
 	{
-	  "FNDG_PLATFORM_MAC",
-	  "FNDG_BUILD_DLL",
-	  "GLFW_INCLUDE_NONE"
+		"FNDG_PLATFORM_MAC",
+		"FNDG_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	filter "configurations:Debug"
@@ -113,35 +113,35 @@ project "Fandango"
 		optimize "on"
 
 project "Sandbox"
-  location "Sandbox"
-  kind "ConsoleApp"
+	location "Sandbox"
+	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-  staticruntime "on"
+	staticruntime "on"
 
-  targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-  objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-  files
-  {
+	files
+	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
-  }
+	}
 
-  includedirs
-  {
+	includedirs
+	{
 		"Fandango/vendor/spdlog/include",
 		"Fandango/src",
 		"Fandango/vendor",
 		"%{IncludeDir.glm}"
-  }
+	}
 
-  links 
-  { 
+	links 
+	{ 
 		"Fandango"
-  }
+	}
 
-  filter "system:windows"
+	filter "system:windows"
 		systemversion "latest"
 
 		defines
@@ -149,25 +149,17 @@ project "Sandbox"
 			"FNDG_PLATFORM_WINDOWS"
 		}
 
-  filter "system:macos"
-		systemversion "latest"
-
-		defines
-		{
-			"FNDG_PLATFORM_MAC"
-		}
-
-  filter "configurations:Debug"
+	filter "configurations:Debug"
 		defines "FNDG_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
-  filter "configurations:Release"
+	filter "configurations:Release"
 		defines "FNDG_RELEASE"
 		runtime "Release"
 		optimize "on"
 		
-		filter "configurations:Dist"
+	filter "configurations:Dist"
 		defines "FNDG_DIST"
 		runtime "Release"
 		optimize "on"
