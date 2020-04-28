@@ -20,26 +20,29 @@ namespace Fandango
 	bool WindowsInput::IsMouseButtonPressedImpl(int button)
 	{
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		auto state = glfwGetKey(window, button);
+		auto state = glfwGetMouseButton(window, button);
 
 		return state == GLFW_PRESS;
 	}
 
-	float WindowsInput::GetMouseXImpl()
+	std::pair<float, float> WindowsInput::GetMousePositionImpl()
 	{
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		double xpos, ypos;
-		glfwGetCursorPos(window, &xpos, &ypos);
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
 
+		return { (float)x, (float)y };
+	}
+
+	float WindowsInput::GetMouseXImpl()
+	{
+		auto[xpos, ypos] = GetMousePositionImpl();
 		return (float)xpos;
 	}
 
 	float WindowsInput::GetMouseYImpl()
 	{
-		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		double xpos, ypos;
-		glfwGetCursorPos(window, &xpos, &ypos);
-
+		auto [xpos, ypos] = GetMousePositionImpl();
 		return (float)ypos;
 	}
 }

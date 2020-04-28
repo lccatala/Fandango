@@ -17,6 +17,18 @@ void Sandbox2D::OnAttach()
 	FNDG_PROFILE_FUNCTION();
 
 	m_Texture = Fandango::Texture2D::Create("assets/textures/checkerboard.png");
+
+	m_ParticleSystem = Fandango::ParticleSystem();
+
+	m_ParticleProps.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
+	m_ParticleProps.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
+	m_ParticleProps.SizeBegin = 0.5f;
+	m_ParticleProps.SizeVariation = 0.3f;
+	m_ParticleProps.SizeEnd = 0.0f;
+	m_ParticleProps.LifeTime = 1.0f;
+	m_ParticleProps.Velocity = { 0.0f, 0.0f };
+	m_ParticleProps.VelocityVariation = { 3.0f, 1.0f };
+	m_ParticleProps.Position = { 0.0f, 0.0f };
 }
 
 void Sandbox2D::OnDetach()
@@ -37,19 +49,20 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 
 	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	//Fandango::Renderer2D::DrawQuad({ 0.5f, 0.5f }, 0.0f, { 0.5f, 0.75f }, m_SquareColor);
-	//Fandango::Renderer2D::DrawQuad({ 1.5f, 0.5f }, 0.0f, { 0.5f, 0.75f }, {1.0f, 0.0f, 0.0f, 1.0f});
-	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 10.0f, { 11.0f, 11.0f }, m_Texture);
-
-
-	for (float y = -5.0f; y < 5.0f; y += 0.5f)
+	//Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 10.0f, { 11.0f, 11.0f }, m_Texture);
+	if (Fandango::Input::IsMouseButtonPressed(FNDG_MOUSE_BUTTON_LEFT))
 	{
-		for (float x = -5.0f; x < 5.0f; x += 0.5f)
-		{
-			glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.5f };
-			Fandango::Renderer2D::DrawQuad({ x, y }, 0.0f, { 0.45f, 0.45f }, color);
-		}
+		auto [x, y] = Fandango::Input::GetMousePosition();
+		auto width = Fandango::Application::Get().GetWindow().GetWidth();
+		auto height = Fandango::Application::Get().GetWindow().GetHeight();
+		auto pos = m_CameraController.GetCamera().GetPosition();
+
+		//m_ParticleProps.Position = { x + pos.x, y + pos.y };
+		for (int i = 0; i < 5; i++)
+			m_ParticleSystem.Emit(m_ParticleProps);
 	}
+	m_ParticleSystem.OnUpdate(ts);
+
 	Fandango::Renderer2D::EndScene();
 }
 
@@ -57,16 +70,13 @@ void Sandbox2D::OnImGuiRender()
 {
 	FNDG_PROFILE_FUNCTION();
 
-	auto stats = Fandango::Renderer2D::GetStats();
+	//auto stats = Fandango::Renderer2D::GetStats();
 
 	ImGui::Begin("Settings");
-
-	ImGui::ColorEdit4("Square color", glm::value_ptr(m_SquareColor));
-	ImGui::Text("Renderer2D Stats");
-	ImGui::Text("Draw calls: %d", stats.DrawCalls);
-	ImGui::Text("Quad count: %d", stats.QuadCount);
-	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+	
+	ImGui::ColorEdit4("Birth color", glm::value_ptr(m_ParticleProps.ColorBegin));
+	ImGui::ColorEdit4("Death color", glm::value_ptr(m_ParticleProps.ColorEnd));
+	ImGui::DragFloat("Lifetime", &m_ParticleProps.LifeTime, 0.1f, 0.0f, 1000.0f);
 	ImGui::End();
 }
 
