@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <Fandango/Core/TimeStep.h>
+#include <Fandango/Renderer/Camera.h>
 
 namespace Fandango
 {
@@ -20,6 +21,7 @@ namespace Fandango
 		ParticleSystem();
 
 		void OnUpdate(TimeStep ts);
+		void OnRender(OrthographicCamera& camera);
 
 		void Emit(const ParticleProps& props);
 

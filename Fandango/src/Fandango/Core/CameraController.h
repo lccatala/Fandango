@@ -7,6 +7,14 @@
 
 namespace Fandango
 {
+	struct OrthographicCameraBounds
+	{
+		float Left, Right, Bottom, Top;
+
+		float GetWidth() { return Right - Left; }
+		float GetHeight() { return Top - Bottom; }
+	};
+
 	class OrthographicCameraController
 	{
 	public:
@@ -17,11 +25,13 @@ namespace Fandango
 
 		OrthographicCamera& GetCamera() { return m_Camera; }
 		const OrthographicCamera& GetCamera() const { return m_Camera; }
+		const OrthographicCameraBounds& GetCameraBounds() const { return m_CameraBounds; }
 	private:
 		bool OnMouseScrolled(MouseWheelScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 		float m_AspectRatio;
 		float m_ZoomLevel = 1.0f;
+		OrthographicCameraBounds m_CameraBounds;
 		OrthographicCamera m_Camera;
 
 		bool m_Rotation;

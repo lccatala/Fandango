@@ -9,7 +9,7 @@ namespace Fandango
 {
 	ParticleSystem::ParticleSystem()
 	{
-		m_ParticlePool.resize(1000);
+		m_ParticlePool.resize(m_PoolIndex + 1);
 	}
 
 	void ParticleSystem::OnUpdate(TimeStep ts)
@@ -26,19 +26,32 @@ namespace Fandango
 			}
 
 			particle.LifeRemaining -= ts;
-			float life = particle.LifeRemaining / particle.LifeTime;
 			particle.Position += particle.Velocity * (float)ts;
 			particle.Rotation += 0.01f * ts;
+		}
+
+		
+	}
+
+	void ParticleSystem::OnRender(OrthographicCamera& camera)
+	{
+		Renderer2D::BeginScene(camera);
+		for (auto& particle : m_ParticlePool)
+		{
+			if (!particle.Active)
+				continue;
 
 			// Fade away
-			glm::vec4 color = glm::lerp(particle.ColorEnd, particle.ColorBegin, life);
-			color.a = color.a * life;
-
+			float life = particle.LifeRemaining / particle.LifeTime;
 			float size = glm::lerp(particle.SizeEnd, particle.SizeBegin, life);
+			glm::vec4 color = glm::lerp(particle.ColorEnd, particle.ColorBegin, life);
+			//color.a = color.a * life;
 
 			Renderer2D::DrawQuad(particle.Position, particle.Rotation, { size, size }, color);
 		}
+		Renderer2D::EndScene();
 	}
+
 	
 	void ParticleSystem::Emit(const ParticleProps& props)
 	{

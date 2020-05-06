@@ -1,0 +1,45 @@
+- R basics
+  - Vectorized arithmetic
+  - Vectors, order and subsetting
+  - seq
+  - sum, cumsum, prod, cumprod...
+  - max, cummax, min, cummin...
+  - matrix, data.frame
+  - apply, lapply, mapply, sapply
+  - functions
+  - xts
+  - global assignment <<-
+  - endpoints (e. g. for in-sample/out-of-sample)
+
+- Equities and futures
+  - Adjusted prices (stock dividends, cash dividends, stock splits) (formulas and "why")
+
+- Microstructure
+  - Limit order books / dark pools (GO BACK OVER THIS)
+  - Market orders vs limit orders (market guarantees execution but not price (as long as there is no volume in the other side of the book), and limit the opposite)
+  - Average execution price (in market orders, average price all units in one order are transacted)
+  - Slippage (difference between expected and actual trading prices (could actually be better than expected (positive))). When backtesting, we tend to assume it's negative to get realistic trading results. If ignored, it's easier to generate trading strategies
+  - Dark pools of liquidity (GO BACK OVER THIS)
+  - Execution algorithms: VWAP, TWAP, Implementation, Shortfall (GO BACK OVER THIS)
+  - Profit seeking vs execution algorithms (GO BACK OVER THIS)
+
+- Performance measurement
+  - Simple and log returns (motivation and definitions)
+  - Conversion between simple and log returns
+  - Returns for long and short trades
+  - Equity curves (aggregating returns/profit and loss)
+  - Sharpe ratio, Information ratio, Sortino ratio
+  - Maximum drawdown (return-based and profit-and-loss based): max drawdown over a period of time (made some money and then lost money over that)
+  - Calmar ratio: total return / max drawdown
+  - Similarities and differences between these ratios
+  - Perfect profit/perfect return (using perfect position)
+
+- Trading strategies
+  - Moving averages (simple and exponential)
+  - Moving averages as filters
+  - Bollinger Bands
+  - Path-dependent and path-independent strategies
+  - Example of simple strategies in R
+  - Holding period, profit target, stop loss
+  - Momentum vs mean-reversion
+  - Spread trading

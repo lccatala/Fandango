@@ -16,7 +16,7 @@ void Sandbox2D::OnAttach()
 {
 	FNDG_PROFILE_FUNCTION();
 
-	m_Texture = Fandango::Texture2D::Create("assets/textures/checkerboard.png");
+	m_Texture = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
 
 	m_ParticleSystem = Fandango::ParticleSystem();
 
@@ -48,22 +48,24 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 	Fandango::RenderCommand::Clear();
 
 	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
-
-	//Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 10.0f, { 11.0f, 11.0f }, m_Texture);
+	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 11.0f, 11.0f }, m_Texture);
+	Fandango::Renderer2D::EndScene();
 	if (Fandango::Input::IsMouseButtonPressed(FNDG_MOUSE_BUTTON_LEFT))
 	{
 		auto [x, y] = Fandango::Input::GetMousePosition();
 		auto width = Fandango::Application::Get().GetWindow().GetWidth();
 		auto height = Fandango::Application::Get().GetWindow().GetHeight();
-		auto pos = m_CameraController.GetCamera().GetPosition();
 
-		//m_ParticleProps.Position = { x + pos.x, y + pos.y };
-		for (int i = 0; i < 5; i++)
+		auto bounds = m_CameraController.GetCameraBounds();
+		auto pos = m_CameraController.GetCamera().GetPosition();
+		x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
+		y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
+		m_ParticleProps.Position = { x + pos.x, y + pos.y };
+		for (int i = 0; i < 50; i++)
 			m_ParticleSystem.Emit(m_ParticleProps);
 	}
 	m_ParticleSystem.OnUpdate(ts);
-
-	Fandango::Renderer2D::EndScene();
+	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
 }
 
 void Sandbox2D::OnImGuiRender()
