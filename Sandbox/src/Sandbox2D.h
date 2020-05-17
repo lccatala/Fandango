@@ -23,7 +23,8 @@ private:
 	Fandango::Ref<Fandango::VertexArray> m_SquareVA;
 	Fandango::Ref<Fandango::Shader> m_FlatColorShader;
 
-	Fandango::Ref<Fandango::Texture2D> m_Texture;
+	Fandango::Ref<Fandango::Texture2D> m_SpriteSheet;
+	Fandango::Ref<Fandango::SubTexture2D> m_BarrelSubTexture, m_StairsSubTexture, m_TreeSubTexture;
 
 	glm::vec4 m_SquareColor = { 0.2, 0.3f, 0.8f, 1.0f };
 };

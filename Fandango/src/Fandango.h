@@ -16,5 +16,6 @@
 #include "Fandango/Renderer/Renderer.h"
 #include "Fandango/Renderer/Renderer2D.h"
 #include "Fandango/Renderer/Shader.h"
+#include "Fandango/Renderer/SubTexture2D.h"
 #include "Fandango/Renderer/Texture.h"
 #include "Fandango/Renderer/VertexArray.h"

@@ -16,7 +16,10 @@ void Sandbox2D::OnAttach()
 {
 	FNDG_PROFILE_FUNCTION();
 
-	m_Texture = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
+	m_SpriteSheet = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
+	m_BarrelSubTexture = Fandango::SubTexture2D::CreateFromCoords(m_SpriteSheet, {8, 2}, {128, 128});
+	m_StairsSubTexture = Fandango::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 7, 6 }, { 128, 128 });
+	m_TreeSubTexture = Fandango::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
 
 	m_ParticleSystem = Fandango::ParticleSystem();
 
@@ -48,8 +51,12 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 	Fandango::RenderCommand::Clear();
 
 	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 11.0f, 11.0f }, m_Texture);
+	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 1.0f, 1.0f }, m_StairsSubTexture);
+	Fandango::Renderer2D::DrawQuad({ 1.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 1.0f, 1.0f }, m_BarrelSubTexture);
+	Fandango::Renderer2D::DrawQuad({ 2.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 1.0f, 2.0f }, m_TreeSubTexture);
 	Fandango::Renderer2D::EndScene();
+
+#ifdef ENABLE_PARTICLES
 	if (Fandango::Input::IsMouseButtonPressed(FNDG_MOUSE_BUTTON_LEFT))
 	{
 		auto [x, y] = Fandango::Input::GetMousePosition();
@@ -61,11 +68,12 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 		x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
 		y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
 		m_ParticleProps.Position = { x + pos.x, y + pos.y };
-		for (int i = 0; i < 50; i++)
+		for (int i = 0; i < 10; i++)
 			m_ParticleSystem.Emit(m_ParticleProps);
 	}
 	m_ParticleSystem.OnUpdate(ts);
 	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
+#endif
 }
 
 void Sandbox2D::OnImGuiRender()
