@@ -85,6 +85,11 @@ namespace Fandango {
 		}
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e) 
 	{
 		FNDG_PROFILE_FUNCTION();

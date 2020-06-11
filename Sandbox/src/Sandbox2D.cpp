@@ -16,22 +16,12 @@ void Sandbox2D::OnAttach()
 {
 	FNDG_PROFILE_FUNCTION();
 
+	m_CheckerboardTexture = Fandango::Texture2D::Create("assets/textures/Checkerboard.png");
 	m_SpriteSheet = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
-	m_BarrelSubTexture = Fandango::SubTexture2D::CreateFromCoords(m_SpriteSheet, {8, 2}, {128, 128});
-	m_StairsSubTexture = Fandango::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 7, 6 }, { 128, 128 });
-	m_TreeSubTexture = Fandango::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
-
-	m_ParticleSystem = Fandango::ParticleSystem();
-
-	m_ParticleProps.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
-	m_ParticleProps.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
-	m_ParticleProps.SizeBegin = 0.5f;
-	m_ParticleProps.SizeVariation = 0.3f;
-	m_ParticleProps.SizeEnd = 0.0f;
-	m_ParticleProps.LifeTime = 1.0f;
-	m_ParticleProps.Velocity = { 0.0f, 0.0f };
-	m_ParticleProps.VelocityVariation = { 3.0f, 1.0f };
-	m_ParticleProps.Position = { 0.0f, 0.0f };
+	Fandango::FrameBufferSpec fbSpec;
+	fbSpec.Width = 1280;
+	fbSpec.Height = 720;
+	m_FrameBuffer = Fandango::FrameBuffer::Create(fbSpec);
 }
 
 void Sandbox2D::OnDetach()
@@ -47,14 +37,23 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 
 	Fandango::Renderer2D::ResetStats();
 	
+	m_FrameBuffer->Bind();
+
 	Fandango::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Fandango::RenderCommand::Clear();
 
 	Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 1.0f, 1.0f }, m_StairsSubTexture);
-	Fandango::Renderer2D::DrawQuad({ 1.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 1.0f, 1.0f }, m_BarrelSubTexture);
-	Fandango::Renderer2D::DrawQuad({ 2.0f, 0.0f, -0.1f }, 0.0f, 1.0f, { 1.0f, 2.0f }, m_TreeSubTexture);
+	for (float y = -5.0f; y < 5.0f; y += 0.5f)
+	{
+		for (float x = -5.0f; x < 5.0f; x += 0.5f)
+		{
+			glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
+		}
+	}
+	Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, 1.0f, {0.45f, 0.45f}, m_SpriteSheet);
 	Fandango::Renderer2D::EndScene();
+
+	m_FrameBuffer->Unbind();
 
 #ifdef ENABLE_PARTICLES
 	if (Fandango::Input::IsMouseButtonPressed(FNDG_MOUSE_BUTTON_LEFT))
@@ -74,19 +73,94 @@ void Sandbox2D::OnUpdate(Fandango::TimeStep ts)
 	m_ParticleSystem.OnUpdate(ts);
 	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
 #endif
+
 }
 
 void Sandbox2D::OnImGuiRender()
 {
 	FNDG_PROFILE_FUNCTION();
 
-	//auto stats = Fandango::Renderer2D::GetStats();
+	static bool showDockspace = true;
+	static bool opt_fullscreen_persistant = true;
+	static ImGuiDockNodeFlags opt_flags = ImGuiDockNodeFlags_None;
+	bool opt_fullscreen = opt_fullscreen_persistant;
 
+	// We are using the ImGuiWindowFlags_NoDocking flag to make the parent window not dockable into,
+	// because it would be confusing to have two docking targets within each others.
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+	if (opt_fullscreen)
+	{
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		ImGui::SetNextWindowPos(viewport->Pos);
+		ImGui::SetNextWindowSize(viewport->Size);
+		ImGui::SetNextWindowViewport(viewport->ID);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+		window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+		window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+	}
+
+	// When using ImGuiDockNodeFlags_PassthruDockspace, DockSpace() will render our background and handle the pass-thru hole, so we ask Begin() to not render a background.
+	if (opt_flags & ImGuiDockNodeFlags_PassthruDockspace)
+		window_flags |= ImGuiWindowFlags_NoBackground;
+
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::Begin("DockSpace Demo", &showDockspace, window_flags);
+	ImGui::PopStyleVar();
+
+	if (opt_fullscreen)
+		ImGui::PopStyleVar(2);
+
+	// Dockspace
+	ImGuiIO& io = ImGui::GetIO();
+	if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
+	{
+		ImGuiID dockspace_id = ImGui::GetID("MyDockspace");
+		ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), opt_flags);
+	}
+
+	if (ImGui::BeginMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Quit", NULL, false))
+			{
+				showDockspace = false;
+				Fandango::Application::Get().Close();
+			}
+			ImGui::EndMenu();
+		}
+		/*
+		if (ImGui::BeginMenu("Docking"))
+		{
+			// Disabling fullscreen would allow the window to be moved to the front of other windows, 
+			// which we can't undo at the moment without finer window depth/z control.
+			//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
+
+			if (ImGui::MenuItem("Flag: NoSplit", "", (opt_flags & ImGuiDockNodeFlags_NoSplit) != 0))                 opt_flags ^= ImGuiDockNodeFlags_NoSplit;
+			if (ImGui::MenuItem("Flag: NoDockingInCentralNode", "", (opt_flags & ImGuiDockNodeFlags_NoDockingInCentralNode) != 0))  opt_flags ^= ImGuiDockNodeFlags_NoDockingInCentralNode;
+			if (ImGui::MenuItem("Flag: NoResize", "", (opt_flags & ImGuiDockNodeFlags_NoResize) != 0))                opt_flags ^= ImGuiDockNodeFlags_NoResize;
+			if (ImGui::MenuItem("Flag: PassthruDockspace", "", (opt_flags & ImGuiDockNodeFlags_PassthruDockspace) != 0))       opt_flags ^= ImGuiDockNodeFlags_PassthruDockspace;
+			ImGui::Separator();
+			if (ImGui::MenuItem("Close DockSpace", NULL, false))
+				showDockspace = false;
+			ImGui::EndMenu();
+		}
+		*/
+		ImGui::EndMenuBar();
+	}
 	ImGui::Begin("Settings");
-	
-	ImGui::ColorEdit4("Birth color", glm::value_ptr(m_ParticleProps.ColorBegin));
-	ImGui::ColorEdit4("Death color", glm::value_ptr(m_ParticleProps.ColorEnd));
-	ImGui::DragFloat("Lifetime", &m_ParticleProps.LifeTime, 0.1f, 0.0f, 1000.0f);
+	auto stats = Fandango::Renderer2D::GetStats();
+	ImGui::Text("Renderer2D Stats:");
+	ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+	ImGui::Text("Quads: %d", stats.QuadCount);
+	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+	uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
+	ImGui::Image((void*)textureID, ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+	ImGui::End();
+
 	ImGui::End();
 }
 

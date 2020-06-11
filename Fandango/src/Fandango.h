@@ -2,6 +2,7 @@
 
 // For use by Fandango applications
 #include "Fandango/Core/Application.h"
+#include "Fandango/Core/CameraController.h"
 #include "Fandango/Core/Layer.h"
 #include "Fandango/Core/Log.h"
 #include "Fandango/DebugUI/DebugUILayer.h"
@@ -12,7 +13,7 @@
 
 #include "Fandango/Renderer/Buffer.h"
 #include "Fandango/Renderer/Camera.h"
-#include "Fandango/Core/CameraController.h"
+#include "Fandango/Renderer/FrameBuffer.h"
 #include "Fandango/Renderer/Renderer.h"
 #include "Fandango/Renderer/Renderer2D.h"
 #include "Fandango/Renderer/Shader.h"
