@@ -10,16 +10,16 @@ namespace Fandango
 	struct WindowProperties
 	{
 		std::string m_Title;
-		unsigned int m_Width;
-		unsigned int m_Height;
+		uint32_t m_Width;
+		uint32_t m_Height;
 
-		WindowProperties(const std::string& title = "Fandango Engine", unsigned int width = 1280, unsigned int height = 720)
+		WindowProperties(const std::string& title = "Fandango App", uint32_t width = 1280, uint32_t height = 720)
 			: m_Title(title), m_Width(width), m_Height(height)
 		{
 		}
 	};
 
-	class FNDG_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
@@ -28,8 +28,8 @@ namespace Fandango
 
 		virtual void OnUpdate() = 0;
 
-		virtual unsigned int GetWidth() const = 0;
-		virtual unsigned int GetHeight() const = 0;
+		virtual uint32_t GetWidth() const = 0;
+		virtual uint32_t GetHeight() const = 0;
 
 		// Window attributes
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;

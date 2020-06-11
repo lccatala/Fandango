@@ -163,3 +163,56 @@ project "Sandbox"
 		defines "FNDG_DIST"
 		runtime "Release"
 		optimize "on"
+
+
+project "Fandango-Editor"
+	location "Fandango-Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Fandango/vendor/spdlog/include",
+		"Fandango/src",
+		"Fandango/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links 
+	{ 
+		"Fandango"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+		defines
+		{
+			"FNDG_PLATFORM_WINDOWS"
+		}
+
+	filter "configurations:Debug"
+		defines "FNDG_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "FNDG_RELEASE"
+		runtime "Release"
+		optimize "on"
+		
+	filter "configurations:Dist"
+		defines "FNDG_DIST"
+		runtime "Release"
+		optimize "on"

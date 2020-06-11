@@ -18,7 +18,12 @@ namespace Fandango
 
 	Window* Window::Create(const WindowProperties& properties)
 	{
+	#ifdef FNDG_PLATFORM_WINDOWS
 		return new WindowsWindow(properties);
+	#else
+		FNDG_ENGINE_ASSERT(false, "Unknown platform");
+		return nullptr;
+	#endif
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProperties& properties)

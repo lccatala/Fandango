@@ -16,11 +16,16 @@ namespace Fandango {
 
 	Application::Application()
 	{
+		Application("Fandango App");
+	}
+
+	Application::Application(const std::string& name)
+	{
 		FNDG_PROFILE_FUNCTION();
 		FNDG_ENGINE_ASSERT(s_Instance, "Application already exists");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window = std::unique_ptr<Window>(Window::Create(WindowProperties(name)));
 		m_Window->SetEventCallback(BIND_EVENT_FUNCTION(OnEvent));
 
 		Renderer::Init();
