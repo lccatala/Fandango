@@ -123,9 +123,6 @@ namespace Fandango
 	};
 }
 
-
-#define FNDG_PROFILE 1 // TODO: temporary, just for testing
-
 #if FNDG_PROFILE
 #define FNDG_PROFILE_BEGIN_SESSION(name, filepath) ::Fandango::Instrumentor::Get().BeginSession(name, filepath)
 #define FNDG_PROFILE_END_SESSION() ::Fandango::Instrumentor::Get().EndSession()

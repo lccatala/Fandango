@@ -1,6 +1,6 @@
 workspace "Fandango"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "Fandango-Editor"
 
 configurations
 {

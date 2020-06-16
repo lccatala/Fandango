@@ -2,7 +2,7 @@
 
 #include "fndgpch.h"
 
-#include "Fandango/Core/Core.h"
+#include "Fandango/Core/BaseDefines.h"
 #include "Fandango/Events/Event.h"
 
 namespace Fandango

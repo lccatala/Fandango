@@ -78,9 +78,17 @@ namespace Fandango
 	{
 		FNDG_PROFILE_FUNCTION();
 
-		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		m_CameraBounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
+		Resize((float)e.GetWidth(), (float)e.GetHeight());
 		m_Camera.SetProjectionMatrix(m_CameraBounds.Left, m_CameraBounds.Right, m_CameraBounds.Bottom, m_CameraBounds.Top);
 		return true;
+	}
+
+	void OrthographicCameraController::Resize(float width, float height)
+	{
+		FNDG_PROFILE_FUNCTION();
+
+		m_AspectRatio = width / height;
+		m_CameraBounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
+		m_Camera.SetProjectionMatrix(m_CameraBounds.Left, m_CameraBounds.Right, m_CameraBounds.Bottom, m_CameraBounds.Top);
 	}
 }

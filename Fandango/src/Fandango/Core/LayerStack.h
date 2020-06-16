@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Fandango/Core/Core.h"
+#include "Fandango/Core/BaseDefines.h"
 #include "Layer.h"
 
 #include <fndgpch.h>

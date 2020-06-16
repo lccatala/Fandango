@@ -67,6 +67,8 @@
 
 #define FNDG_BIND_EVENT_FUNCTION(fn) std::bind(&fn, this, std::placeholders::_1)
 
+#define FNDG_PROFILE 0
+
 namespace Fandango 
 {
 	template<typename T>

@@ -78,7 +78,7 @@ namespace Fandango
 
 	}
 
-	void EditorLayer::OnImGuiRender()
+	void EditorLayer::SetupDockspace()
 	{
 		FNDG_PROFILE_FUNCTION();
 
@@ -151,17 +151,27 @@ namespace Fandango
 			*/
 			ImGui::EndMenuBar();
 		}
-		ImGui::Begin("Settings");
-		auto stats = Fandango::Renderer2D::GetStats();
-		ImGui::Text("Renderer2D Stats:");
-		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-		ImGui::Text("Quads: %d", stats.QuadCount);
-		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+	}
+
+	void EditorLayer::OnImGuiRender()
+	{
+		FNDG_PROFILE_FUNCTION();
+
+		SetupDockspace();
+
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
+		ImGui::Begin("Viewport");
+		ImVec2 currentViewportPanelSize = ImGui::GetContentRegionAvail();
+		if (m_ViewportSize != *(glm::vec2*) & currentViewportPanelSize)
+		{
+			m_ViewportSize = { currentViewportPanelSize.x, currentViewportPanelSize.y };
+			m_FrameBuffer->Resize(m_ViewportSize.x, m_ViewportSize.y);
+			m_CameraController.Resize(m_ViewportSize.x, m_ViewportSize.y);
+		}
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 		ImGui::End();
+		ImGui::PopStyleVar();
 
 		ImGui::End();
 	}

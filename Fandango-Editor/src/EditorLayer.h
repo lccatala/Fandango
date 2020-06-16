@@ -17,6 +17,10 @@ namespace Fandango
 		virtual void OnImGuiRender() override;
 		void OnEvent(Event & e) override;
 	private:
+		void SetupDockspace();
+
+		glm::vec2 m_ViewportSize = {0.0f, 0.0f};
+
 		OrthographicCameraController m_CameraController;
 		ParticleSystem m_ParticleSystem;
 		ParticleProps m_ParticleProps;

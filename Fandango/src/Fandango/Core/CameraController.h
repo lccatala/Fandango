@@ -23,6 +23,8 @@ namespace Fandango
 		void OnUpdate(TimeStep ts);
 		void OnEvent(Event& e);
 
+		void Resize(float width, float height);
+
 		OrthographicCamera& GetCamera() { return m_Camera; }
 		const OrthographicCamera& GetCamera() const { return m_Camera; }
 		const OrthographicCameraBounds& GetCameraBounds() const { return m_CameraBounds; }

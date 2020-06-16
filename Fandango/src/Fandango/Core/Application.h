@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Fandango/Core/Core.h"
+#include "Fandango/Core/BaseDefines.h"
 
 #include "Fandango/Core/TimeStep.h"
 #include "Fandango/DebugUI/DebugUILayer.h"

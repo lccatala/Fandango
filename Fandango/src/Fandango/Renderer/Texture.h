@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Fandango/Core/Core.h"
+#include "Fandango/Core/BaseDefines.h"
 
 namespace Fandango
 {
