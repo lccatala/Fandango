@@ -114,7 +114,11 @@ namespace Fandango
 	}
 
 	void Renderer2D::ShutDown()
-	{}
+	{
+		FNDG_PROFILE_FUNCTION();
+
+		delete[] s_Data.QuadVertexBufferBase;
+	}
 
 	void Renderer2D::EndScene()
 	{
