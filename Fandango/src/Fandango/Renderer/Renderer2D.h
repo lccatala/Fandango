@@ -16,19 +16,19 @@ namespace Fandango
 		static void EndScene();
 		static void Flush();
 
-		static void DrawQuad(const glm::vec2& position, float rotation, 
+		static void DrawQuadColor(const glm::vec2& position, float rotation, 
 			const glm::vec2& size, const glm::vec4& color);
-		static void DrawQuad(const glm::vec3& position, float rotation, 
+		static void DrawQuadColor(const glm::vec3& position, float rotation,
 			const glm::vec2& size, const glm::vec4& color);
 
-		static void DrawQuad(const glm::vec2& position, float rotation,
+		static void DrawQuadSubtexture(const glm::vec2& position, float rotation,
 			float tilingFactor, const glm::vec2& size, const Ref<SubTexture2D>& subtexture);
-		static void DrawQuad(const glm::vec3& position, float rotation,
+		static void DrawQuadSubtexture(const glm::vec3& position, float rotation,
 			float tilingFactor, const glm::vec2& size, const Ref<SubTexture2D>& subtexture);
 
-		static void DrawQuad(const glm::vec2& position, float rotation, 
+		static void DrawQuadTexture(const glm::vec2& position, float rotation,
 			float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture);
-		static void DrawQuad(const glm::vec3& position, float rotation, 
+		static void DrawQuadTexture(const glm::vec3& position, float rotation,
 			float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture);
 
 		struct RendererStats

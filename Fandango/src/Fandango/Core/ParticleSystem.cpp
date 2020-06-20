@@ -47,7 +47,7 @@ namespace Fandango
 			glm::vec4 color = glm::lerp(particle.ColorEnd, particle.ColorBegin, life);
 			//color.a = color.a * life;
 
-			Renderer2D::DrawQuad(particle.Position, particle.Rotation, { size, size }, color);
+			Renderer2D::DrawQuadColor(particle.Position, particle.Rotation, { size, size }, color);
 		}
 		Renderer2D::EndScene();
 	}

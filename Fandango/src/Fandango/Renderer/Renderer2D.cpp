@@ -149,7 +149,7 @@ namespace Fandango
 		s_Data.TextureSlotIndex = 1;
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation,
+	void Renderer2D::DrawQuadColor(const glm::vec3& position, float rotation,
 		const glm::vec2& size, const glm::vec4& color)
 	{
 		FNDG_PROFILE_FUNCTION();
@@ -182,13 +182,13 @@ namespace Fandango
 		s_Data.Stats.QuadCount++;
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec2& position, float rotation, 
+	void Renderer2D::DrawQuadColor(const glm::vec2& position, float rotation, 
 		const glm::vec2& size, const glm::vec4& color)
 	{
-		DrawQuad({ position.x, position.y, 0.0f }, rotation, size, color);
+		DrawQuadColor({ position.x, position.y, 0.0f }, rotation, size, color);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation,
+	void Renderer2D::DrawQuadSubtexture(const glm::vec3& position, float rotation,
 		float tilingFactor, const glm::vec2& size, const Ref<SubTexture2D>& subtexture)
 	{
 		FNDG_PROFILE_FUNCTION();
@@ -242,7 +242,7 @@ namespace Fandango
 		s_Data.Stats.QuadCount++;
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, float rotation, 
+	void Renderer2D::DrawQuadTexture(const glm::vec3& position, float rotation, 
 		float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
 		FNDG_PROFILE_FUNCTION();
@@ -295,10 +295,10 @@ namespace Fandango
 		s_Data.Stats.QuadCount++;
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec2& position, float rotation,
+	void Renderer2D::DrawQuadTexture(const glm::vec2& position, float rotation,
 		float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
-		DrawQuad({ position.x, position.y, 0.0f }, rotation, tilingFactor, size, texture);
+		DrawQuadTexture({ position.x, position.y, 0.0f }, rotation, tilingFactor, size, texture);
 	}
 
 	void Renderer2D::ResetStats()

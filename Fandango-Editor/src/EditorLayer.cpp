@@ -52,7 +52,7 @@ namespace Fandango
 				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
 			}
 		}
-		Fandango::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, 1.0f, { 0.45f, 0.45f }, m_SpriteSheet);
+		Fandango::Renderer2D::DrawQuadTexture({ 0.0f, 0.0f, 0.0f }, 0.0f, 1.0f, { 0.45f, 0.45f }, m_SpriteSheet);
 		Fandango::Renderer2D::EndScene();
 
 		m_FrameBuffer->Unbind();
