@@ -20,6 +20,7 @@ namespace Fandango
 		void SetupDockspace();
 
 		glm::vec2 m_ViewportSize = {0.0f, 0.0f};
+		bool m_ViewportFocused = false;
 
 		OrthographicCameraController m_CameraController;
 		ParticleSystem m_ParticleSystem;

@@ -3,7 +3,7 @@
 #include "Fandango/Core/BaseDefines.h"
 
 #include "Fandango/Core/TimeStep.h"
-#include "Fandango/DebugUI/DebugUILayer.h"
+#include "Fandango/ImGui/ImGuiLayer.h"
 
 #include "Fandango/Events/Event.h"
 #include "Fandango/Events/ApplicationEvent.h"
@@ -40,7 +40,7 @@ namespace Fandango {
 		bool OnWindowResize(WindowResizeEvent& e);
 
 		std::unique_ptr<Window> m_Window;
-		DebugUILayer* m_DebugUILayer;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;

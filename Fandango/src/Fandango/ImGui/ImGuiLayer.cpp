@@ -1,5 +1,5 @@
 #include "fndgpch.h"
-#include "DebugUILayer.h"
+#include "ImGuiLayer.h"
 
 #include "imgui.h"
 #include "examples/imgui_impl_glfw.h"
@@ -13,19 +13,19 @@
 
 namespace Fandango
 {
-	DebugUILayer::DebugUILayer()
-		: Layer("DebugUILayer")
+	ImGuiLayer::ImGuiLayer()
+		: Layer("ImGuiLayer")
 	{
 
 	}
 
-	DebugUILayer::~DebugUILayer()
+	ImGuiLayer::~ImGuiLayer()
 	{
 
 	}
 
 	// Set up ImgGui
-	void DebugUILayer::OnAttach()
+	void ImGuiLayer::OnAttach()
 	{
 		FNDG_PROFILE_FUNCTION();
 
@@ -59,7 +59,7 @@ namespace Fandango
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 
-	void DebugUILayer::OnDetach()
+	void ImGuiLayer::OnDetach()
 	{
 		FNDG_PROFILE_FUNCTION();
 
@@ -68,7 +68,7 @@ namespace Fandango
 		ImGui::DestroyContext();
 	}
 
-	void DebugUILayer::Begin()
+	void ImGuiLayer::Begin()
 	{
 		FNDG_PROFILE_FUNCTION();
 
@@ -77,7 +77,7 @@ namespace Fandango
 		ImGui::NewFrame();
 	}
 
-	void DebugUILayer::End()
+	void ImGuiLayer::End()
 	{
 		FNDG_PROFILE_FUNCTION();
 
@@ -97,7 +97,7 @@ namespace Fandango
 		}
 	}
 
-	void DebugUILayer::OnImGuiRender()
+	void ImGuiLayer::OnImGuiRender()
 	{
 		
 	}

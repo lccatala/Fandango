@@ -35,7 +35,8 @@ namespace Fandango
 	{
 		FNDG_PROFILE_FUNCTION();
 
-		m_CameraController.OnUpdate(ts);
+		if (m_ViewportFocused)
+			m_CameraController.OnUpdate(ts);
 
 		Fandango::Renderer2D::ResetStats();
 
@@ -161,6 +162,8 @@ namespace Fandango
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
 		ImGui::Begin("Viewport");
+		m_ViewportFocused = ImGui::IsWindowFocused();
+		FNDG_WARN("focused: {0}: ", m_ViewportFocused);
 		ImVec2 currentViewportPanelSize = ImGui::GetContentRegionAvail();
 		if (m_ViewportSize != *(glm::vec2*) & currentViewportPanelSize)
 		{

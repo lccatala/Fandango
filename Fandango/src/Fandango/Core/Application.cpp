@@ -30,8 +30,8 @@ namespace Fandango {
 
 		Renderer::Init();
 
-		m_DebugUILayer = new DebugUILayer();
-		PushOverlay(m_DebugUILayer);
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 
@@ -75,14 +75,14 @@ namespace Fandango {
 
 					for (Layer* layer : m_LayerStack)
 						layer->OnUpdate(ts);
-					m_DebugUILayer->Begin();
+					m_ImGuiLayer->Begin();
 				}
 
 				{
 					FNDG_PROFILE_SCOPE("LayerStack OnImGuiRender");
 						for (Layer* layer : m_LayerStack)
 							layer->OnImGuiRender();
-						m_DebugUILayer->End();
+						m_ImGuiLayer->End();
 				}
 			}
 

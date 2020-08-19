@@ -7,11 +7,11 @@
 
 namespace Fandango
 {
-	class FNDG_API DebugUILayer : public Layer
+	class FNDG_API ImGuiLayer : public Layer
 	{
 	public:
-		DebugUILayer();
-		~DebugUILayer();
+		ImGuiLayer();
+		~ImGuiLayer();
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;

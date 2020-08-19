@@ -5,7 +5,7 @@
 #include "Fandango/Core/CameraController.h"
 #include "Fandango/Core/Layer.h"
 #include "Fandango/Core/Log.h"
-#include "Fandango/DebugUI/DebugUILayer.h"
+#include "Fandango/ImGui/ImGuiLayer.h"
 #include "Fandango/Core/KeyCodes.h"
 #include "Fandango/Core/Input.h"
 #include "Fandango/Core/ParticleSystem.h"
