@@ -22,6 +22,7 @@ namespace Fandango
 	{
 	public:
 		static Ref<FrameBuffer> Create(const FrameBufferSpec& spec);
+		virtual ~FrameBuffer() = default;
 
 		virtual void Bind() = 0;
 		virtual void Unbind() = 0;
