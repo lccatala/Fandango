@@ -161,9 +161,13 @@ namespace Fandango
 		SetupDockspace();
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
+
 		ImGui::Begin("Viewport");
+
 		m_ViewportFocused = ImGui::IsWindowFocused();
-		FNDG_WARN("focused: {0}: ", m_ViewportFocused);
+		m_ViewportHovered = ImGui::IsWindowHovered();
+		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+
 		ImVec2 currentViewportPanelSize = ImGui::GetContentRegionAvail();
 		if (m_ViewportSize != *(glm::vec2*) & currentViewportPanelSize)
 		{

@@ -68,6 +68,16 @@ namespace Fandango
 		ImGui::DestroyContext();
 	}
 
+	void ImGuiLayer::OnEvent(Event& e)
+	{
+		if (m_BlockEvents)
+		{
+			ImGuiIO& io = ImGui::GetIO();
+			e.IsHandled |= e.IsInCategory(EventCategoryMouse) & io.WantCaptureMouse;
+			e.IsHandled |= e.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;
+		}
+	}
+
 	void ImGuiLayer::Begin()
 	{
 		FNDG_PROFILE_FUNCTION();
@@ -95,10 +105,5 @@ namespace Fandango
 			ImGui::RenderPlatformWindowsDefault();
 			glfwMakeContextCurrent(backup_current_context);
 		}
-	}
-
-	void ImGuiLayer::OnImGuiRender()
-	{
-		
 	}
 }

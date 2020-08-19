@@ -105,7 +105,7 @@ namespace Fandango {
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
-			if (e.IsHandled())
+			if (e.IsHandled)
 				break;
 		}
 	}

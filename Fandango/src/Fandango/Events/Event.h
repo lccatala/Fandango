@@ -56,10 +56,8 @@ namespace Fandango
 			return GetCategoryFlags() & category;
 		}
 
-		inline bool IsHandled() const { return m_Handled; }
-	protected:
 		// If an event is handled, it won't be propagated to the next layer
-		bool m_Handled = false;
+		bool IsHandled = false;
 	};
 
 	class EventDispatcher
@@ -75,7 +73,7 @@ namespace Fandango
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.IsHandled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
