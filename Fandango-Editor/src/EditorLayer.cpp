@@ -18,12 +18,19 @@ namespace Fandango
 	{
 		FNDG_PROFILE_FUNCTION();
 
-		m_CheckerboardTexture = Fandango::Texture2D::Create("assets/textures/Checkerboard.png");
-		m_SpriteSheet = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
-		Fandango::FrameBufferSpec fbSpec;
+		FrameBufferSpec fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
-		m_FrameBuffer = Fandango::FrameBuffer::Create(fbSpec);
+		m_FrameBuffer = FrameBuffer::Create(fbSpec);
+
+		m_ActiveScene = CreateRef<Scene>();
+
+		// Temporal
+		m_SpriteSheet = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
+		auto square = m_ActiveScene->CreateEntity("Green Square");
+		square.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
+		m_SquareEntity = square;
+		FNDG_TRACE("{0}", m_SquareEntity);
 	}
 
 	void EditorLayer::OnDetach()
@@ -31,52 +38,26 @@ namespace Fandango
 		FNDG_PROFILE_FUNCTION();
 	}
 
-	void EditorLayer::OnUpdate(Fandango::TimeStep ts)
+	void EditorLayer::OnUpdate(TimeStep ts)
 	{
 		FNDG_PROFILE_FUNCTION();
 
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
 
-		Fandango::Renderer2D::ResetStats();
+		Renderer2D::ResetStats();
 
 		m_FrameBuffer->Bind();
 
-		Fandango::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-		Fandango::RenderCommand::Clear();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-		Fandango::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		for (float y = -5.0f; y < 5.0f; y += 0.5f)
-		{
-			for (float x = -5.0f; x < 5.0f; x += 0.5f)
-			{
-				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-			}
-		}
-		Fandango::Renderer2D::DrawQuadTexture({ 0.0f, 0.0f, 0.0f }, 0.0f, 1.0f, { 0.45f, 0.45f }, m_SpriteSheet);
-		Fandango::Renderer2D::EndScene();
+		// Update scene
+		Renderer2D::BeginScene(m_CameraController.GetCamera());
+		m_ActiveScene->OnUpdate(ts);
+		Renderer2D::EndScene();
 
 		m_FrameBuffer->Unbind();
-
-#ifdef ENABLE_PARTICLES
-		if (Fandango::Input::IsMouseButtonPressed(FNDG_MOUSE_BUTTON_LEFT))
-		{
-			auto [x, y] = Fandango::Input::GetMousePosition();
-			auto width = Fandango::Application::Get().GetWindow().GetWidth();
-			auto height = Fandango::Application::Get().GetWindow().GetHeight();
-
-			auto bounds = m_CameraController.GetCameraBounds();
-			auto pos = m_CameraController.GetCamera().GetPosition();
-			x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
-			y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
-			m_ParticleProps.Position = { x + pos.x, y + pos.y };
-			for (int i = 0; i < 10; i++)
-				m_ParticleSystem.Emit(m_ParticleProps);
-		}
-		m_ParticleSystem.OnUpdate(ts);
-		m_ParticleSystem.OnRender(m_CameraController.GetCamera());
-#endif
-
 	}
 
 	void EditorLayer::SetupDockspace()
@@ -129,7 +110,7 @@ namespace Fandango
 				if (ImGui::MenuItem("Quit", NULL, false))
 				{
 					showDockspace = false;
-					Fandango::Application::Get().Close();
+					Application::Get().Close();
 				}
 				ImGui::EndMenu();
 			}
@@ -162,6 +143,22 @@ namespace Fandango
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
 
+		ImGui::Begin("Settings");
+
+		FNDG_TRACE("square entity {0}", m_SquareEntity);
+		if (m_SquareEntity)
+		{
+			ImGui::Separator();
+			auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+			ImGui::Text("%s", tag.c_str());
+
+			auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+			ImGui::ColorEdit4("Square color", glm::value_ptr(squareColor));
+			ImGui::Separator();
+		}
+
+		ImGui::End();
+
 		ImGui::Begin("Viewport");
 
 		m_ViewportFocused = ImGui::IsWindowFocused();
@@ -183,7 +180,7 @@ namespace Fandango
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Fandango::Event& e)
+	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
 	}

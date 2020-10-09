@@ -20,3 +20,7 @@
 #include "Fandango/Renderer/SubTexture2D.h"
 #include "Fandango/Renderer/Texture.h"
 #include "Fandango/Renderer/VertexArray.h"
+
+#include "Fandango/Scene/Components.h"
+#include "Fandango/Scene/Entity.h"
+#include "Fandango/Scene/Scene.h"

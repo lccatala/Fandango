@@ -301,6 +301,35 @@ namespace Fandango
 		DrawQuadTexture({ position.x, position.y, 0.0f }, rotation, tilingFactor, size, texture);
 	}
 
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color)
+	{
+		FNDG_PROFILE_FUNCTION();
+
+		// If we reach index limit, flush and restart
+		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
+			StartNewBatch();
+
+		const float textureIndex = 0.0f; // White texture
+		const float tilingFactor = 1.0f;
+
+		glm::vec2 texCoords[4] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+
+		for (int i = 0; i < 4; i++)
+		{
+			s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[i];
+			s_Data.QuadVertexBufferPtr->Color = color;
+			s_Data.QuadVertexBufferPtr->TexCoord = texCoords[i];
+			s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
+			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
+			s_Data.QuadVertexBufferPtr++;
+		}
+
+		s_Data.QuadIndexCount += 6;
+
+		s_Data.Stats.QuadCount++;
+	}
+
+
 	void Renderer2D::ResetStats()
 	{
 		memset(&s_Data.Stats, 0, sizeof(RendererStats));

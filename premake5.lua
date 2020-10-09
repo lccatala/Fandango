@@ -18,10 +18,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- External libraries
 IncludeDir = {}
-IncludeDir["GLFW"]  = "Fandango/vendor/GLFW/include"
+IncludeDir["entt"] = "Fandango/vendor/entt/include"
 IncludeDir["Glad"]  = "Fandango/vendor/Glad/include"
-IncludeDir["ImGui"] = "Fandango/vendor/imgui"
+IncludeDir["GLFW"]  = "Fandango/vendor/GLFW/include"
 IncludeDir["glm"] = "Fandango/vendor/glm"
+IncludeDir["ImGui"] = "Fandango/vendor/imgui"
 IncludeDir["stb_image"] = "Fandango/vendor/stb_image"
 
 group "Dependencies"
@@ -63,10 +64,11 @@ project "Fandango"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.entt}",
 		"%{IncludeDir.stb_image}"
 	}
 
@@ -133,7 +135,8 @@ project "Sandbox"
 		"Fandango/vendor/spdlog/include",
 		"Fandango/src",
 		"Fandango/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 
@@ -186,7 +189,8 @@ project "Fandango-Editor"
 		"Fandango/vendor/spdlog/include",
 		"Fandango/src",
 		"Fandango/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 

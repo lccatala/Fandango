@@ -27,14 +27,12 @@ namespace Fandango
 		ParticleSystem m_ParticleSystem;
 		ParticleProps m_ParticleProps;
 
+		Ref<Scene> m_ActiveScene;
+
 		// Temporary
-		Ref<Fandango::VertexArray> m_SquareVA;
-		Ref<Fandango::Shader> m_FlatColorShader;
-
-		Ref<Fandango::Texture2D> m_SpriteSheet, m_CheckerboardTexture;
-		Ref<Fandango::SubTexture2D> m_BarrelSubTexture, m_StairsSubTexture, m_TreeSubTexture;
-		Ref<Fandango::FrameBuffer> m_FrameBuffer;
-
+		Ref<FrameBuffer> m_FrameBuffer;
 		glm::vec4 m_SquareColor = { 0.2, 0.3f, 0.8f, 1.0f };
+		Entity m_SquareEntity;
+		Ref<Texture2D> m_SpriteSheet;
 	};
 }

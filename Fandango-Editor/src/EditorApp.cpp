@@ -27,7 +27,7 @@ namespace Fandango
 	};
 
 
-	Application* Fandango::CreateApplication()
+	Application* CreateApplication()
 	{
 		return new Editor();
 	}

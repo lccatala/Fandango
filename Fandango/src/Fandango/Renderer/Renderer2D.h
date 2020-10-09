@@ -3,6 +3,7 @@
 #include "Camera.h"
 #include "Texture.h"
 #include "SubTexture2D.h"
+#include "Fandango/Scene/Components.h"
 
 namespace Fandango
 {
@@ -30,6 +31,8 @@ namespace Fandango
 			float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture);
 		static void DrawQuadTexture(const glm::vec3& position, float rotation,
 			float tilingFactor, const glm::vec2& size, const Ref<Texture2D>& texture);
+
+		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color);
 
 		struct RendererStats
 		{
