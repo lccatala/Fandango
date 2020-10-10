@@ -2,6 +2,7 @@
 
 #include "RenderCommand.h"
 #include "Camera.h"
+#include "OrthographicCamera.h"
 #include "Shader.h"
 
 namespace Fandango

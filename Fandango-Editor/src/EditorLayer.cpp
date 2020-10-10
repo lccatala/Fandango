@@ -1,12 +1,9 @@
 #include "EditorLayer.h"
-#include <Fandango/Core/EntryPoint.h>
 
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
-#include "Fandango/Platform/OpenGL/OpenGLShader.h"
 
 namespace Fandango
 {
@@ -24,13 +21,17 @@ namespace Fandango
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
+		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
+		m_CameraEntity.AddComponent<CameraComponent>();
 
 		// Temporal
+		m_AnotherCamera = m_ActiveScene->CreateEntity("Another Camera Entity");
+		auto&& cc = m_AnotherCamera.AddComponent<CameraComponent>();
+		cc.Primary = false;
 		m_SpriteSheet = Fandango::Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
 		auto square = m_ActiveScene->CreateEntity("Green Square");
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
 		m_SquareEntity = square;
-		FNDG_TRACE("{0}", m_SquareEntity);
 	}
 
 	void EditorLayer::OnDetach()
@@ -42,6 +43,16 @@ namespace Fandango
 	{
 		FNDG_PROFILE_FUNCTION();
 
+		if (FrameBufferSpec spec = m_FrameBuffer->GetSpec();
+			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
+			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+		{
+			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_CameraController.Resize(m_ViewportSize.x, m_ViewportSize.y);
+
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		}
+
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
 
@@ -52,10 +63,7 @@ namespace Fandango
 		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
 
-		// Update scene
-		Renderer2D::BeginScene(m_CameraController.GetCamera());
 		m_ActiveScene->OnUpdate(ts);
-		Renderer2D::EndScene();
 
 		m_FrameBuffer->Unbind();
 	}
@@ -145,7 +153,6 @@ namespace Fandango
 
 		ImGui::Begin("Settings");
 
-		FNDG_TRACE("square entity {0}", m_SquareEntity);
 		if (m_SquareEntity)
 		{
 			ImGui::Separator();
@@ -157,6 +164,16 @@ namespace Fandango
 			ImGui::Separator();
 		}
 
+		// Temporary
+		ImGui::DragFloat3("Camera Transform", 
+			glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
+
+		if (ImGui::Checkbox("Main Camera", &m_PrimaryCamera))
+		{
+			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
+			m_AnotherCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
+		}
+
 		ImGui::End();
 
 		ImGui::Begin("Viewport");
@@ -166,12 +183,8 @@ namespace Fandango
 		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 
 		ImVec2 currentViewportPanelSize = ImGui::GetContentRegionAvail();
-		if (m_ViewportSize != *(glm::vec2*) & currentViewportPanelSize)
-		{
-			m_ViewportSize = { currentViewportPanelSize.x, currentViewportPanelSize.y };
-			m_FrameBuffer->Resize(m_ViewportSize.x, m_ViewportSize.y);
-			m_CameraController.Resize(m_ViewportSize.x, m_ViewportSize.y);
-		}
+		m_ViewportSize = { currentViewportPanelSize.x, currentViewportPanelSize.y };
+
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 		ImGui::End();

@@ -24,13 +24,15 @@ namespace Fandango
 		bool m_ViewportHovered = false;
 
 		OrthographicCameraController m_CameraController;
-		ParticleSystem m_ParticleSystem;
-		ParticleProps m_ParticleProps;
 
+		Ref<FrameBuffer> m_FrameBuffer;
 		Ref<Scene> m_ActiveScene;
+		Entity m_CameraEntity;
+
 
 		// Temporary
-		Ref<FrameBuffer> m_FrameBuffer;
+		Entity m_AnotherCamera;
+		bool m_PrimaryCamera = true;
 		glm::vec4 m_SquareColor = { 0.2, 0.3f, 0.8f, 1.0f };
 		Entity m_SquareEntity;
 		Ref<Texture2D> m_SpriteSheet;

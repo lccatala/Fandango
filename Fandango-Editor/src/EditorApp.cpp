@@ -1,4 +1,5 @@
 #include <Fandango.h>
+#include <Fandango/Core/EntryPoint.h>
 
 #include "Fandango/Platform/OpenGL/OpenGLShader.h"
 

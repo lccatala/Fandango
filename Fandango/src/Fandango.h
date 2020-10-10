@@ -8,7 +8,6 @@
 #include "Fandango/ImGui/ImGuiLayer.h"
 #include "Fandango/Core/KeyCodes.h"
 #include "Fandango/Core/Input.h"
-#include "Fandango/Core/ParticleSystem.h"
 #include "Fandango/Core/TimeStep.h"
 
 #include "Fandango/Renderer/Buffer.h"
