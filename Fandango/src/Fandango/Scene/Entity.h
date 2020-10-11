@@ -39,7 +39,6 @@ namespace Fandango
 			return m_Scene->m_Registry.has<T>(m_EntityID);
 		}
 
-		operator bool() const { return m_EntityID != entt::null; }
 
 		bool operator==(const Entity& other) const
 		{
@@ -50,6 +49,9 @@ namespace Fandango
 		{
 			return !(*this == other);
 		}
+
+		operator bool() const { return m_EntityID != entt::null; }
+		operator uint32_t() const {return (uint32_t)m_EntityID;}
 
 	private:
 		entt::entity m_EntityID{ entt::null };

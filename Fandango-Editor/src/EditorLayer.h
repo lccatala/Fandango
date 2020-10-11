@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Fandango.h>
+#include "Panels/SceneHierarchyPanel.h"
 
 namespace Fandango
 {
@@ -29,12 +30,14 @@ namespace Fandango
 		Ref<Scene> m_ActiveScene;
 		Entity m_CameraEntity;
 
+		// Panels
+		SceneHierarchyPanel m_SceneHierarchyPanel;
+
 
 		// Temporary
 		Entity m_AnotherCamera;
 		bool m_PrimaryCamera = true;
 		glm::vec4 m_SquareColor = { 0.2, 0.3f, 0.8f, 1.0f };
 		Entity m_SquareEntity;
-		Ref<Texture2D> m_SpriteSheet;
 	};
 }
