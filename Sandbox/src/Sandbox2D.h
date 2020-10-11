@@ -16,8 +16,6 @@ public:
 	void OnEvent(Fandango::Event& e) override;
 private:
 	Fandango::OrthographicCameraController m_CameraController;
-	Fandango::ParticleSystem m_ParticleSystem;
-	Fandango::ParticleProps m_ParticleProps;
 
 	// Temporary
 	Fandango::Ref<Fandango::VertexArray> m_SquareVA;

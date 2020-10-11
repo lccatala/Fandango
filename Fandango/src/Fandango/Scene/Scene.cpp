@@ -30,6 +30,22 @@ namespace Fandango
 
 	void Scene::OnUpdate(TimeStep ts)
 	{
+		// Update scripts
+		{
+			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+			{
+				if (!nsc.Instance)
+				{
+					// TODO: move to Scene::OnScenePlay
+					nsc.Instance = nsc.InstantiateScript();
+					nsc.Instance->m_Entity = Entity{ entity, this };
+					nsc.Instance->OnCreate();
+				}
+
+				nsc.Instance->OnUpdate(ts);
+			});
+		}
+
 		// Find primary camera
 		Camera* primaryCamera = nullptr;
 		glm::mat4* cameraTransform = nullptr;
@@ -37,7 +53,7 @@ namespace Fandango
 			auto view = m_Registry.view<CameraComponent, TransformComponent>();
 			for (auto entity : view)
 			{
-				auto& [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
+				auto [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
 
 				if (camera.Primary)
 				{
@@ -55,7 +71,7 @@ namespace Fandango
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 			for (auto entity : group) 
 			{
-				auto& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
 				Renderer2D::DrawQuad(transform, sprite.Color);
 			}
 			Renderer2D::EndScene();

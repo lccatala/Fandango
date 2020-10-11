@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include "Fandango/Scene/SceneCamera.h"
+#include "ScriptableEntity.h"
 
 namespace Fandango
 {
@@ -17,6 +18,23 @@ namespace Fandango
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
+	};
+
+	struct NativeScriptComponent
+	{
+		ScriptableEntity* Instance = nullptr;
+
+		
+
+		ScriptableEntity* (*InstantiateScript)();
+		void (*DestroyInstanceScript)(NativeScriptComponent*);
+
+		template<typename T>
+		void Bind()
+		{
+			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
+			DestroyInstanceScript = [](NativeScriptComponent* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
+		}
 	};
 
 	struct SpriteRendererComponent

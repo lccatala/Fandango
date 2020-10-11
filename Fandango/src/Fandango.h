@@ -22,4 +22,5 @@
 
 #include "Fandango/Scene/Components.h"
 #include "Fandango/Scene/Entity.h"
+#include "Fandango/Scene/ScriptableEntity.h"
 #include "Fandango/Scene/Scene.h"
