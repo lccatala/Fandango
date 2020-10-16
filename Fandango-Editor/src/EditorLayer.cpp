@@ -63,9 +63,13 @@ namespace Fandango
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 
-		auto square = m_ActiveScene->CreateEntity("Green Square");
-		square.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
-		m_SquareEntity = square;
+		auto greenSquare = m_ActiveScene->CreateEntity("Green Square");
+		greenSquare.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
+		m_SquareEntity = greenSquare;
+
+		auto redSquare = m_ActiveScene->CreateEntity("Red Square");
+		redSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f });
+		m_RedSquareEntity = redSquare;
 	}
 
 	void EditorLayer::OnDetach()

@@ -48,12 +48,91 @@ namespace Fandango
 				tag = std::string(buffer);
 			}
 		}
+
 		if (entity.HasComponent<TransformComponent>())
 		{
 			if (ImGui::TreeNodeEx((void*)typeid(TransformComponent).hash_code(), ImGuiTreeNodeFlags_DefaultOpen, "Transform"))
 			{
 				auto& transform = entity.GetComponent<TransformComponent>().Transform;
 				ImGui::DragFloat3("Position", glm::value_ptr(transform[3]), 0.5f);
+
+				ImGui::TreePop();
+			}
+		}
+
+		if (entity.HasComponent<CameraComponent>())
+		{
+			if (ImGui::TreeNodeEx((void*)typeid(CameraComponent).hash_code(), ImGuiTreeNodeFlags_DefaultOpen, "Camera"))
+			{
+				auto& cameraComponent = entity.GetComponent<CameraComponent>();
+				auto& camera = cameraComponent.Camera;
+
+				ImGui::Checkbox("Primary camera", &cameraComponent.Primary);
+
+				auto projectionType = camera.GetProjectionType();
+				const char* projectionTypeStrings[] = { "Perspective", "Orthographic" };
+				const char* projectionTypeString = projectionTypeStrings[(int)projectionType];
+				if (ImGui::BeginCombo("Projection", projectionTypeString))
+				{
+					for (int i = 0; i < 2; i++)
+					{
+						bool isSelected = projectionTypeString == projectionTypeStrings[i];
+						if (ImGui::Selectable(projectionTypeStrings[i], isSelected))
+						{
+							projectionTypeString = projectionTypeStrings[i];
+							camera.SetProjectionType((SceneCamera::ProjectionType)i);
+						}
+						if (isSelected)
+						{
+							ImGui::SetItemDefaultFocus();
+						}
+					}
+
+					ImGui::EndCombo();
+				}
+				if (camera.GetProjectionType() == SceneCamera::ProjectionType::Perspective)
+				{
+					float fov = glm::degrees(camera.GetPerspectiveFOV());
+					if (ImGui::DragFloat("FOV", &fov))
+					{
+						camera.SetPerspectiveFOV(glm::radians(fov));
+					}
+
+					float nearClip = camera.GetPerspectiveNearClip();
+					if (ImGui::DragFloat("Near Clip", &nearClip))
+					{
+						camera.SetPerspectiveNearClip(nearClip);
+					}
+
+					float farClip = camera.GetPerspectiveFarClip();
+					if (ImGui::DragFloat("Far Clip", &farClip))
+					{
+						camera.SetPerspectiveFarClip(farClip);
+					}
+				}
+
+				if (camera.GetProjectionType() == SceneCamera::ProjectionType::Orthographic)
+				{
+					float orthographicSize = camera.GetOrthographicSize();
+					if (ImGui::DragFloat("Size", &orthographicSize))
+					{
+						camera.SetOrthographicSize(orthographicSize);
+					}
+
+					float nearClip = camera.GetOrthographicNearClip();
+					if (ImGui::DragFloat("Near Clip", &nearClip))
+					{
+						camera.SetOrthographicNearClip(nearClip);
+					}
+
+					float farClip = camera.GetOrthographicFarClip();
+					if (ImGui::DragFloat("Far Clip", &farClip))
+					{
+						camera.SetOrthographicFarClip(farClip);
+					}
+
+					ImGui::Checkbox("Fixed aspect ratio", &cameraComponent.FixedAspectRatio);
+				}
 
 				ImGui::TreePop();
 			}
