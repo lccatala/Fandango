@@ -35,7 +35,6 @@ namespace Fandango
 
 
 		// Temporary
-		Entity m_AnotherCamera;
 		bool m_PrimaryCamera = true;
 		glm::vec4 m_SquareColor = { 0.2, 0.3f, 0.8f, 1.0f };
 		Entity m_SquareEntity, m_RedSquareEntity;

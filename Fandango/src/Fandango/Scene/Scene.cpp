@@ -48,7 +48,7 @@ namespace Fandango
 
 		// Find primary camera
 		Camera* primaryCamera = nullptr;
-		glm::mat4* cameraTransform = nullptr;
+		glm::mat4 cameraTransform;
 		{
 			auto view = m_Registry.view<CameraComponent, TransformComponent>();
 			for (auto entity : view)
@@ -58,7 +58,7 @@ namespace Fandango
 				if (camera.Primary)
 				{
 					primaryCamera = &camera.Camera;
-					cameraTransform = &transform.Transform;
+					cameraTransform = transform.GetTransform();
 					break;
 				}
 			}
@@ -67,12 +67,12 @@ namespace Fandango
 		if (primaryCamera)
 		{
 			// Render 2D
-			Renderer2D::BeginScene(primaryCamera->GetProjection(), *cameraTransform);
+			Renderer2D::BeginScene(primaryCamera->GetProjection(), cameraTransform);
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 			for (auto entity : group) 
 			{
 				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
-				Renderer2D::DrawQuad(transform, sprite.Color);
+				Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
 			}
 			Renderer2D::EndScene();
 		}

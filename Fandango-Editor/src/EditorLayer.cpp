@@ -24,41 +24,35 @@ namespace Fandango
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
 		m_CameraEntity.AddComponent<CameraComponent>();
 
-		// Temporal
-		m_AnotherCamera = m_ActiveScene->CreateEntity("Another Camera Entity");
-		auto&& cc = m_AnotherCamera.AddComponent<CameraComponent>();
-		cc.Primary = false;
-
 		class CameraController : public ScriptableEntity
 		{
 		public:
-			void OnCreate()
+			void OnCreate() override
 			{
 				
 			}
 
-			void OnDestroy()
+			void OnDestroy() override
 			{
 
 			}
 
-			void OnUpdate(TimeStep ts)
+			void OnUpdate(TimeStep ts) override
 			{
-				auto& transform = GetComponent<TransformComponent>().Transform;
+				auto& translation = GetComponent<TransformComponent>().Translation;
 				float speed = 5.0f;
 
 				if (Input::IsKeyPressed(FNDG_KEY_A))
-					transform[3][0] -= speed * ts; // Move left (decrease x)
+					translation.x -= speed * ts;
 				if (Input::IsKeyPressed(FNDG_KEY_D))
-					transform[3][0] += speed * ts;
+					translation.x += speed * ts;
 				if (Input::IsKeyPressed(FNDG_KEY_W))
-					transform[3][1] += speed * ts;
+					translation.y += speed * ts;
 				if (Input::IsKeyPressed(FNDG_KEY_S))
-					transform[3][1] -= speed * ts;
+					translation.y -= speed * ts;
 			}
 		};
 
-		m_AnotherCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
@@ -190,31 +184,6 @@ namespace Fandango
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
 
 		m_SceneHierarchyPanel.OnImGuiRender();
-
-		ImGui::Begin("Settings");
-
-		if (m_SquareEntity)
-		{
-			ImGui::Separator();
-			auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
-			ImGui::Text("%s", tag.c_str());
-
-			auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-			ImGui::ColorEdit4("Square color", glm::value_ptr(squareColor));
-			ImGui::Separator();
-		}
-
-		// Temporary
-		ImGui::DragFloat3("Camera Transform", 
-			glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
-
-		if (ImGui::Checkbox("Main Camera", &m_PrimaryCamera))
-		{
-			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
-			m_AnotherCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
-		}
-
-		ImGui::End();
 
 		ImGui::Begin("Viewport");
 
