@@ -13,7 +13,7 @@ namespace Fandango
 		uint32_t m_Width;
 		uint32_t m_Height;
 
-		WindowProperties(const std::string& title = "Fandango App", uint32_t width = 1280, uint32_t height = 720)
+		WindowProperties(const std::string& title = "Fandango Engine", uint32_t width = 1600, uint32_t height = 900)
 			: m_Title(title), m_Width(width), m_Height(height)
 		{
 		}

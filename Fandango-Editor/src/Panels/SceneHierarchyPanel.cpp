@@ -21,8 +21,9 @@ namespace Fandango
 	{
 		auto& tag = entity.GetComponent<TagComponent>().Tag;
 
-		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow 
+		ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow
 			| (m_SelectionContext == entity ? ImGuiTreeNodeFlags_Selected : 0);
+		
 		bool nodeExpanded = ImGui::TreeNodeEx((void*)(uint64_t)(uint32_t)entity, flags, tag.c_str());
 
 		if (ImGui::IsItemClicked())
@@ -56,7 +57,10 @@ namespace Fandango
 	// TODO: each call to this function needs a different label value, otherwise all the values will be tied and modified at the same time
 	static void DrawVec3Controller(const std::string& label, glm::vec3& values, float resetValue = 0.0f, float columnWidth = 100.0f)
 	{
-		ImGui::PushID(label.c_str());
+		ImGuiIO& io = ImGui::GetIO();
+		auto boldFont = io.Fonts->Fonts[0];
+
+		ImGui::PushID(label.c_str()); // Make every vec3 controller independent
 
 		// Divide panel in 2 columns to put labels on the left
 		ImGui::Columns(2);
@@ -73,8 +77,11 @@ namespace Fandango
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); // TODO maybe 0.25f for blue??
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
+		ImGui::PushFont(boldFont);
 		if (ImGui::Button("X", buttonSize))
 			values.x = resetValue;
+
+		ImGui::PopFont();
 		ImGui::PopStyleColor(3);
 
 		ImGui::SameLine();
@@ -85,8 +92,10 @@ namespace Fandango
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f });
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
+		ImGui::PushFont(boldFont);
 		if (ImGui::Button("Y", buttonSize))
 			values.y = resetValue;
+		ImGui::PopFont();
 		ImGui::PopStyleColor(3);
 
 		ImGui::SameLine();
@@ -97,8 +106,10 @@ namespace Fandango
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.35f, 0.9f, 1.0f }); 
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.25f, 0.8f, 1.0f });
+		ImGui::PushFont(boldFont);
 		if (ImGui::Button("Z", buttonSize))
 			values.z = resetValue;
+		ImGui::PopFont();
 		ImGui::PopStyleColor(3);
 
 		ImGui::SameLine();
@@ -110,50 +121,97 @@ namespace Fandango
 		ImGui::PopID();
 	}
 
-	void SceneHierarchyPanel::DrawProperties(Entity entity)
+	template<typename T, typename UIFunction>
+	static void DrawComponent(const std::string& name, Entity entity, UIFunction uiFunction)
 	{
-		if (entity.HasComponent<TagComponent>())
+		if (entity.HasComponent<T>())
 		{
-			auto& tag = entity.GetComponent<TagComponent>().Tag;
-			char buffer[256];
-			memset(buffer, 0, sizeof(buffer));
-			strcpy_s(buffer, sizeof(buffer), tag.c_str()); // Make buffer null-terminated
-			if (ImGui::InputText("Tag", buffer, sizeof(buffer)))
+			auto& component = entity.GetComponent<T>();
+			// TODO: calculate content region available here and add flag ImGuiTreeNodeFlags_SpanAvailWidth (not in this ImGui version) to make the "+" button appear at the end of it's line.
+
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2{ 4, 4 });
+			float lineHeight = GImGui->Font->FontSize + GImGui->Style.FramePadding.y * 2.0f;
+
+			constexpr ImGuiTreeNodeFlags treeNodeFlags = ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_AllowItemOverlap | ImGuiTreeNodeFlags_Framed;
+
+			ImGui::Separator();
+			bool open = ImGui::TreeNodeEx((void*)typeid(T).hash_code(), treeNodeFlags, name.c_str());
+			ImGui::PopStyleVar();
+			ImGui::SameLine(ImGui::GetContentRegionAvail().x - lineHeight * 0.5f); // This moves everything to the left if a scroll bar appears
+			if (ImGui::Button("+", ImVec2{ lineHeight, lineHeight }))
+				ImGui::OpenPopup("ComponentSettings");
+
+			bool shouldRemoveComponent = false;
+			if (ImGui::BeginPopup("ComponentSettings"))
 			{
-				tag = std::string(buffer);
+				if (ImGui::MenuItem("Remove Component"))
+					shouldRemoveComponent = true;
+				ImGui::EndPopup();
 			}
-		}
-
-		constexpr ImGuiTreeNodeFlags treeNodeFlags = ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_AllowItemOverlap;
-
-		if (entity.HasComponent<TransformComponent>())
-		{
-			bool open = ImGui::TreeNodeEx((void*)typeid(TransformComponent).hash_code(), treeNodeFlags, "Transform");
-
 			if (open)
 			{
-				auto& transformComponent = entity.GetComponent<TransformComponent>();
-
-				DrawVec3Controller("Translation", transformComponent.Translation);
-
-				glm::vec3 rotationDegrees = glm::degrees(transformComponent.Rotation);
-				DrawVec3Controller("Rotation", rotationDegrees);
-				transformComponent.Rotation = glm::radians(rotationDegrees);
-
-				DrawVec3Controller("Scale", transformComponent.Scale);
-
+				uiFunction(component);
 				ImGui::TreePop();
 			}
+
+			if (shouldRemoveComponent)
+				entity.RemoveComponent<T>();
+		}
+	}
+
+	void SceneHierarchyPanel::DrawProperties(Entity entity)
+	{
+		auto& tag = entity.GetComponent<TagComponent>().Tag;
+		char buffer[256];
+		memset(buffer, 0, sizeof(buffer));
+		strcpy_s(buffer, sizeof(buffer), tag.c_str()); // Make buffer null-terminated
+		if (ImGui::InputText("##Tag", buffer, sizeof(buffer)))
+		{
+			tag = std::string(buffer);
 		}
 
-		if (entity.HasComponent<CameraComponent>())
-		{
-			if (ImGui::TreeNodeEx((void*)typeid(CameraComponent).hash_code(), treeNodeFlags, "Camera"))
-			{
-				auto& cameraComponent = entity.GetComponent<CameraComponent>();
-				auto& camera = cameraComponent.Camera;
+		ImGui::SameLine();
+		ImGui::PushItemWidth(-1);
 
-				ImGui::Checkbox("Primary camera", &cameraComponent.Primary);
+		if (ImGui::Button("Add component"))
+		{
+			ImGui::OpenPopup("AddComponent");
+		}
+		if (ImGui::BeginPopup("AddComponent"))
+		{
+			if (ImGui::MenuItem("Camera"))
+			{
+				m_SelectionContext.AddComponent<CameraComponent>();
+				ImGui::CloseCurrentPopup();
+			}
+
+			if (ImGui::MenuItem("Sprite Renderer"))
+			{
+				m_SelectionContext.AddComponent<SpriteRendererComponent>();
+				ImGui::CloseCurrentPopup();
+			}
+
+			ImGui::EndPopup();
+		}
+
+		ImGui::PopItemWidth();
+
+		DrawComponent<TransformComponent>("Transform", entity, [](auto& component)
+			{
+				DrawVec3Controller("Translation", component.Translation);
+
+				glm::vec3 rotationDegrees = glm::degrees(component.Rotation);
+				DrawVec3Controller("Rotation", rotationDegrees);
+				component.Rotation = glm::radians(rotationDegrees);
+
+				DrawVec3Controller("Scale", component.Scale);
+			});
+
+		DrawComponent<CameraComponent>("Camera", entity, [](auto& component)
+			{
+				auto& camera = component.Camera;
+
+				ImGui::Checkbox("Primary camera", &component.Primary);
 
 				auto projectionType = camera.GetProjectionType();
 				const char* projectionTypeStrings[] = { "Perspective", "Orthographic" };
@@ -217,40 +275,14 @@ namespace Fandango
 						camera.SetOrthographicFarClip(farClip);
 					}
 
-					ImGui::Checkbox("Fixed aspect ratio", &cameraComponent.FixedAspectRatio);
+					ImGui::Checkbox("Fixed aspect ratio", &component.FixedAspectRatio);
 				}
+			});
 
-				ImGui::TreePop();
-			}
-		}
-
-		if (entity.HasComponent<SpriteRendererComponent>())
-		{
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2{ 4, 4 });
-			bool open = ImGui::TreeNodeEx((void*)typeid(SpriteRendererComponent).hash_code(), treeNodeFlags, "Sprite Renderer");
-			ImGui::SameLine(ImGui::GetWindowWidth() - 25.0f);
-			if (ImGui::Button("+", ImVec2{20, 20}))
-				ImGui::OpenPopup("ComponentSettings");
-			ImGui::PopStyleVar();
-
-			bool shouldRemoveComponent = false;
-			if (ImGui::BeginPopup("ComponentSettings"))
+		DrawComponent<SpriteRendererComponent>("Sprite Renderer", entity, [](auto& component) 
 			{
-				if (ImGui::MenuItem("Remove Component"))
-					shouldRemoveComponent = true;
-				ImGui::EndPopup();
-			}
-			if (open)
-			{
-				auto& srComponent = entity.GetComponent<SpriteRendererComponent>();
-				auto& color = srComponent.Color;
-				ImGui::ColorEdit4("Color", glm::value_ptr(color));
-				ImGui::TreePop();
-			}
-
-			if (shouldRemoveComponent)
-				entity.RemoveComponent<SpriteRendererComponent>();
-		}
+				ImGui::ColorEdit4("Color", glm::value_ptr(component.Color));
+			});
 	}
 
 	void SceneHierarchyPanel::OnImGuiRender()
@@ -285,26 +317,7 @@ namespace Fandango
 		{
 			DrawProperties(m_SelectionContext);
 
-			if (ImGui::Button("Add component"))
-			{
-				ImGui::OpenPopup("AddComponent");
-			}
-			if (ImGui::BeginPopup("AddComponent"))
-			{
-				if (ImGui::MenuItem("Camera"))
-				{
-					m_SelectionContext.AddComponent<CameraComponent>();
-					ImGui::CloseCurrentPopup();
-				}
-
-				if (ImGui::MenuItem("Sprite Renderer"))
-				{
-					m_SelectionContext.AddComponent<SpriteRendererComponent>();
-					ImGui::CloseCurrentPopup();
-				}
-
-				ImGui::EndPopup();
-			}
+			
 		}
 		ImGui::End();
 

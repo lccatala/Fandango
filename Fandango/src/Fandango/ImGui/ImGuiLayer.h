@@ -20,6 +20,8 @@ namespace Fandango
 		void Begin();
 		void End();
 		void SetBlockEvents(bool block) { m_BlockEvents = block; }
+
+		void SetDarkThemeColors();
 	private:
 		float m_Time = 0.0f;
 		bool m_BlockEvents = true;
