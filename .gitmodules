@@ -11,3 +11,6 @@
 [submodule "Fandango/vendor/glm"]
 	path = Fandango/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "Fandango/vendor/yaml-cpp"]
+	path = Fandango/vendor/yaml-cpp
+	url = https://github.com/lccatala/yaml-cpp

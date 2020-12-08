@@ -25,8 +25,6 @@ namespace Fandango
 	{
 		ScriptableEntity* Instance = nullptr;
 
-		
-
 		ScriptableEntity* (*InstantiateScript)();
 		void (*DestroyInstanceScript)(NativeScriptComponent*);
 

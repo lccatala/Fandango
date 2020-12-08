@@ -24,13 +24,7 @@ IncludeDir["GLFW"]  = "Fandango/vendor/GLFW/include"
 IncludeDir["glm"] = "Fandango/vendor/glm"
 IncludeDir["ImGui"] = "Fandango/vendor/imgui"
 IncludeDir["stb_image"] = "Fandango/vendor/stb_image"
-
-group "Dependencies"
-	include "Fandango/vendor/GLFW"
-	include "Fandango/vendor/Glad"
-	include "Fandango/vendor/imgui"
-
-group ""
+IncludeDir["yaml_cpp"] = "Fandango/vendor/yaml-cpp/include"
 
 project "Fandango"
 	location "Fandango"
@@ -69,7 +63,8 @@ project "Fandango"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.entt}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.yaml_cpp}"
 	}
 
 	links
@@ -77,7 +72,8 @@ project "Fandango"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"opengl32.lib"
+		"opengl32.lib",
+		"yaml-cpp"
 	}
 
 	filter "system:windows"
@@ -220,3 +216,11 @@ project "Fandango-Editor"
 		defines "FNDG_DIST"
 		runtime "Release"
 		optimize "on"
+
+group "Dependencies"
+	include "Fandango/vendor/GLFW"
+	include "Fandango/vendor/Glad"
+	include "Fandango/vendor/imgui"
+	include "Fandango/vendor/yaml-cpp"
+
+group ""

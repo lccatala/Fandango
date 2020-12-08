@@ -5,6 +5,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <Fandango/Scene/SceneSerializer.h>
+
 namespace Fandango
 {
 	EditorLayer::EditorLayer()
@@ -144,6 +146,18 @@ namespace Fandango
 		{
 			if (ImGui::BeginMenu("File"))
 			{
+				if (ImGui::MenuItem("Save"))
+				{
+					SceneSerializer serializer(m_ActiveScene);
+					serializer.SerializeText("assets/scenes/Example.fndg");
+				}
+
+				if (ImGui::MenuItem("Open"))
+				{
+					SceneSerializer serializer(m_ActiveScene);
+					serializer.DeSerializeText("assets/scenes/Example.fndg");
+				}
+
 				if (ImGui::MenuItem("Quit", NULL, false))
 				{
 					showDockspace = false;
