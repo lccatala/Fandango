@@ -7,6 +7,8 @@
 
 #include <Fandango/Scene/SceneSerializer.h>
 
+#include "Fandango/Utils/PlatformUtils.h"
+
 namespace Fandango
 {
 	EditorLayer::EditorLayer()
@@ -94,10 +96,38 @@ namespace Fandango
 		m_FrameBuffer->Unbind();
 	}
 
+	void EditorLayer::CreateNewScene()
+	{
+		m_ActiveScene = CreateRef<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+	}
+
+	void EditorLayer::OpenScene()
+	{
+		std::string filepath = FileDialogs::OpenFile("Fandango Scene (*.fndg)\0*.fndg\0");
+		if (!filepath.empty())
+		{
+			CreateNewScene();
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.DeSerializeText(filepath);
+		}
+	}
+
+	void EditorLayer::SaveSceneAs()
+	{
+		std::string filepath = FileDialogs::SaveFile("Fandango Scene (*.fndg)\0*.fndg\0");
+		if (!filepath.empty())
+		{
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.SerializeText(filepath);
+		}
+	}
+
 	void EditorLayer::SetupDockspace()
 	{
 		FNDG_PROFILE_FUNCTION();
-
+		
 		static bool showDockspace = true;
 		static bool opt_fullscreen_persistant = true;
 		static ImGuiDockNodeFlags opt_flags = ImGuiDockNodeFlags_None;
@@ -146,16 +176,19 @@ namespace Fandango
 		{
 			if (ImGui::BeginMenu("File"))
 			{
-				if (ImGui::MenuItem("Save"))
+				if (ImGui::MenuItem("New", "Ctrl+N"))
 				{
-					SceneSerializer serializer(m_ActiveScene);
-					serializer.SerializeText("assets/scenes/Example.fndg");
+					CreateNewScene();
 				}
 
-				if (ImGui::MenuItem("Open"))
+				if (ImGui::MenuItem("Open...", "Ctrl+O"))
 				{
-					SceneSerializer serializer(m_ActiveScene);
-					serializer.DeSerializeText("assets/scenes/Example.fndg");
+					OpenScene();
+				}
+
+				if (ImGui::MenuItem("Save as...", "Ctrl+Shift+S"))
+				{
+					SaveSceneAs();
 				}
 
 				if (ImGui::MenuItem("Quit", NULL, false))
@@ -216,6 +249,38 @@ namespace Fandango
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<KeyPressedEvent>(FNDG_BIND_EVENT_FUNCTION(EditorLayer::OnKeyPressed));
+	}
+
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
+	{
+		// Keyboard shortcuts
+		if (e.GetRepeatCount() > 0)
+			return false;
+
+		bool controlPressed = Input::IsKeyPressed(FNDG_KEY_LEFT_CONTROL) || Input::IsKeyPressed(FNDG_KEY_RIGHT_CONTROL);
+		bool shiftPressed = Input::IsKeyPressed(FNDG_KEY_LEFT_SHIFT) || Input::IsKeyPressed(FNDG_KEY_RIGHT_SHIFT);
+
+		switch (e.GetKeyCode())
+		{
+		case FNDG_KEY_N:
+			if (controlPressed)
+				CreateNewScene();
+			break;
+
+		case FNDG_KEY_O:
+			if (controlPressed)
+				OpenScene();
+			break;
+
+		case FNDG_KEY_S:
+			if (controlPressed && shiftPressed)
+				SaveSceneAs();
+			break;
+		}
+		
 	}
 }
 

@@ -19,6 +19,10 @@ namespace Fandango
 		void OnEvent(Event & e) override;
 	private:
 		void SetupDockspace();
+		bool OnKeyPressed(KeyPressedEvent& e);
+		void CreateNewScene();
+		void OpenScene();
+		void SaveSceneAs();
 
 		glm::vec2 m_ViewportSize = {0.0f, 0.0f};
 		bool m_ViewportFocused = false;
