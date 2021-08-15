@@ -25,6 +25,7 @@ IncludeDir["glm"] = "Fandango/vendor/glm"
 IncludeDir["ImGui"] = "Fandango/vendor/imgui"
 IncludeDir["stb_image"] = "Fandango/vendor/stb_image"
 IncludeDir["yaml_cpp"] = "Fandango/vendor/yaml-cpp/include"
+IncludeDir["ImGuizmo"] = "Fandango/vendor/ImGuizmo"
 
 project "Fandango"
 	location "Fandango"
@@ -43,10 +44,15 @@ project "Fandango"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/stb_image/**.h",
+
 		"%{prj.name}/vendor/glm/glm.**.hpp",
-		"%{prj.name}/vendor/glm/glm.**.inl"
+		"%{prj.name}/vendor/glm/glm.**.inl",
+
+		"%{prj.name}/vendor/ImGuizmo/ImGuizmo.h",
+		"%{prj.name}/vendor/ImGuizmo/ImGuizmo.cpp"
 	}
 	
 	defines
@@ -64,7 +70,8 @@ project "Fandango"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.yaml_cpp}"
+		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links
@@ -75,6 +82,10 @@ project "Fandango"
 		"opengl32.lib",
 		"yaml-cpp"
 	}
+
+	-- Avoid having to include the PCH in ImGuizmo files
+	filter "files:Fandango/vendor/ImGuizmo/**.cpp"
+		flags { "NoPCH" }
 
 	filter "system:windows"
 		systemversion "latest"

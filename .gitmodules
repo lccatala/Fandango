@@ -14,3 +14,6 @@
 [submodule "Fandango/vendor/yaml-cpp"]
 	path = Fandango/vendor/yaml-cpp
 	url = https://github.com/lccatala/yaml-cpp
+[submodule "Fandango/vendor/ImGuizmo"]
+	path = Fandango/vendor/ImGuizmo
+	url = https://github.com/lccatala/ImGuizmo
