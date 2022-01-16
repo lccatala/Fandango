@@ -5,9 +5,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <Fandango/Math/Math.h>
 #include <Fandango/Scene/SceneSerializer.h>
-
 #include "Fandango/Utils/PlatformUtils.h"
+
+#include "ImGuizmo.h"
 
 namespace Fandango
 {
@@ -219,6 +221,59 @@ namespace Fandango
 		}
 	}
 
+	void EditorLayer::DrawGuizmos()
+	{
+		// Get currently selected entity
+		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
+		if (!selectedEntity || m_GizmoType == -1)
+			return;
+
+		ImGuizmo::SetOrthographic(false);
+		ImGuizmo::SetDrawlist();
+
+		float windowX = ImGui::GetWindowPos().x;
+		float windowY = ImGui::GetWindowPos().y;
+		float windowWidth = ImGui::GetWindowWidth();
+		float windowHeight = ImGui::GetWindowHeight();
+		ImGuizmo::SetRect(windowX, windowY, windowWidth, windowHeight);
+
+		// Get camera view and projection
+		Entity cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+		const SceneCamera& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
+		glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
+		const glm::mat4& cameraProjection = camera.GetProjection();
+
+		// Get entity transform
+		auto& entityTransformComponent = selectedEntity.GetComponent<TransformComponent>();
+		glm::mat4 entityTransform = entityTransformComponent.GetTransform();
+
+		// Snapping to 0.5m for translation/scale and 45 degrees for rotation
+		// Note: snapping is relative to current position, not to a global grid
+		bool snap = Input::IsKeyPressed(FNDG_KEY_LEFT_CONTROL);
+		float snapValue = m_GizmoType == ImGuizmo::OPERATION::ROTATE ? 45.0f : 0.5f;
+		float snapValues[3] = { snapValue , snapValue , snapValue }; // Same snap values for every axis
+
+		ImGuizmo::Manipulate(
+			glm::value_ptr(cameraView), 
+			glm::value_ptr(cameraProjection), 
+			(ImGuizmo::OPERATION)m_GizmoType,
+			ImGuizmo::LOCAL, 
+			glm::value_ptr(entityTransform),
+			nullptr,
+			snap ? snapValues : nullptr);
+
+		if (!ImGuizmo::IsUsing())
+			return;
+
+		glm::vec3 translation, rotation, scale;
+		Math::DecomposeTransform(entityTransform, translation, rotation, scale);
+
+		glm::vec3 deltaRotation = rotation - entityTransformComponent.Rotation;
+		entityTransformComponent.Translation = translation;
+		entityTransformComponent.Rotation += deltaRotation;
+		entityTransformComponent.Scale = scale;
+	}
+
 	void EditorLayer::OnImGuiRender()
 	{
 		FNDG_PROFILE_FUNCTION();
@@ -233,13 +288,16 @@ namespace Fandango
 
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
-		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused && !m_ViewportHovered);
 
 		ImVec2 currentViewportPanelSize = ImGui::GetContentRegionAvail();
 		m_ViewportSize = { currentViewportPanelSize.x, currentViewportPanelSize.y };
 
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+
+		DrawGuizmos();
+
 		ImGui::End();
 		ImGui::PopStyleVar();
 
@@ -278,6 +336,23 @@ namespace Fandango
 		case FNDG_KEY_S:
 			if (controlPressed && shiftPressed)
 				SaveSceneAs();
+			break;
+
+		// Guizmo shortcuts
+		case FNDG_KEY_Q:
+			m_GizmoType = -1;
+			break;
+
+		case FNDG_KEY_W:
+			m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+			break;
+
+		case FNDG_KEY_E:
+			m_GizmoType = ImGuizmo::OPERATION::SCALE;
+			break;
+
+		case FNDG_KEY_R:
+			m_GizmoType = ImGuizmo::OPERATION::ROTATE;
 			break;
 		}
 		

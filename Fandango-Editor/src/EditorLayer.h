@@ -19,14 +19,18 @@ namespace Fandango
 		void OnEvent(Event & e) override;
 	private:
 		void SetupDockspace();
+		void DrawGuizmos();
 		bool OnKeyPressed(KeyPressedEvent& e);
 		void CreateNewScene();
 		void OpenScene();
 		void SaveSceneAs();
 
-		glm::vec2 m_ViewportSize = {0.0f, 0.0f};
 		bool m_ViewportFocused = false;
 		bool m_ViewportHovered = false;
+
+		int m_GizmoType = -1;
+
+		glm::vec2 m_ViewportSize = {0.0f, 0.0f};
 
 		OrthographicCameraController m_CameraController;
 

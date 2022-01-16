@@ -197,7 +197,8 @@ project "Fandango-Editor"
 		"Fandango/src",
 		"Fandango/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}",
 	}
 
 	links 
