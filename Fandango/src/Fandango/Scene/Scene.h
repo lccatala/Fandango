@@ -3,6 +3,8 @@
 #include "entt.hpp"
 
 #include <Fandango/Core/TimeStep.h>
+#include "Fandango/Renderer/EditorCamera.h"
+
 
 namespace Fandango
 {
@@ -17,7 +19,8 @@ namespace Fandango
 		Entity CreateEntity(const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
-		void OnUpdate(TimeStep ts);
+		void OnUpdateRuntime(TimeStep ts);
+		void OnUpdateEditor(TimeStep ts, EditorCamera& editorCamera);
 		void OnViewportResize(uint32_t width, uint32_t height);
 
 		Entity GetPrimaryCameraEntity();

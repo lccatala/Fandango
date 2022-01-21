@@ -115,6 +115,22 @@ namespace Fandango
 		s_Data.TextureSlotIndex = 1;
 	}
 
+	void Renderer2D::BeginScene(const EditorCamera& camera)
+	{
+		FNDG_PROFILE_FUNCTION();
+
+
+		glm::mat4 viewProjection = camera.GetViewProjection();
+
+		s_Data.TextureShader->Bind();
+		s_Data.TextureShader->SetUniform("u_ViewProjectionMatrix", viewProjection);
+
+		s_Data.QuadIndexCount = 0;
+		s_Data.QuadVertexBufferPtr = s_Data.QuadVertexBufferBase;
+
+		s_Data.TextureSlotIndex = 1;
+	}
+
 	void Renderer2D::ShutDown()
 	{
 		FNDG_PROFILE_FUNCTION();

@@ -33,7 +33,20 @@ namespace Fandango
 		m_Registry.destroy(entity);
 	}
 
-	void Scene::OnUpdate(TimeStep ts)
+	void Scene::OnUpdateEditor(TimeStep ts, EditorCamera& editorCamera)
+	{
+		// Render 2D
+		Renderer2D::BeginScene(editorCamera);
+		auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
+		for (auto entity : group)
+		{
+			auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+			Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+		}
+		Renderer2D::EndScene();
+	}
+
+	void Scene::OnUpdateRuntime(TimeStep ts)
 	{
 		// Update scripts
 		{

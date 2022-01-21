@@ -5,6 +5,7 @@
 #include "Texture.h"
 #include "SubTexture2D.h"
 #include "Fandango/Scene/Components.h"
+#include "Fandango/Renderer/EditorCamera.h"
 
 namespace Fandango
 {
@@ -15,6 +16,7 @@ namespace Fandango
 		static void ShutDown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const EditorCamera& camera);
 		static void EndScene();
 		static void Flush();
 

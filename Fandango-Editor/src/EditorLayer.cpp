@@ -30,6 +30,9 @@ namespace Fandango
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
 		m_CameraEntity.AddComponent<CameraComponent>();
 
+		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
+
+#if 0 
 		class CameraController : public ScriptableEntity
 		{
 		public:
@@ -60,6 +63,7 @@ namespace Fandango
 		};
 
 		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+#endif
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
@@ -80,11 +84,15 @@ namespace Fandango
 			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.Resize(m_ViewportSize.x, m_ViewportSize.y);
 
+			m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		if (m_ViewportFocused)
+		{
 			m_CameraController.OnUpdate(ts);
+			m_EditorCamera.OnUpdate(ts);
+		}
 
 		Renderer2D::ResetStats();
 
@@ -93,7 +101,7 @@ namespace Fandango
 		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
 
-		m_ActiveScene->OnUpdate(ts);
+		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
 		m_FrameBuffer->Unbind();
 	}
@@ -237,12 +245,6 @@ namespace Fandango
 		float windowHeight = ImGui::GetWindowHeight();
 		ImGuizmo::SetRect(windowX, windowY, windowWidth, windowHeight);
 
-		// Get camera view and projection
-		Entity cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
-		const SceneCamera& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
-		glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
-		const glm::mat4& cameraProjection = camera.GetProjection();
-
 		// Get entity transform
 		auto& entityTransformComponent = selectedEntity.GetComponent<TransformComponent>();
 		glm::mat4 entityTransform = entityTransformComponent.GetTransform();
@@ -254,8 +256,8 @@ namespace Fandango
 		float snapValues[3] = { snapValue , snapValue , snapValue }; // Same snap values for every axis
 
 		ImGuizmo::Manipulate(
-			glm::value_ptr(cameraView), 
-			glm::value_ptr(cameraProjection), 
+			glm::value_ptr(m_EditorCamera.GetViewMatrix()), 
+			glm::value_ptr(m_EditorCamera.GetProjection()), 
 			(ImGuizmo::OPERATION)m_GizmoType,
 			ImGuizmo::LOCAL, 
 			glm::value_ptr(entityTransform),
@@ -307,6 +309,7 @@ namespace Fandango
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+		m_EditorCamera.OnEvent(e);
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(FNDG_BIND_EVENT_FUNCTION(EditorLayer::OnKeyPressed));
