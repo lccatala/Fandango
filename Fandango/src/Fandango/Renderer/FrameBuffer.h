@@ -5,11 +5,46 @@
 namespace Fandango
 {
 
+	enum class FrameBufferTextureFormat
+	{
+		None = 0,
+
+		// Color
+		RGBA8,
+
+		// Depth/stencil
+		DEPTH24STENCIL8,
+
+		Depth = DEPTH24STENCIL8
+	};
+
+	struct FrameBufferTextureSpec
+	{
+		FrameBufferTextureSpec() = default;
+		FrameBufferTextureSpec(FrameBufferTextureFormat format)
+			: TextureFormat(format) {}
+
+		FrameBufferTextureFormat TextureFormat = FrameBufferTextureFormat::None;
+		
+		// TODO: filtering/wrap
+	};
+
+	struct FrameBufferAttachmentSpec
+	{
+		FrameBufferAttachmentSpec() = default;
+		FrameBufferAttachmentSpec(const std::initializer_list<FrameBufferTextureSpec> attachments)
+			: Attachments(attachments) {}
+
+		std::vector<FrameBufferTextureSpec> Attachments;
+	};
+
 	// Specification to initialize FrameBuffer
 	struct FrameBufferSpec
 	{
 		uint32_t Width = 0, Height = 0;
 		uint32_t Samples = 1;
+
+		FrameBufferAttachmentSpec AttachmentSpec;
 
 		// Is supposed to be rendering to Vulkan SwapChain?
 		// Are we rendering directly to the screen or not?
@@ -31,6 +66,6 @@ namespace Fandango
 
 		virtual const FrameBufferSpec GetSpec() const = 0;
 
-		virtual uint32_t GetColorAttachmentRendererID() const = 0;
+		virtual uint32_t GetColorAttachmentRendererID(uint32_t index = 0) const = 0;
 	};
 }

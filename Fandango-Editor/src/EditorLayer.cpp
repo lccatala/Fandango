@@ -22,6 +22,7 @@ namespace Fandango
 		FNDG_PROFILE_FUNCTION();
 
 		FrameBufferSpec fbSpec;
+		fbSpec.AttachmentSpec = { FrameBufferTextureFormat::RGBA8, FrameBufferTextureFormat::Depth };
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
