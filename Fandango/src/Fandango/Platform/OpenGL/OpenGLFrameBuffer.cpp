@@ -76,6 +76,34 @@ namespace Fandango
 		{
 			glCreateTextures(TextureTarget(multisampled), count, outID);
 		}
+
+		static GLenum FandangoFrameBufferTextureFormatToGL(FrameBufferTextureFormat format) 
+		{
+			switch (format)
+			{
+				case FrameBufferTextureFormat::RGBA8:
+					return GL_RGBA8;
+				case FrameBufferTextureFormat::RED_INTEGER:
+					return GL_RED_INTEGER;
+			}
+
+			FNDG_ENGINE_ASSERT(false);
+			return 0;
+		}
+
+		static GLenum GLDataType(FrameBufferTextureFormat format)
+		{
+			switch (format)
+			{
+			case FrameBufferTextureFormat::RGBA8:
+				return GL_UNSIGNED_BYTE;
+			case FrameBufferTextureFormat::RED_INTEGER:
+				return GL_INT;
+			}
+
+			FNDG_ENGINE_ASSERT(false);
+			return 0;
+		}
 	}
 
 	OpenGLFrameBuffer::OpenGLFrameBuffer(const FrameBufferSpec& spec)
@@ -174,6 +202,20 @@ namespace Fandango
 	void OpenGLFrameBuffer::Unbind()
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
+
+	void OpenGLFrameBuffer::ClearAttachmentInt(int index, int value)
+	{
+		FNDG_ENGINE_ASSERT(index < m_ColorAttachments.size());
+
+		auto& spec = m_ColorAttachmentSpecs[index];
+
+		glClearTexImage(
+			m_ColorAttachments[index], 
+			0, 
+			Utils::FandangoFrameBufferTextureFormatToGL(spec.TextureFormat), 
+			GL_INT,
+			&value);
 	}
 
 	void OpenGLFrameBuffer::Resize(uint32_t width, uint32_t height)
