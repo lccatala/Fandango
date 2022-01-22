@@ -22,7 +22,7 @@ namespace Fandango
 		FNDG_PROFILE_FUNCTION();
 
 		FrameBufferSpec fbSpec;
-		fbSpec.AttachmentSpec = { FrameBufferTextureFormat::RGBA8, FrameBufferTextureFormat::Depth };
+		fbSpec.AttachmentSpec = { FrameBufferTextureFormat::RGBA8, FrameBufferTextureFormat::RED_INTEGER, FrameBufferTextureFormat::Depth };
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
@@ -103,6 +103,24 @@ namespace Fandango
 		RenderCommand::Clear();
 
 		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
+
+		auto [mouseXDouble, mouseYDouble] = ImGui::GetMousePos();
+
+		// Top-left corner is (0,0)
+		mouseXDouble -= m_ViewportBounds[0].x;
+		mouseYDouble -= m_ViewportBounds[0].y;
+
+		glm::vec2 viewportSize = m_ViewportBounds[1] - m_ViewportBounds[0];
+		mouseYDouble = viewportSize.y - mouseYDouble; // Flip Y coordinate so bottom-left is (0,0)
+
+		int mouseX = (int)mouseXDouble;
+		int mouseY = (int)mouseYDouble;
+
+		if (mouseX >= 0 && mouseY >= 0 && mouseX < (int)viewportSize.x && mouseY < (int)viewportSize.y)
+		{
+			int pixelData = m_FrameBuffer->ReadPixel(1, mouseX, mouseY);
+			FNDG_ENGINE_TRACE("Pixel data: {0}", pixelData);
+		}
 
 		m_FrameBuffer->Unbind();
 	}
@@ -230,7 +248,7 @@ namespace Fandango
 		}
 	}
 
-	void EditorLayer::DrawGuizmos()
+	void EditorLayer::DrawGizmos()
 	{
 		// Get currently selected entity
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
@@ -288,6 +306,7 @@ namespace Fandango
 		m_SceneHierarchyPanel.OnImGuiRender();
 
 		ImGui::Begin("Viewport");
+		auto viewportOffset = ImGui::GetCursorPos(); // Includes tab bar
 
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
@@ -299,7 +318,17 @@ namespace Fandango
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 
-		DrawGuizmos();
+		auto windowSize = ImGui::GetWindowSize();
+		ImVec2 minBound = ImGui::GetWindowPos();
+		minBound.x += viewportOffset.x;
+		minBound.y += viewportOffset.y;
+
+		ImVec2 maxBound = { minBound.x + windowSize.x, minBound.y + windowSize.y };
+		m_ViewportBounds[0] = { minBound.x, minBound.y };
+		m_ViewportBounds[1] = { maxBound.x, maxBound.y };
+
+
+		DrawGizmos();
 
 		ImGui::End();
 		ImGui::PopStyleVar();

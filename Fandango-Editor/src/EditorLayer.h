@@ -19,7 +19,7 @@ namespace Fandango
 		void OnEvent(Event & e) override;
 	private:
 		void SetupDockspace();
-		void DrawGuizmos();
+		void DrawGizmos();
 		bool OnKeyPressed(KeyPressedEvent& e);
 		void CreateNewScene();
 		void OpenScene();
@@ -27,6 +27,7 @@ namespace Fandango
 
 		bool m_ViewportFocused = false;
 		bool m_ViewportHovered = false;
+		glm::vec2 m_ViewportBounds[2]; // 0: min bounds, 1: max bounds
 
 		int m_GizmoType = -1;
 
